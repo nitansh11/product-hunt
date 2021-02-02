@@ -76,6 +76,10 @@
     border-radius: 5px;
     margin-bottom: 20px;
     background-color: white;
+    font-weight: 100;
+    color: rgb(94, 91, 91);
+    font-size: 14px;
+    line-height: 22px;
 }
 .discussionsRightBar_1 > button{
     background-color: rgb(204,77,41);
@@ -88,6 +92,8 @@
     margin-bottom: 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .discussionsRightBar_2{
@@ -97,6 +103,9 @@
     border-radius: 5px;
     margin-bottom: 20px;
     background-color: white;
+    font-weight: 100;
+    color: rgb(94, 91, 91);
+    font-size: 14px;
 }
 .discussionsRightBar_2 > form > input{
     margin-right: 10px;
@@ -115,11 +124,61 @@
     border-radius: 50%;
     margin-top: 15px;
 }
+.discussionsRightBar_3 > h3{
+    font-size: 13px;
+    color: rgb(37, 36, 36);
+}
 
 .itemNum:active{
     color: rgb(204,77,41);
     font-weight: 600;
 }
 .itemNum:hover{
+    cursor: pointer;
+}
+
+.discussionsRightBar_4{
+    /* border: 1px solid red; */
+    width: 80%;
+    padding: 4%;
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(187, 184, 184, 0.637);
+    font-size: 12px;
+    color: gray;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    line-height: 20px;
+}
+.discussionsRightBar_4 > p{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.discussionsPage_buttonsDIv{
+    /* border: 1px solid black; */
+    width: 64%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.discussionsPage_buttonsDIv_1 > button{
+    outline: none;
+    border: 0px;
+    margin-right: 20px;
+    background-color: rgb(243,243,243);
+    cursor: pointer;
+}
+
+.discussionsPage_buttonsDIv_2{
+    /* border: 1px solid brown; */
+    margin-left: 360px;
+}
+.discussionsPage_buttonsDIv_2 > button{
+    outline: none;
+    border: 0px;
+    margin-right: 20px;
+    background-color: rgb(243,243,243);
     cursor: pointer;
 }
