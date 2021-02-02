@@ -1,0 +1,15 @@
+.SearchBar {
+  border: 1px solid rgba(179, 172, 172, 0.507);
+  padding-left: 10px;
+}
+.SearchBar i {
+color: rgba(179, 172, 172, 0.507);
+}
+.SearchBar input {
+  width: 250px;
+  border: none;
+  margin-left: 10px;
+  outline: none;
+  padding:8px 0;
+    
+}

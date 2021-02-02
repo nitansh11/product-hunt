@@ -2,7 +2,7 @@
   font-family: sans-serif;
 }
 
-.outerbox {
+.mentors_outerbox {
   width: 49%;
   margin: auto;
   height: 100%;
@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.outerbox > h1 {
+.mentors_h1 {
   width: 80%;
   font-size: 65px;
   color: black;
@@ -21,7 +21,7 @@
   margin-bottom: 30px;
 }
 
-.outerbox > p {
+.mentors_p {
   width: 83%;
   text-align: center;
   height: fit-content;

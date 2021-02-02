@@ -1,0 +1,250 @@
+
+.Product__Parent{
+    width: 100%;
+    background-color: #F3F3F3; 
+}
+
+.Product{
+     width: 100%;
+     padding-top: 100px;
+     margin: auto;
+     display: flex;
+     justify-content: space-between;
+     max-width: 1100px;
+     /* background-color: #F3F3F3; */
+}
+
+/* ------------------------------------------- MAIN -------------------------------------------------- */
+
+.Product__main{
+    width: 66%;
+}
+
+.Product__main__head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.Product__main__head span{
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.Product__main__head span:hover{
+  text-decoration: underline;
+}
+
+
+.Product__main__head h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+
+
+.Product__main__head b{
+    font-weight: lighter;
+    color: rgb(223, 217, 217);
+}
+
+
+.Product__main__content{
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #E8E8E8;
+}
+
+
+
+.ProductCard{
+    display: flex;
+    align-items: top;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 17px;
+    cursor: pointer;
+}
+
+.ProductCard:hover{
+    background-color: rgb(248, 248, 248);
+}
+
+/* .Product:hover 
+.ProductCard__content h2 > span > i{
+    display: inline;
+
+} */
+
+.ProductCard__img{
+    width: 11%;
+    height: 80px;  
+}
+
+.ProductCard__img img{
+    width: 100%;
+    height: 100%;
+}
+
+.ProductCard__content{
+    width: 72%;    
+}
+
+.ProductCard__content h2{
+    font-size : 16px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+
+.ProductCard__content h2 > span > i{
+    color: grey;
+    font-size: 14px;
+    display: none;
+}
+
+
+.ProductCard__content p{
+    font-size : 13px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #6f6f6f;
+}
+ 
+
+.ProductCard__content i{
+    margin-right: 5px;
+}
+
+.ProductCard__content__footer{
+    margin-top: 14px;
+    align-self: baseline;
+    display: flex;
+    align-items: center;
+    font-size: 11px; 
+    color: #6f6f6f;
+}
+
+
+.ProductCard__content__footer > div:nth-child(2) span:hover{
+    text-decoration: underline;
+  }
+
+.ProductCard__content__footer > div:nth-child(1){
+    border: 1px solid rgb(179, 174, 174);
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-right: 8px;
+    background-color: white;
+}
+
+.ProductCard__content__footer > div:nth-child(1):hover{
+    background-color: rgb(224, 219, 219);
+    transition: 0.2s ease-in all;
+    border: 1px solid rgb(224, 219, 219);
+}
+
+
+.ProductCard__upvote{
+    border: 1px solid rgb(236, 232, 232);
+    width: 10%;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: white;
+}
+
+.ProductCard__upvote i{
+    font-size: 22px;
+}
+
+.ProductCard__upvote:hover{
+    background-color: rgb(248, 248, 248);
+    transition: 0.2s ease-in all;
+}
+
+
+.ProductCard__upvote:active{
+    color:  rgb(235, 116, 5);
+    border: 1px solid rgb(235, 116, 5);
+}
+
+/* ------------------------------------------- SIDECARD -------------------------------------------------- */
+
+.Product__side{
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+
+ 
+
+.Product__side__awards{
+    width: 100%;
+    height: 350px;
+    background: url(https://ph-static.imgix.net/golden-kitty/2020/hp_desktop_card_bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 5px;
+  
+}
+
+.Product__side__highlight h2{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+
+.SideCard{
+    display: flex;
+    align-items: top;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 17px;
+    cursor: pointer;
+    background-color: white;
+}
+
+
+.SideCard__img{
+    width: 20%;
+    height: 60px; 
+    border-radius: 5px; 
+}
+
+.SideCard__img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px; 
+}
+
+.SideCard__content{
+    width: 75%;    
+}
+
+.SideCard__content h2{
+    font-size : 16px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.SideCard__content p{
+    font-size : 13px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #6f6f6f;
+}
+ 
+ 
+

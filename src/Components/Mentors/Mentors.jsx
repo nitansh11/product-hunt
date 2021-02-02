@@ -259,22 +259,22 @@ let data = [
 ];
 const Mentors = () => {
   return (
-    <div className={Styles.outerbox}>
-      <h1>Product Hunt Mentors</h1>
-      <p>
+    <div className={Styles.mentors_outerbox}>
+      <h1 className={Styles.mentors_h1}>Product Hunt Mentors</h1>
+      <p className={Styles.mentors_p}>
         Product Hunt Mentors allows you to book 1 to 1 meetings with industry
         experts on a range of topics including product building, social media,
         PR, design, engineering and more.
       </p>
 
-      <p>
+      <p  className={Styles.mentors_p}>
         How it works: You can read more about each mentor in their short bios,
         then click “Book a Call” to select a time that suits you from their
         online calendars. Each mentor sets their own fee in accordance with
         their experiences. (Full disclaimer: Product Hunt takes a percentage).
       </p>
 
-      <p>
+      <p  className={Styles.mentors_p}>
         If you’d like to become a mentor yourself, please apply here. Or if
         you’d like to book a session with an expert mentor, you can scroll our
         list below. More mentors will we added over time. If you have any
