@@ -8,12 +8,12 @@ const DiscussionsRoutes = () => {
     return (
         <div>
             <div>
-                <Link to='/popular'>POPULAR</Link>
+                <Link to='/discussions/popular'>POPULAR</Link>
                 <Link to='/new'>NEW</Link>
             </div>
             <div>
                 <Switch>
-                    <Route path='/popular' exact>
+                    <Route path='/discussions/popular' exact>
                         <Popular/>
                     </Route>
                     <Route path='/new' exact>

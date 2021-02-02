@@ -147,8 +147,21 @@ const Discussions = () => {
     return (
         <div className={styles.discussionsBackground}>
             <div className={styles.discussionsPage}>
-                <div>
-                    {/* <DiscussionsRoutes/> */}
+                {/* <div>
+                    <DiscussionsRoutes/>
+                </div> */}
+                <div className={styles.discussionsPage_buttonsDIv}>
+                    <div className={styles.discussionsPage_buttonsDIv_1}>
+                        <button>POPULAR</button>
+                        <button>NEW</button>
+                    </div>
+                    <div className={styles.discussionsPage_buttonsDIv_2}>
+                        <button>NOW</button>
+                        <button>WEEK</button>
+                        <button>MONTH</button>
+                        <button>YEAR</button>
+                        <button>ALL</button>
+                    </div>
                 </div>
                 <div className={styles.discussionsParent}>
                     <div className={styles.discussionsList}>
@@ -191,6 +204,19 @@ const Discussions = () => {
                         <div className={styles.discussionsRightBar_3}>
                             <h3>MOST HELPFUL THIS WEEK</h3>
                             <img src='https://ph-avatars.imgix.net/2062078/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=30&h=30&fit=crop' alt=''/>
+                        </div>
+                        <div className={styles.discussionsRightBar_4}>
+                            <p>Blog</p>
+                            <p>Newsletter</p>
+                            <p>Apps</p>
+                            <p>About</p>
+                            <p>FAQ</p>
+                            <p>Terms</p>
+                            <p>Privacy polocy and Cookies</p>
+                            <p>Twitter</p>
+                            <p>Facebook</p>
+                            <p>Instagram</p>
+                            <p>Advertise</p>
                         </div>
                     </div>
                 </div>
