@@ -2,7 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Deals from "../Components/Deals/Deals";
 import Product from "../Components/Product/Product";
-import Mentors from "../Components/Mentors/Mentors"
+import Mentors from "../Components/Mentors/Mentors";
+import {Discussions} from '../Components/Discussions/Discussions'
 const Routes = () => {
   return (
     <>
@@ -17,7 +18,7 @@ const Routes = () => {
           Jobs Page
         </Route>
         <Route path="/discussions" exact>
-          Discussions Page
+          <Discussions/>
         </Route>
         <Route path="/ship" exact>
           Ship Page
