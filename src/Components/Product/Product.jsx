@@ -22,6 +22,7 @@ function Product() {
     
 
     return (
+        <div className={styles.Product__Parent}>
         <div className={styles.Product}>
              <div className={styles.Product__main}>
                  <div className={styles.Product__main__head}>
@@ -76,6 +77,7 @@ function Product() {
                 </div>
              </div>
         </div>
+    </div>
     )
 }
 

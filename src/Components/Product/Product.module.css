@@ -1,10 +1,17 @@
 
+.Product__Parent{
+    width: 100%;
+    background-color: #F3F3F3; 
+}
+
 .Product{
      width: 100%;
-     margin: 100px auto;
+     padding-top: 100px;
+     margin: auto;
      display: flex;
      justify-content: space-between;
      max-width: 1100px;
+     /* background-color: #F3F3F3; */
 }
 
 /* ------------------------------------------- MAIN -------------------------------------------------- */
