@@ -1,5 +1,8 @@
-.App{
-  width: 90%;
-  border: 1px solid red;
-  margin: 10px auto;
-}
+ .App{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+ }
+
+ body{
+   background-color: #F3F3F3;
+ }
