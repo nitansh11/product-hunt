@@ -1,12 +1,13 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Deals from "../Components/Deals/Deals";
+import Product from "../Components/Product/Product";
 const Routes = () => {
   return (
     <>
       <Switch>
         <Route path="/" exact>
-          Products Page
+         <Product></Product>
         </Route>
         <Route path="/founder-club/benefits">
           <Deals />
