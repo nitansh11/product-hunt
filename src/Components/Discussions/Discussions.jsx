@@ -145,52 +145,53 @@ let data =[
 
 const Discussions = () => {
     return (
-        <div className={styles.discussionsPage}>
-            <div>
-                <h1>discussions page</h1>
-                {/* <DiscussionsRoutes/> */}
-            </div>
-            <div className={styles.discussionsParent}>
-                <div className={styles.discussionsList}>
-                    {data?.map((item)=>(
-                        <div className={styles.indivItem}>
-                            <img src={item.img} alt=""/>
-                            <div className={styles.itemNumber}>
-                                <p className={styles.itemNum}>{item.num}</p>
-                            </div>
-                            <div className={styles.itemTitle}>
-                                <h3>{item.title}</h3>
-                                <h5>{item.caption}</h5>
-                            </div>
-                        </div>
-                    ))}
+        <div className={styles.discussionsBackground}>
+            <div className={styles.discussionsPage}>
+                <div>
+                    {/* <DiscussionsRoutes/> */}
                 </div>
-                <div className={styles.discussionsRightBar}>
-                    <div className={styles.discussionsRightBar_1}>
-                        <button>CREATE NEW DISCUSSION</button>
-                        <p>
-                            Before joining or starting a discussion remember to always be civil. 
-                            Treat others with respect. Do not use the discussions board for 
-                            direct sales or self-promotion. 
-                            You are free to share your products and product ideas for feedback. 🙌
-                        </p>
+                <div className={styles.discussionsParent}>
+                    <div className={styles.discussionsList}>
+                        {data?.map((item)=>(
+                            <div className={styles.indivItem}>
+                                <img src={item.img} alt=""/>
+                                <div className={styles.itemNumber}>
+                                    <p className={styles.itemNum}>{item.num}</p>
+                                </div>
+                                <div className={styles.itemTitle}>
+                                    <h3>{item.title}</h3>
+                                    <h5>{item.caption}</h5>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <h3>Filters</h3>
-                    <div className={styles.discussionsRightBar_2}>
-                        <form>
-                            <input type="checkbox" name="amas"/>
-                            <label for="amas">AMAs</label>
-                            <br/>
-                            <input type="checkbox" name="amas"/>
-                            <label for="amas">Request for Feedback</label>
-                            <br/>
-                            <input type="checkbox" name="amas"/>
-                            <label for="amas">Help</label>
-                        </form>
-                    </div>
-                    <div className={styles.discussionsRightBar_3}>
-                        <h3>MOST HELPFUL THIS WEEK</h3>
-                        <img src='https://ph-avatars.imgix.net/2062078/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=30&h=30&fit=crop' alt=''/>
+                    <div className={styles.discussionsRightBar}>
+                        <div className={styles.discussionsRightBar_1}>
+                            <button>CREATE NEW DISCUSSION</button>
+                            <p>
+                                Before joining or starting a discussion remember to always be civil. 
+                                Treat others with respect. Do not use the discussions board for 
+                                direct sales or self-promotion. 
+                                You are free to share your products and product ideas for feedback. 🙌
+                            </p>
+                        </div>
+                        <h4 style={{marginTop:'10px',marginBottom:'10px'}}>Filters</h4>
+                        <div className={styles.discussionsRightBar_2}>
+                            <form>
+                                <input type="checkbox" name="amas"/>
+                                <label for="amas">AMAs</label>
+                                <br/>
+                                <input type="checkbox" name="amas"/>
+                                <label for="amas">Request for Feedback</label>
+                                <br/>
+                                <input type="checkbox" name="amas"/>
+                                <label for="amas">Help</label>
+                            </form>
+                        </div>
+                        <div className={styles.discussionsRightBar_3}>
+                            <h3>MOST HELPFUL THIS WEEK</h3>
+                            <img src='https://ph-avatars.imgix.net/2062078/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=30&h=30&fit=crop' alt=''/>
+                        </div>
                     </div>
                 </div>
             </div>
