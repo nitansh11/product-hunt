@@ -4,10 +4,13 @@ import { useSelector , useDispatch } from 'react-redux'
 import { getProducts } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
+ 
 
-/* (https://ph-static.imgix.net/golden-kitty/2020/hp_desktop_card_bg.png */
+ 
 function Product() {
    const productData = useSelector ( state => state.productsReducer.productData)
+//    const isLoading = useSelector ( state => state.productsReducer.isLoading)
+//    const isError = useSelector ( state => state.productsReducer.isError)
    const dispatch = useDispatch()     
 
     const getAllProducts = () => {
@@ -68,12 +71,49 @@ function Product() {
                         
                 </div>
                 <div className={styles.Product__side__highlight}>
-                    <h2>Yesterday</h2>
-                    <div>
-                        {productData?.map( item => (
+                    <h2>Upcoming products <span>powered by Masai</span></h2>
+                    <div className={styles.Product__side__highlight__cards}>
+                        {productData?.filter((item,index) => index < 4).map( item => (
                             <SideCard key={item.id} {...item}></SideCard>
                         ))}
                     </div>
+                    <div className={styles.Product__side__highlight__button}>
+                        <button>View All</button>
+                    </div>
+                </div>
+                <div className={styles.Product__side__highlight}>
+                    <h2>Hiring Now</h2>
+                    <div className={styles.Product__side__highlight__cards}>
+                        {productData?.filter((item,index) => index < 3).map( item => (
+                            <SideCard key={item.id} {...item}></SideCard>
+                        ))}
+                    </div>
+                    <div className={styles.Product__side__highlight__button}>
+                        <button>View All Jobs</button>
+                    </div>
+                </div>
+                <div className={styles.Product__side__highlight}>
+                    <h2>Top Discussions</h2>
+                    <div className={styles.Product__side__highlight__cards}>
+                        {productData?.filter((item,index) => index < 4).map( item => (
+                            <SideCard key={item.id} {...item}></SideCard>
+                        ))}
+                    </div>
+                    <div className={styles.Product__side__highlight__button}>
+                        <button>View More Discussions</button>
+                    </div>
+                </div>
+                <div className={styles.FooterMini}>
+                      <span>Blog</span>
+                      <span>.</span>    
+                      <span>Blog</span>
+                      <span>.</span>    
+                      <span>Blog</span>
+                      <span>.</span>   
+                      <span>Blog</span>
+                      <span>.</span>   
+                      <span>Blog</span>
+                      <span>.</span>   
                 </div>
              </div>
         </div>

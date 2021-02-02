@@ -1,20 +1,110 @@
 
+.Loader {
+    color: #d0bae9;
+    font-size: 90px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: 250px auto;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+    animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  }
+  
+  @-webkit-keyframes load6 {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @keyframes load6 {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @-webkit-keyframes round {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes round {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+/* ------------------------------------------- MAIN -------------------------------------------------- */
 .Product__Parent{
     width: 100%;
     background-color: #F3F3F3; 
+    min-height: 100vh;
+  
+}
+
+.Product__Parent *:not(i) { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .Product{
      width: 100%;
-     padding-top: 100px;
+     padding: 100px 0;
      margin: auto;
      display: flex;
      justify-content: space-between;
      max-width: 1100px;
-     /* background-color: #F3F3F3; */
 }
 
-/* ------------------------------------------- MAIN -------------------------------------------------- */
+
 
 .Product__main{
     width: 66%;
@@ -67,18 +157,13 @@
     border-bottom: 1px solid #E8E8E8;
     padding: 17px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ProductCard:hover{
     background-color: rgb(248, 248, 248);
 }
-
-/* .Product:hover 
-.ProductCard__content h2 > span > i{
-    display: inline;
-
-} */
-
+ 
 .ProductCard__img{
     width: 11%;
     height: 80px;  
@@ -183,10 +268,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
- 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
- 
 
 .Product__side__awards{
     width: 100%;
@@ -198,22 +281,30 @@
   
 }
 
+.Product__side__highlight{
+  margin-bottom: 50px;
+}
+
+.Product__side__highlight__cards{
+  padding: 13px;
+  background-color: white;
+  border-radius: 5px;
+}
+
 .Product__side__highlight h2{
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-
-
 .SideCard{
     display: flex;
     align-items: top;
     justify-content: space-evenly;
     border-bottom: 1px solid #E8E8E8;
-    padding: 17px;
     cursor: pointer;
-    background-color: white;
+    padding: 13px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -231,12 +322,15 @@
 
 .SideCard__content{
     width: 75%;    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+ 
 
 .SideCard__content h2{
     font-size : 16px;
     line-height: 24px;
     font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .SideCard__content p{
@@ -244,7 +338,71 @@
     line-height: 20px;
     font-weight: 400;
     color: #6f6f6f;
+    margin-top: -5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
  
+.SideCard__content span{
+  font-size: 11px;
+  color: #6f6f6f;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.SideCard__content span:hover{
+  color: rgb(218, 104, 12);
+
+}
+
+.SideCard__content i{
+  color: #6f6f6f;
+  font-size: 9px;
+
+}
+
+.Product__side__highlight__button{
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px; 
+}
+ 
+.Product__side__highlight__button button{
+  outline: none;
+  width: 85%;
+  margin: 20px auto;
+  padding: 8px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid rgb(224, 219, 219);
+  color:#cc4d29;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  transition: 0.2s all ease-in;
+}
+
+.Product__side__highlight__button button:hover{
+  border: 1px solid #cc4d29;
+}
+
+
+/* ------------------------------------------- FOOTER -------------------------------------------------- */
+
+.FooterMini{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  align-items: center;
+  
+}
+
+.FooterMini * {
+  margin: 3px;
+}
+ 
+
  
 
