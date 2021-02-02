@@ -1,0 +1,81 @@
+.Navbar {
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 15%);
+  padding: 4px 0;
+}
+.Navbar > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 78%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.Navbar__searchBar {
+  border: 1px solid rgba(179, 172, 172, 0.507);
+  padding-left: 10px;
+  /* border: 1px solid rgba(216, 210, 210, 0.842); */
+}
+.Navbar__searchBar i {
+  color: rgba(179, 172, 172, 0.507);
+}
+.Navbar__searchBar input {
+  width: 250px;
+  border: none;
+  margin-left: 10px;
+  outline: none;
+  padding: 8px 0;
+}
+
+.Navbar a {
+  text-decoration: none;
+  text-align: center;
+}
+.Navbar__logo {
+  margin-right: 20px;
+}
+.Navbar__logo div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(218, 85, 47);
+}
+.Navbar__logo h1 {
+  color: white;
+  font-size: 28px;
+  padding-top: 5px;
+}
+.Navbar ul {
+  list-style: none;
+  margin-left: 20px;
+  margin-right: 200px;
+}
+.Navbar ul i {
+  color: rgba(122, 120, 120, 0.836);
+}
+.Navbar li {
+  display: inline-block;
+
+  margin-right: 20px;
+}
+.Navbar li a {
+  color: rgb(111, 111, 111);
+  font-size: 20px;
+}
+.Navbar button:nth-child(1) {
+  background-color: white;
+  color: black;
+  border: 1px solid rgba(179, 172, 172, 0.507);
+}
+
+.Navbar button {
+  width: 80px;
+  padding: 10px;
+  background-color: rgb(218, 85, 47);
+  color: white;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  margin-left: 10px;
+  border-radius: 5px;
+}
