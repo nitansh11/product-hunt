@@ -8,7 +8,14 @@ function SideCard(props) {
             <div className={styles.SideCard__content}>
                 <h2>{name}</h2>
                 <p>{description.substring(0,30)}</p>
-                <i className="fas fa-plus"></i>  <span> FOLLOW (0)</span> 
+                <div className={styles.SideCard__content__follow} >
+                    <div>
+                        <i className="fas fa-plus"></i>
+                    </div>
+                    <div>   
+                        <span> FOLLOW (0)</span> 
+                    </div>
+                </div>
             </div>
             <div className={styles.SideCard__img}>
                 <img src={image} alt="product-img"></img>

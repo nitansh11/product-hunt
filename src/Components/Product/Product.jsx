@@ -9,18 +9,36 @@ import SideCard from './SideCard'
  
 function Product() {
    const productData = useSelector ( state => state.productsReducer.productData)
+   const [ showMore , setShowMore ] = React.useState(false)
 //    const isLoading = useSelector ( state => state.productsReducer.isLoading)
 //    const isError = useSelector ( state => state.productsReducer.isError)
    const dispatch = useDispatch()     
 
-    const getAllProducts = () => {
-        const action = getProducts()
-        dispatch(action)
+    const getAllProducts = (params) => {
+        if(params === "popular"){
+            const action = getProducts({
+                "_sort" : "upvotes",
+               "_order": "desc"
+            })
+            dispatch(action)
+        }
+        else{
+            const action = getProducts({
+                "_sort" : "id",
+               "_order": "asc"
+            })
+            dispatch(action)
+        }
     }
 
     React.useEffect(()=>{
-        getAllProducts()
+        getAllProducts("popular")
     },[])
+
+
+    const showMoreHandler = () => {
+        setShowMore(!showMore)
+    }
  
     
 
@@ -33,13 +51,20 @@ function Product() {
                         <h2>Today</h2>
                     </div>
                     <div>
-                        <span>POPULAR</span> <b>|</b> <span>NEWEST</span>
+                        <span onClick={()=>getAllProducts("popular")}>POPULAR</span> <b>|</b> <span onClick={()=>getAllProducts("newest")}>NEWEST</span>
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                     {productData?.map( item => (
+                     {!showMore? productData?.filter((item,index) => index < 5)
+                     .map( item => (
+                          <ProductCard key={item.id} {...item}></ProductCard>
+                     )) :  productData?.map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      ))}
+                     <div className={styles.Product__main__content__more}>
+                         <i className="fas fa-chevron-down"></i> 
+                         <button onClick={showMoreHandler}> {showMore ? "Show Less" : "Show More"}</button>
+                     </div>
                  </div>
                  <br></br>
                  <br></br>
@@ -49,9 +74,16 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                     {productData?.map( item => (
+                    {!showMore? productData?.filter((item,index) => index < 5)
+                     .map( item => (
+                          <ProductCard key={item.id} {...item}></ProductCard>
+                     )) :  productData?.map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      ))}
+                    <div className={styles.Product__main__content__more}>
+                        <i className="fas fa-chevron-down"></i> 
+                        <button onClick={showMoreHandler}> {showMore ? "Show Less" : "Show More"}</button>
+                     </div>
                  </div>
                  <br></br>
                  <br></br>
@@ -61,9 +93,16 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                     {productData?.map( item => (
+                    {!showMore? productData?.filter((item,index) => index < 5)
+                     .map( item => (
+                          <ProductCard key={item.id} {...item}></ProductCard>
+                     )) :  productData?.map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      ))}
+                    <div className={styles.Product__main__content__more}>
+                        <i className="fas fa-chevron-down"></i> 
+                        <button onClick={showMoreHandler}> {showMore ? "Show Less" : "Show More"}</button>
+                     </div>
                  </div>
              </div>
              <div className={styles.Product__side}>
@@ -104,16 +143,22 @@ function Product() {
                     </div>
                 </div>
                 <div className={styles.FooterMini}>
-                      <span>Blog</span>
-                      <span>.</span>    
-                      <span>Blog</span>
-                      <span>.</span>    
-                      <span>Blog</span>
-                      <span>.</span>   
-                      <span>Blog</span>
-                      <span>.</span>   
-                      <span>Blog</span>
-                      <span>.</span>   
+                     <ul>
+                        <li>Blog</li>
+                        <li>Newsletter</li>
+                        <li>Apps</li>
+                        <li>About</li>
+                        <li>FAQ</li>
+                        <li>Terms</li>
+                        <li>Privacy and Cookies</li>
+                        <li>Twitter</li>
+                        <li>Facebook</li>
+                        <li>Instagram</li>
+                        <li>Advertise</li>
+                    </ul> 
+                    <div>
+                        <p>© 2021 PRODUCT HUNT</p>
+                    </div>
                 </div>
              </div>
         </div>

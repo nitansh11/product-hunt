@@ -191,6 +191,11 @@
     display: none;
 }
 
+.ProductCard:hover
+.ProductCard__content h2 > span > i{
+  display: inline;
+}
+
 
 .ProductCard__content p{
     font-size : 13px;
@@ -261,6 +266,34 @@
     border: 1px solid rgb(235, 116, 5);
 }
 
+.Product__main__content__more{
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.Product__main__content__more i {
+  padding: 5px;
+  font-size: 11px;
+  color: #CCC8C7;
+}
+
+.Product__main__content__more button{
+  background-color: white;
+  border: none;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.Product__main__content__more button:hover{
+  text-decoration: underline;
+}
+
+
+
+
 /* ------------------------------------------- SIDECARD -------------------------------------------------- */
 
 .Product__side{
@@ -282,7 +315,7 @@
 }
 
 .Product__side__highlight{
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .Product__side__highlight__cards{
@@ -333,6 +366,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+
 .SideCard__content p{
     font-size : 13px;
     line-height: 20px;
@@ -340,24 +375,33 @@
     color: #6f6f6f;
     margin-top: -5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
  
-.SideCard__content span{
+.SideCard__content__follow i {
+  color: #6f6f6f;
+  font-size: 9px;
+}
+
+.SideCard__content__follow span{
   font-size: 11px;
   color: #6f6f6f;
   font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.SideCard__content span:hover{
-  color: rgb(218, 104, 12);
 
+.SideCard__content__follow span:hover{
+  color: rgb(218, 104, 12);
 }
 
-.SideCard__content i{
-  color: #6f6f6f;
-  font-size: 9px;
+.SideCard__content__follow{
+  display: flex;
+  align-items: center;
+}
 
+.SideCard__content__follow > div{
+  margin-right: 5px;
 }
 
 .Product__side__highlight__button{
@@ -390,18 +434,34 @@
 
 /* ------------------------------------------- FOOTER -------------------------------------------------- */
 
-.FooterMini{
+.FooterMini ul{
+  padding-top: 20px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border-top: 1px solid rgb(224, 219, 219);
   align-items: center;
-  
 }
 
-.FooterMini * {
-  margin: 3px;
+.FooterMini li{
+  font-size: 11px;
+  line-height: 20px;
+  font-weight: 400;
+  margin-right: 12px;
+  list-style-type: none;
+  color:#6f6f6f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
 }
+ 
+
+.FooterMini p {
+  font-size: 11px;
+  color:#6f6f6f;
+  margin-top: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
  
 
  
