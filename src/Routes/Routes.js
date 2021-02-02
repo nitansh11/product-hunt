@@ -3,7 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import Deals from "../Components/Deals/Deals";
 import Product from "../Components/Product/Product";
 import Mentors from "../Components/Mentors/Mentors";
-import {Discussions} from '../Components/Discussions/Discussions'
+import {Discussions} from '../Components/Discussions/Discussions';
+import {Jobs} from "../Components/Jobs/Jobs"
 const Routes = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const Routes = () => {
           <Deals />
         </Route>
         <Route path="/jobs" exact>
-          Jobs Page
+         <Jobs/>
         </Route>
         <Route path="/discussions" exact>
           <Discussions/>
