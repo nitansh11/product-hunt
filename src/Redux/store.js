@@ -2,7 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { productsReducer } from './products/productsReducer'
 import {jobsreducer} from "./jobs/reducer"
-const rootReducer = combineReducers({ productsReducer,jobsreducer });
+import { authReducer } from "./auth/authReducer";
+const rootReducer = combineReducers({ productsReducer,  authReducer,jobsreducer });
 
 let composeEnhancers = compose;
 

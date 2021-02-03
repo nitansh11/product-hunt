@@ -1,0 +1,54 @@
+/* Navbar Modal */
+.Navbar__modal {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    width: 70%;
+    height: 330px;
+    margin: 100px auto;
+    outline: none;
+    border-radius: 10px;
+    border: 20px solid rgba(212, 206, 206, 0.466);
+  }
+  .Navbar__modal i {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  .Navbar___ModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ece8e89f;
+  }
+  
+  .Navbar__modal h2 {
+    margin-top: 25px;
+  }
+  .Navbar__modal h2 + p {
+    color: gray;
+    max-width: 500px;
+    margin: 15px auto;
+  }
+  .Navbar__modalButtons {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .Navbar__modalButtons button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    padding: 10px;
+    margin: 0 20px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .Navbar__modalButtons + p {
+    color: gray;
+    font-size: 12px;
+  }
+  
