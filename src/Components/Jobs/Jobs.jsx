@@ -9,6 +9,10 @@ const Jobs = () => {
   const [rem,setRem]=React.useState(false)
   const [eng,setEng]=React.useState(false)
   const [design,setDesign]=React.useState(false)
+  const [marketing,setMarketing]=React.useState(false)
+  const [sales,setSales]=React.useState(false)
+  const [customer,setCustomer]=React.useState(false)
+  const [product,setProduct]=React.useState(false)
   const dispatch = useDispatch();
   
  console.log(rem,eng,design)
@@ -30,7 +34,20 @@ const handleeng = ()=>{
 
 const handledesign = ()=>{
     setDesign(prev=>!prev)
-     dispatch(getdesign({design}))
+     dispatch(getdesign({rem,eng,design,marketing,sales,customer,product}))
+}
+
+const handlemarketing=()=>{
+  setMarketing(prev=>!prev)
+}
+const handlesales=()=>{
+  setSales(prev=>!prev)
+}
+const handlecustomer=()=>{
+  setCustomer(prev=>!prev)
+}
+const handleproduct=()=>{
+  setProduct(prev=>!prev)
 }
 console.log(rem,eng,design)
   console.log(jobs);
@@ -105,22 +122,22 @@ console.log(rem,eng,design)
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handlemarketing}/>
                 📢 Marketing
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handlesales}/>
                 📈 Sales
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handlecustomer}/>
                 💖 Customer Support
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handleproduct} />
                 💎 Product
               </label>
               <br />

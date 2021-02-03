@@ -126,7 +126,7 @@ import {
      let final = res.data
      if(rem===false)
      {
-         final = final.filter(item=>{
+         final = final.map(item=>{
            return item.remote_status===true? item : null
          })
      }
@@ -156,7 +156,7 @@ import {
      let final = res.data
      if(eng===false)
      {
-         final = final.filter(item=>{
+         final = final.map(item=>{
            return item.engineering_status===true? item : null
          })
      }
@@ -175,26 +175,18 @@ import {
     }
   };
   export const getdesign = (params) => async (dispatch) => {
-    const {design}=params
-    console.log(design)
+    const {rem,eng,design,marketing,sales,customer,product}=params
+    console.log(rem,eng,design,marketing,sales,customer,product)
     dispatch(designRequest());
     try {
       let res = await axios.get(
         "https://json-server-mocker-masai-gopi.herokuapp.com/jobs"
       );
      let final = res.data
-     if(design===false)
-     {
-         final = final.filter(item=>{
-           return item.design_status===true? item : null
-         })
-     }
-     if(design===true)
-     {
-       final = final.map(item=>{
-         return  item
-       })
-     }
+     let finaldata=[]
+    final.map(item=>{
+      return item.remote_status===rem && item.engineering_status===eng && item.design_status === design && item.product_status===product && item.marketing_status===marketing && item.sales_status===sales && item.customer_status===customer ?item : null
+    })
      console.log("design",final)
     
       dispatch(designSuccess(final));
