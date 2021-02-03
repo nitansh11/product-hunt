@@ -4,6 +4,7 @@ import Deals from "../Components/Deals/Deals";
 import Product from "../Components/Product/Product";
 import Mentors from "../Components/Mentors/Mentors";
 import {Discussions} from '../Components/Discussions/Discussions'
+ 
 const Routes = () => {
   return (
     <>

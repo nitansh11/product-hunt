@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './Product.module.css'
 
 function SideCard(props) {
-    const { name , description , image } = props
+    const { name , tagline , image, logo } = props
     return (
         <div className={styles.SideCard}>
             <div className={styles.SideCard__content}>
                 <h2>{name}</h2>
-                <p>{description.substring(0,30)}</p>
+                <p>{tagline}</p>
                 <div className={styles.SideCard__content__follow} >
                     <div>
                         <i className="fas fa-plus"></i>
@@ -18,7 +18,7 @@ function SideCard(props) {
                 </div>
             </div>
             <div className={styles.SideCard__img}>
-                <img src={image} alt="product-img"></img>
+                <img src={logo} alt="product-img"></img>
             </div>
         </div>
     )

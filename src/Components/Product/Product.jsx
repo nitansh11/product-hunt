@@ -10,9 +10,25 @@ import SideCard from './SideCard'
 function Product() {
    const productData = useSelector ( state => state.productsReducer.productData)
    const [ showMore , setShowMore ] = React.useState(false)
+   const [showScroll, setShowScroll] = React.useState(false)
 //    const isLoading = useSelector ( state => state.productsReducer.isLoading)
 //    const isError = useSelector ( state => state.productsReducer.isError)
-   const dispatch = useDispatch()     
+   const dispatch = useDispatch()  
+   
+    const checkScrollTop = () => {
+        if (!showScroll && window.pageYOffset > 400){
+        setShowScroll(true)
+        } else if (showScroll && window.pageYOffset <= 400){
+        setShowScroll(false)
+        }
+    };
+    
+    window.addEventListener('scroll', checkScrollTop)
+
+    const scrollTop = () =>{
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
 
     const getAllProducts = (params) => {
         if(params === "popular"){
@@ -43,7 +59,7 @@ function Product() {
     
 
     return (
-        <div className={styles.Product__Parent}>
+    <div className={styles.Product__Parent}>
         <div className={styles.Product}>
              <div className={styles.Product__main}>
                  <div className={styles.Product__main__head}>
@@ -61,9 +77,9 @@ function Product() {
                      )) :  productData?.map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      ))}
-                     <div className={styles.Product__main__content__more}>
+                    <div  onClick={showMoreHandler} className={styles.Product__main__content__more}>
                          <i className="fas fa-chevron-down"></i> 
-                         <button onClick={showMoreHandler}> {showMore ? "Show Less" : "Show More"}</button>
+                         <button > {showMore ? "Show Less" : `Show ${productData.length-5} More`}</button>
                      </div>
                  </div>
                  <br></br>
@@ -80,9 +96,9 @@ function Product() {
                      )) :  productData?.map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      ))}
-                    <div className={styles.Product__main__content__more}>
+                    <div onClick={showMoreHandler} className={styles.Product__main__content__more}>
                         <i className="fas fa-chevron-down"></i> 
-                        <button onClick={showMoreHandler}> {showMore ? "Show Less" : "Show More"}</button>
+                        <button > {showMore ? "Show Less" : `Show ${productData.length-5} More`}</button>
                      </div>
                  </div>
                  <br></br>
@@ -99,9 +115,9 @@ function Product() {
                      )) :  productData?.map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      ))}
-                    <div className={styles.Product__main__content__more}>
+                    <div  onClick={showMoreHandler} className={styles.Product__main__content__more}>
                         <i className="fas fa-chevron-down"></i> 
-                        <button onClick={showMoreHandler}> {showMore ? "Show Less" : "Show More"}</button>
+                        <button > {showMore ? "Show Less" : `Show ${productData.length-5} More`}</button>
                      </div>
                  </div>
              </div>
@@ -161,6 +177,9 @@ function Product() {
                     </div>
                 </div>
              </div>
+        </div>
+        <div className={styles.Product__scroll}>
+            <i style={{height: 40, display: showScroll ? 'inline' : 'none'}} onClick={scrollTop} class="fas fa-chevron-circle-up"></i>
         </div>
     </div>
     )

@@ -28,7 +28,7 @@ const getProductsFailure = () => {
 
 export const getProducts = (params = {}) => (dispatch) => {
     dispatch(getProductsRequest())
-    return  axios.get("https://resto-details.herokuapp.com/product",{
+    return  axios.get("https://product-hunt-mocker.herokuapp.com/product",{
         params : params
     })
     .then(res => dispatch(getProductsSuccess(res.data)))
