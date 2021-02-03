@@ -33,9 +33,9 @@
   color: rgb(58, 56, 56);
   box-shadow: 2px 2px 2px -2px lightgray;
 }
-.Jobs_firstbox:hover {
+/* .Jobs_firstbox:hover {
   width: 85%;
-}
+} */
 .Jobs_firstbox1 {
   width: 25%;
   height: 100%;

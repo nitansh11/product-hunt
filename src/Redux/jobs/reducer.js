@@ -2,7 +2,10 @@ import {
     
     GET_JOBS_FAILURE,
     GET_JOBS_REQUEST,
-    GET_JOBS_SUCCESS
+    GET_JOBS_SUCCESS,
+    REMOTE_FAILURE,
+    REMOTE_SUCCESS,
+    REMOTE_REQUEST
   } from "./actionTypes";
   const initState = {
     jobs: [],
@@ -32,12 +35,33 @@ import {
           isLoading: false
         };
       }
+      case REMOTE_REQUEST: {
+        return {
+          ...state,
+          isLoading: true,
+          isError: false
+        };
+      }
+      case REMOTE_SUCCESS: {
+        return {
+          ...state,
+          jobs: payload,
+          isLoading: false
+        };
+      }
+      case REMOTE_FAILURE: {
+        return {
+          ...state,
+          isError: true,
+          isLoading: false
+        };
       
-      
+      }
       default:
         return state;
     }
   };
+
   
-  export { jobsreducer };
+  export { jobsreducer};
   

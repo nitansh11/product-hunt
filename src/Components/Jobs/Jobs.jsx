@@ -1,27 +1,44 @@
 import React from "react";
 import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getjobs } from "../../Redux/jobs/action";
+import { getjobs,getremote } from "../../Redux/jobs/action";
 const Jobs = () => {
   const { jobs } = useSelector((state) => state.jobsreducer, shallowEqual);
   const isLoading = useSelector((state) => state.jobsreducer);
   const isError = useSelector((state) => state.jobsreducer);
   const [rem,setRem]=React.useState(false)
+  const [eng,setEng]=React.useState(false)
+  const [design,setDesign]=React.useState(false)
   const dispatch = useDispatch();
-
+  
+ console.log(rem,eng,design)
   React.useEffect(() => {
-    dispatch(getjobs({
-        remote_status:rem
-    }));
+    dispatch(getjobs());
+   
   }, [dispatch]);
 
+const handleremote=()=>{
+    setRem(prev=>!prev)
+     
+     dispatch(getremote({rem,eng,design}))
+}
+console.log(rem,eng,design)
+const handleeng = ()=>{
+    // setEng(prev=>!prev)
+    //  dispatch(getremote({rem,eng,design}))
+}
+
+const handledesign = ()=>{
+    // setDesign(prev=>!prev)
+    //  dispatch(getremote({rem,eng,design}))
+}
   console.log(jobs);
   return (
     <>
       <div className={Styles.Jobs_outerbox}>
         <div className={Styles.Jobs_first_outerbox}>
           {jobs?.map((item) => {
-            return (
+            return item!==null && (
               <>
                 <div className={Styles.Jobs_firstbox}>
                   <div classname={Styles.Jobs_firstbox1}>
@@ -77,12 +94,12 @@ const Jobs = () => {
             <h3 className={Styles.Jobs_filterbox}>Filters</h3>
             <div className={Styles.Jobs_checkbox}>
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handleeng}/>
                 ⚒️ Engineering
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handledesign} />
                 🎨 Design
               </label>
               <br />
@@ -126,7 +143,7 @@ const Jobs = () => {
               </select>
               <div className={Styles.Jobs_checkbox}>
                 <label>
-                  <input className={Styles.Jobs_input} type="checkbox" onChange={()=>setRem(prev=>!prev)}/>
+                  <input className={Styles.Jobs_input} type="checkbox" onChange={handleremote}/>
                   🌎 Remote jobs only
                 </label>
                 <br />
