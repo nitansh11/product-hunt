@@ -25,7 +25,7 @@ const Navbar = () => {
     : {};
 
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
-  console.log("Navbar is logged in",isLoggedIn);
+  console.log("Navbar is logged in", isLoggedIn);
   let currentUser = useSelector((state) => state.authReducer.currentUser);
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -54,19 +54,21 @@ const Navbar = () => {
         </div>
         <ul>
           <li>
-            <Link to="/founder-club/benefits">Deals</Link>
+            <Link to="/ask">Ask</Link>
           </li>
+
           <li>
             <Link to="/jobs">Jobs</Link>
           </li>
           <li>
             <Link to="/discussions">Discussions</Link>
           </li>
-          <li>
-            <Link to="/ship">Ship</Link>
-          </li>
+
           <li>
             <Link to="/mentors">Mentors</Link>
+          </li>
+          <li>
+            <Link to="/founder-club/benefits">Deals</Link>
           </li>
           <i className="fas fa-ellipsis-h"></i>
         </ul>
