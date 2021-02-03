@@ -1,155 +1,32 @@
 import React from 'react'
-//import { DiscussionsRoutes } from './Routes/Routes'
+import Modal from 'react-modal'
 import styles from './discussions.module.css'
+import axios from "axios"
 
-let data =[
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"02",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/3168868/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"32",
-        title:"What are you doing to make your business survive or thrive during the pandemic?",
-        caption:"by Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"04",
-        title:"Audio-first community managers",
-        caption:"by Ankit Dhawan • 10 comments • 1d ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"06",
-        title:"Where do you find interesting live streaming to watch?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"02",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"12",
-        title:"Audio-first community managers",
-        caption:"by Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"23",
-        title:"What are you doing to make your business survive or thrive during the pandemic?",
-        caption:"by Ankit Dhawan • 10 comments • 1d ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"12",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"02",
-        title:"Where do you find interesting live streaming to watch?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/3168868/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"32",
-        title:"Audio-first community managers",
-        caption:"by Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"04",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Ankit Dhawan • 10 comments • 1d ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"06",
-        title:"What are you doing to make your business survive or thrive during the pandemic?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"02",
-        title:"Where do you find interesting live streaming to watch?",
-        caption:"by Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"12",
-        title:"Audio-first community managers",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"23",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Ankit Dhawan • 10 comments • 1d ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"12",
-        title:"Where do you find interesting live streaming to watch?",
-        caption:"bby Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"02",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/3168868/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"32",
-        title:"What are you doing to make your business survive or thrive during the pandemic?",
-        caption:"by Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"04",
-        title:"Audio-first community managers",
-        caption:"by Ankit Dhawan • 10 comments • 1d ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"06",
-        title:"Where do you find interesting live streaming to watch?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"02",
-        title:"Can you convince me that without Excel you won't have data?",
-        caption:"by Lior Barak • 0 comments • 13h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2239099/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"12",
-        title:"Audio-first community managers",
-        caption:"by Mayank Singh Chauhan • 0 comments • 24h ago"
-    },
-    {
-        img:"https://ph-avatars.imgix.net/2789663/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=20&h=20&fit=crop",
-        num:"23",
-        title:"What are you doing to make your business survive or thrive during the pandemic?",
-        caption:"by Ankit Dhawan • 10 comments • 1d ago"
-    }
-]
 
 const Discussions = () => {
+    const [modalOpen,setModalOpen] = React.useState(false)
+    const [popupData,setPopupData] = React.useState('')
+    const [list,setList] = React.useState([])
+    const [commentsData,setCommentsdata] = React.useState(false)
+
+    const handlePopup=(id)=>{
+        setModalOpen(true)
+        const temp = list.filter(item=>item.id===id)[0];
+        setPopupData(temp)  
+        setCommentsdata(true)
+    }
+
+    React.useEffect(()=>{
+        axios.get("https://janak-routing-project.herokuapp.com/discussions")
+        .then((res)=>{
+            setList(res.data)
+        })
+    },[])
+
     return (
         <div className={styles.discussionsBackground}>
             <div className={styles.discussionsPage}>
-                {/* <div>
-                    <DiscussionsRoutes/>
-                </div> */}
                 <div className={styles.discussionsPage_buttonsDIv}>
                     <div className={styles.discussionsPage_buttonsDIv_1}>
                         <button>POPULAR</button>
@@ -165,15 +42,33 @@ const Discussions = () => {
                 </div>
                 <div className={styles.discussionsParent}>
                     <div className={styles.discussionsList}>
-                        {data?.map((item)=>(
-                            <div className={styles.indivItem}>
-                                <img src={item.img} alt=""/>
+                        {list?.map((item)=>(
+                            <div className={styles.indivItem} key={item.id}>
+                                <img src={item.image} alt=""/>
                                 <div className={styles.itemNumber}>
-                                    <p className={styles.itemNum}>{item.num}</p>
+                                    <i className="fas fa-caret-up"></i>
+                                    <p className={styles.itemNum}>{item.upvotes}</p>
                                 </div>
-                                <div className={styles.itemTitle}>
+                                <div className={styles.itemTitle} onClick={()=>handlePopup(item.id)}>
                                     <h3>{item.title}</h3>
-                                    <h5>{item.caption}</h5>
+                                    <h5>by {item.author} - {item.comments.length} comments</h5>
+                                </div>
+                                <div>
+                                    <Modal isOpen={modalOpen}>
+                                        <p style={{color:"gray",fontWeight:"100"}}>Discussions - {popupData.title}</p>
+                                        <h1>{popupData.title}</h1>
+                                        <p>{popupData.body}</p>
+                                        <div>
+                                             <p>COMMENTS</p>
+                                            {commentsData && popupData.comments?.map((item)=>(
+                                                <div>
+                                                    <p>{item.author}</p>
+                                                    <p>{item.comment}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <button onClick={()=>setModalOpen(false)}>close</button>
+                                    </Modal>
                                 </div>
                             </div>
                         ))}
