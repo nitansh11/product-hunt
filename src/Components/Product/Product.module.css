@@ -1,20 +1,27 @@
 
+ 
+
+/* ------------------------------------------- MAIN -------------------------------------------------- */
 .Product__Parent{
     width: 100%;
     background-color: #F3F3F3; 
+    min-height: 100vh;
+    position: relative; 
+    scroll-behavior: smooth;
+}
+
+.Product__Parent *:not(i) { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .Product{
      width: 100%;
-     padding-top: 100px;
+     padding: 100px 0;
      margin: auto;
      display: flex;
      justify-content: space-between;
      max-width: 1100px;
-     /* background-color: #F3F3F3; */
 }
-
-/* ------------------------------------------- MAIN -------------------------------------------------- */
 
 .Product__main{
     width: 66%;
@@ -43,22 +50,16 @@
     font-weight: 600;
 }
 
-
-
-
 .Product__main__head b{
     font-weight: lighter;
     color: rgb(223, 217, 217);
 }
-
 
 .Product__main__content{
     background-color: white;
     border-radius: 5px;
     border: 1px solid #E8E8E8;
 }
-
-
 
 .ProductCard{
     display: flex;
@@ -67,18 +68,13 @@
     border-bottom: 1px solid #E8E8E8;
     padding: 17px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ProductCard:hover{
     background-color: rgb(248, 248, 248);
 }
-
-/* .Product:hover 
-.ProductCard__content h2 > span > i{
-    display: inline;
-
-} */
-
+ 
 .ProductCard__img{
     width: 11%;
     height: 80px;  
@@ -106,6 +102,11 @@
     display: none;
 }
 
+.ProductCard:hover
+.ProductCard__content h2 > span > i{
+  display: inline;
+}
+
 
 .ProductCard__content p{
     font-size : 13px;
@@ -128,10 +129,7 @@
     color: #6f6f6f;
 }
 
-
-.ProductCard__content__footer > div:nth-child(2) span:hover{
-    text-decoration: underline;
-  }
+ 
 
 .ProductCard__content__footer > div:nth-child(1){
     border: 1px solid rgb(179, 174, 174);
@@ -176,17 +174,43 @@
     border: 1px solid rgb(235, 116, 5);
 }
 
+.Product__main__content__more{
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.Product__main__content__more i {
+  padding: 5px;
+  font-size: 11px;
+  color: #CCC8C7;
+}
+
+.Product__main__content__more button{
+  background-color: white;
+  border: none;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  outline: none;
+}
+ 
+.Product__main__content__more:hover
+ button{
+  text-decoration: underline;
+}
+
+
+
 /* ------------------------------------------- SIDECARD -------------------------------------------------- */
 
 .Product__side{
-    width: 32%;
+    width: 31%;
     display: flex;
     flex-direction: column;
     align-items: center;
- 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
- 
 
 .Product__side__awards{
     width: 100%;
@@ -198,22 +222,31 @@
   
 }
 
+.Product__side__highlight{
+  margin-bottom: 30px;
+ 
+}
+
+.Product__side__highlight__cards{
+  padding: 13px;
+  background-color: white;
+  border-radius: 5px;
+}
+
 .Product__side__highlight h2{
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-
-
 .SideCard{
     display: flex;
     align-items: top;
     justify-content: space-evenly;
     border-bottom: 1px solid #E8E8E8;
-    padding: 17px;
     cursor: pointer;
-    background-color: white;
+    padding: 13px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -231,20 +264,181 @@
 
 .SideCard__content{
     width: 75%;    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+ 
 
 .SideCard__content h2{
     font-size : 16px;
     line-height: 24px;
     font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
 
 .SideCard__content p{
     font-size : 13px;
     line-height: 20px;
     font-weight: 400;
     color: #6f6f6f;
+    margin-top: -5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
  
+.SideCard__content__follow i {
+  color: #6f6f6f;
+  font-size: 9px;
+}
+
+.SideCard__content__follow span{
+  font-size: 11px;
+  color: #6f6f6f;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.SideCard__content__follow span:hover{
+  color: rgb(218, 104, 12);
+}
+
+.SideCard__content__follow{
+  display: flex;
+  align-items: center;
+}
+
+.SideCard__content__follow > div{
+  margin-right: 5px;
+}
+
+.Product__side__highlight__button{
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px; 
+}
+ 
+.Product__side__highlight__button button{
+  outline: none;
+  width: 85%;
+  margin: 20px auto;
+  padding: 8px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid rgb(224, 219, 219);
+  color:#cc4d29;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  transition: 0.2s all ease-in;
+}
+
+.Product__side__highlight__button button:hover{
+  border: 1px solid #cc4d29;
+}
+
+.Product__side__highlight div:nth-child(2) > div:nth-last-child(1){
+  border: none;
+}
+
+
+/* ------------------------------------------- FOOTER -------------------------------------------------- */
+
+.FooterMini ul{
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid rgb(224, 219, 219);
+  align-items: center;
+}
+
+.FooterMini li{
+  font-size: 11px;
+  line-height: 20px;
+  font-weight: 400;
+  margin-right: 12px;
+  list-style-type: none;
+  color:#6f6f6f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+ 
+
+.FooterMini p {
+  font-size: 11px;
+  color:#6f6f6f;
+  margin-top: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Product__scroll{
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  font-size: 40px;
+  color:#dad3d3;
+  z-index: 1000;
+  cursor: pointer;
+  transition: 1s all ease-in;
+}
+
+ 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .Product__main{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .Product__side{
+    display: none;
+  }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .Product__main{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .Product__side{
+    display: none;
+  }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .Product__main{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .Product__side{
+    display: none;
+  }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .Product__main{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .Product__side{
+    display: none;
+  }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) { 
+  .Product__main{
+    width: 66%;
+  }
+  .Product__side{
+    display: inline;
+  }
+}
  
 
