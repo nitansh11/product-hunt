@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getjobs,getremote } from "../../Redux/jobs/action";
+import { getjobs,getremote,geteng, getdesign } from "../../Redux/jobs/action";
 const Jobs = () => {
   const { jobs } = useSelector((state) => state.jobsreducer, shallowEqual);
   const isLoading = useSelector((state) => state.jobsreducer);
@@ -20,18 +20,19 @@ const Jobs = () => {
 const handleremote=()=>{
     setRem(prev=>!prev)
      
-     dispatch(getremote({rem,eng,design}))
+     dispatch(getremote({rem}))
 }
-console.log(rem,eng,design)
+
 const handleeng = ()=>{
-    // setEng(prev=>!prev)
-    //  dispatch(getremote({rem,eng,design}))
+    setEng(prev=>!prev)
+     dispatch(geteng({eng}))
 }
 
 const handledesign = ()=>{
-    // setDesign(prev=>!prev)
-    //  dispatch(getremote({rem,eng,design}))
+    setDesign(prev=>!prev)
+     dispatch(getdesign({design}))
 }
+console.log(rem,eng,design)
   console.log(jobs);
   return (
     <>
@@ -143,7 +144,7 @@ const handledesign = ()=>{
               </select>
               <div className={Styles.Jobs_checkbox}>
                 <label>
-                  <input className={Styles.Jobs_input} type="checkbox" onChange={handleremote}/>
+                  <input className={Styles.Jobs_input} type="checkbox"  onChange={handleremote}/>
                   🌎 Remote jobs only
                 </label>
                 <br />

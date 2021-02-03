@@ -5,7 +5,13 @@ import {
     GET_JOBS_SUCCESS,
     REMOTE_FAILURE,
     REMOTE_SUCCESS,
-    REMOTE_REQUEST
+    REMOTE_REQUEST,
+    ENG_FAILURE,
+    ENG_SUCCESS,
+    ENG_REQUEST,
+    DESIGN_REQUEST,
+    DESIGN_SUCCESS,
+    DESIGN_FAILURE
   } from "./actionTypes";
   const initState = {
     jobs: [],
@@ -50,6 +56,50 @@ import {
         };
       }
       case REMOTE_FAILURE: {
+        return {
+          ...state,
+          isError: true,
+          isLoading: false
+        };
+      
+      }
+      case ENG_REQUEST: {
+        return {
+          ...state,
+          isLoading: true,
+          isError: false
+        };
+      }
+      case ENG_SUCCESS: {
+        return {
+          ...state,
+          jobs: payload,
+          isLoading: false
+        };
+      }
+      case ENG_FAILURE: {
+        return {
+          ...state,
+          isError: true,
+          isLoading: false
+        };
+      
+      }
+      case DESIGN_REQUEST: {
+        return {
+          ...state,
+          isLoading: true,
+          isError: false
+        };
+      }
+      case DESIGN_SUCCESS: {
+        return {
+          ...state,
+          jobs: payload,
+          isLoading: false
+        };
+      }
+      case DESIGN_FAILURE: {
         return {
           ...state,
           isError: true,
