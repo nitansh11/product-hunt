@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Product.module.css'
 import { useSelector , useDispatch } from 'react-redux'
-import { getProducts } from '../../Redux/products/actions'
+import { getProducts, modalToggle } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
  
@@ -55,6 +55,7 @@ function Product() {
     const showMoreHandler = () => {
         setShowMore(!showMore)
     }
+    
  
     
 
@@ -71,7 +72,7 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                     {!showMore? productData?.filter((item,index) => index < 5)
+                     {!showMore? productData?.filter((_,index) => index < 10)
                      .map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      )) :  productData?.map( item => (
@@ -90,7 +91,7 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                    {!showMore? productData?.filter((item,index) => index < 5)
+                    {!showMore? productData?.filter((_,index) => index < 10)
                      .map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      )) :  productData?.map( item => (
@@ -109,7 +110,7 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                    {!showMore? productData?.filter((item,index) => index < 5)
+                    {!showMore? productData?.filter((item,index) => index < 10)
                      .map( item => (
                           <ProductCard key={item.id} {...item}></ProductCard>
                      )) :  productData?.map( item => (

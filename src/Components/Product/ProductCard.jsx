@@ -1,15 +1,21 @@
 import React from 'react'
 import styles from './Product.module.css'
-
+import { useHistory } from 'react-router-dom'
 
 function ProductCard(props) {
-    const { logo ,name ,category , upvotes , comments, image ,tagline } = props
+    const history = useHistory()
+
+    const modalToggleHandler = (id) =>{
+        history.push(`/product/${id}`)
+    }
+
+    const { logo ,name ,category , upvotes , comments, tagline , id  } = props
     return (
-        <div className={styles.ProductCard}>
+        <div  className={styles.ProductCard}>
             <div className={styles.ProductCard__img}>
                 <img src={logo} alt="product-img"></img>
             </div>
-            <div className={styles.ProductCard__content}>
+            <div onClick={()=>modalToggleHandler(id)} className={styles.ProductCard__content}>
                 <h2>{name} <span><i className="fas fa-directions"></i></span></h2>
                 <p>{tagline}</p>
                 <div className={styles.ProductCard__content__footer}>
