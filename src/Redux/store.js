@@ -3,7 +3,15 @@ import thunk from "redux-thunk";
 import { productsReducer } from './products/productsReducer'
 import {jobsreducer} from "./jobs/reducer"
 import { authReducer } from "./auth/authReducer";
-const rootReducer = combineReducers({ productsReducer,  authReducer,jobsreducer });
+import { operationsReducer } from './operations/operationsReducer'
+
+
+const rootReducer = combineReducers({ 
+                  productsReducer, 
+                  authReducer,
+                  jobsreducer ,
+                  operationsReducer 
+                });
 
 let composeEnhancers = compose;
 

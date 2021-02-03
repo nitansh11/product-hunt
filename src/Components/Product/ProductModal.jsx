@@ -1,25 +1,28 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { getProducts, getSoloProduct } from '../../Redux/products/actions'
+import {  getRelatedProducts, getSoloProduct } from '../../Redux/products/actions'
 import styles from './ProductModal.module.css'
 import { useDispatch , useSelector } from 'react-redux'
 import SideCard from './SideCard'
+import { FacebookShareButton , TwitterShareButton } from 'react-share'
 
 
 function ProductModal() {
     let { id } = useParams()
     const dispatch = useDispatch()
     const soloData = useSelector(state => state.productsReducer.soloData)
-    const productData = useSelector ( state => state.productsReducer.productData)
+    const relatedProductData = useSelector(state => state.productsReducer.relatedProductsData)
     const history = useHistory()
     const [ showNav , setShowNav ] = React.useState(false)
 
+    
 
     const handleShowNav = () => {
         if (window.pageYOffset >= 350){
-        setShowNav(true)
-        } else{
-        setShowNav(false)
+            setShowNav(true)
+        } 
+        else{
+            setShowNav(false)
         }
     };
     
@@ -32,22 +35,28 @@ function ProductModal() {
 
     React.useEffect(()=>{
         getSoloDataHandler()
-        getAllProducts()
-    },[])
+    },[id])
 
     const getSoloDataHandler = () => {
         const action = getSoloProduct(id)
         dispatch(action)
+        .then(res =>  getRelatedProductsHandler(res.categories))
     }
 
-    const getAllProducts = () => {
-        const action = getProducts()
-        dispatch(action)   
+
+
+    const getRelatedProductsHandler = (categories) => {
+        const action = getRelatedProducts(categories)
+        dispatch(action)
     }
 
-    
+    const productUpvoteHandler = () =>{
+        console.log(id , "upvoted Product")
+    }
+
 
     const { logo , name , tagline , categories , upvotes , comments , description , developer , video   } = soloData
+        
     return (
         <div className={styles.ProductModal}>
             <div className={styles.ProductModal__main}>
@@ -60,9 +69,7 @@ function ProductModal() {
                         <h2>{name}</h2>
                         <p>{tagline}</p>
                         <div className={styles.ProductModal__main__head__info__categories}>
-                            {categories?.split(" ").map(item => (
-                                <div><button>{item}</button></div>
-                            ))}
+                                <div><button>{categories}</button></div>
                         </div>
                     </div>
                 </div>
@@ -74,7 +81,7 @@ function ProductModal() {
                 <div className={styles.ProductModal__main__content__demo}>
                     <div className={styles.ProductModal__main__content__demo__video}>
                         <div>
-                            <iframe type="text/html" title = {id} width="673" height="380" src={video} allowFullScreen></iframe>
+                            <iframe type="text/html" title = {id} width="673" height="380" src={video} alt="404 Not Found" allowFullScreen></iframe>
                         </div>
                         <div className={styles.ProductModal__main__content__demo__video__description} >
                             <p>{description}</p>
@@ -82,10 +89,14 @@ function ProductModal() {
                         <div className={styles.ProductModal__main__content__demo__video__footer}>
                             <div>
                                 <div className={styles.Twitter}>
-                                    <button > <i className="fab fa-twitter"></i> Tweet</button>
+                                    <TwitterShareButton url={window.location.href}>
+                                     <button > <i className="fab fa-twitter"></i> Tweet</button>
+                                    </TwitterShareButton>
                                 </div>
                                 <div className={styles.Facebook}>
-                                    <button> <i className="fab fa-facebook-f"></i> Share</button>
+                                    <FacebookShareButton url={window.location.href}>
+                                        <button> <i className="fab fa-facebook-f"></i> Share</button>
+                                    </FacebookShareButton>
                                 </div>
                                 <div>
                                     <button> <i className="fas fa-code"></i> Embed</button>
@@ -109,7 +120,7 @@ function ProductModal() {
                             <button className={styles.button__light}>
                                 GET IT
                             </button>
-                            <button className={styles.button__dark}>
+                            <button onClick={()=>productUpvoteHandler()} className={styles.button__dark}>
                                 <i className="fas fa-caret-up"></i> UPVOTE {upvotes}
                             </button>
                         </div>
@@ -142,7 +153,7 @@ function ProductModal() {
                             <b>Related Products</b>
                         </div>
                         <div className={styles.Product__sideModal__main__content__side__cards}>
-                            {productData?.filter((_,index) => index < 4).map( item => (
+                            {relatedProductData?.filter((_,index) => index < 6 ).map( item => (
                                 <SideCard key={item.id} {...item}></SideCard>
                             ))}
                          </div> 
@@ -172,7 +183,7 @@ function ProductModal() {
                                 </button>
                             </div>
                             <div>
-                                <button className={styles.button__dark}>
+                                <button onClick={()=>productUpvoteHandler()}  className={styles.button__dark}>
                                     <i className="fas fa-caret-up"></i> UPVOTE {upvotes}
                                 </button>
                             </div>

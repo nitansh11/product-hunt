@@ -9,6 +9,12 @@ function ProductCard(props) {
         history.push(`/product/${id}`)
     }
 
+    const productUpvoteHandler = () =>{
+        
+        console.log(id , "upvoted Product")
+
+    }
+
     const { logo ,name ,category , upvotes , comments, tagline , id  } = props
     return (
         <div  className={styles.ProductCard}>
@@ -28,7 +34,7 @@ function ProductCard(props) {
                     </div>
                 </div>
             </div>
-            <div className={styles.ProductCard__upvote}>
+            <div onClick={()=>productUpvoteHandler(id)} className={styles.ProductCard__upvote}>
                 <div>
                     <i className="fas fa-caret-up"></i>
                 </div>
