@@ -1,10 +1,19 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
-
+import AuthModal from "../Auth/AuthModal";
+import Modal from "react-modal";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { logout } from "../../Redux/auth/actions";
+
+import { useHistory } from "react-router-dom";
+
+Modal.setAppElement("#root");
 const Navbar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const location = useLocation().pathname;
+  const history = useHistory();
   const style = location.includes("founder-club/benefits")
     ? {
         backgroundColor: "#16161D",
@@ -14,6 +23,16 @@ const Navbar = () => {
   const inputStyle = location.includes("founder-club/benefits")
     ? { backgroundColor: "black", color: "white", border: "none" }
     : {};
+
+  let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
+  console.log("Navbar is logged in",isLoggedIn);
+  let currentUser = useSelector((state) => state.authReducer.currentUser);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push("/");
+  };
+
   return (
     <div className={styles.Navbar} style={style}>
       <div>
@@ -51,11 +70,20 @@ const Navbar = () => {
           </li>
           <i className="fas fa-ellipsis-h"></i>
         </ul>
-        <div className={styles.Navbar__buttons}>
-          <button>LOG IN</button>
-          <button>SIGN UP</button>
-        </div>
+        {!isLoggedIn ? (
+          <div className={styles.Navbar__buttons}>
+            <button onClick={() => setIsOpen(true)}>LOG IN</button>
+            <button>SIGN UP</button>
+          </div>
+        ) : (
+          <div className={styles.Navbar__buttons}>
+            <button className={styles.Navbar__logoutbtn} onClick={handleLogout}>
+              LOG OUT
+            </button>
+          </div>
+        )}
       </div>
+      <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };
