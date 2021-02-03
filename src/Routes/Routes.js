@@ -3,7 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import Deals from "../Components/Deals/Deals";
 import Product from "../Components/Product/Product";
 import Mentors from "../Components/Mentors/Mentors";
-import {Discussions} from '../Components/Discussions/Discussions';
+import {Discussions} from '../Components/Discussions/Discussions'
+import ProductModal from "../Components/Product/ProductModal";
+
 import {Jobs} from "../Components/Jobs/Jobs"
 const Routes = () => {
   return (
@@ -11,6 +13,9 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact>
          <Product></Product>
+        </Route>
+        <Route path="/product/:id">
+         <ProductModal></ProductModal>
         </Route>
         <Route path="/founder-club/benefits">
           <Deals />
