@@ -10,7 +10,11 @@ return(
             <h1>JOBS</h1>
         </div>
         <div className={Styles.Jobs_secondbox} id={Styles.Jobs_secondbox}>
-            <h1>FILTERS</h1>
+          <div className={Styles}>
+              <div></div>
+              <div>Filters</div>
+              <div></div>
+          </div>
         </div>
     </div>
     </>
