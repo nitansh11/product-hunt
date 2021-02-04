@@ -3,11 +3,14 @@
   border-bottom: 1px solid rgba(165, 161, 161, 0.4);
   padding: 20px;
   padding-bottom: 0px;
+  
 }
 
 .QuestionCard__header {
   display: flex;
   align-items: center;
+  align-content: center;
+
 }
 .QuestionCard__header img {
   border-radius: 50%;
@@ -23,6 +26,8 @@
 .QuestionCard__header p {
   font-size: 12px;
   color: gray;
+  margin-top: 8px;
+  
 }
 
 .QuestionCard h3 {
