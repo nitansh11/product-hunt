@@ -1,0 +1,33 @@
+.Recommendation {
+  border: 1px solid rgba(192, 191, 191, 0.5);
+  margin-bottom: 20px;
+}
+.Recommendation__product {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 10px;
+}
+.Recommendation__product div{
+
+}
+.Recommendation__product div > div{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.Recommendation__product div  h2{
+    margin-bottom: 10px;
+}
+.Recommendation__product div  p{
+    color: gray;
+}
+.Recommendation__product div img{ 
+    border-radius: 50%;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+}

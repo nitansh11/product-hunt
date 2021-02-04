@@ -1,0 +1,63 @@
+.RightSidebar > div {
+  background-color: white;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.RightSidebar__activityList {
+  padding: 20px;
+}
+.RightSidebar__activityList > p {
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(168, 163, 163, 0.319);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.RightSidebar__activityList ul {
+  list-style: none;
+}
+.RightSidebar__activityList ul li {
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.RightSidebar__activityList ul li span {
+  margin-right: 15px;
+}
+
+/***/
+.RightSidebar__helpfulList {
+  padding: 20px;
+}
+
+.RightSidebar__helpfulList > p {
+  font-size: 12px;
+  border-bottom: 1px solid rgba(168, 163, 163, 0.319);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.RightSidebar__helpfulList ul {
+  list-style: none;
+}
+
+.RightSidebar__helpfulList ul li {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+}
+.RightSidebar__helpfulList ul li img {
+  border-radius: 50%;
+}
+
+.RightSidebar__helpfulList ul li h4 {
+  font-size: 13px;
+}
+.RightSidebar__helpfulList ul li p {
+  font-size: 13px;
+  color: gray;
+  margin-top: 5px;
+  line-height: 20px;
+}

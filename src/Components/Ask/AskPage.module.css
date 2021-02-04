@@ -1,0 +1,91 @@
+.AskPage__parent {
+  background-color: #f3f3f3;
+  height: 2000px;
+  padding-top: 50px;
+}
+.AskPage {
+  width: 80%;
+
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.AskPage > div {
+  
+}
+
+.AskPage__contentHeader {
+  background-color: white;
+  border-bottom: 1px solid rgba(165, 161, 161, 0.4);
+  padding: 20px;
+  padding-bottom: 0px;
+  border-radius: 5px;
+}
+
+.AskPage__contentHeader__userheader {
+  display: flex;
+  align-items: center;
+}
+
+.AskPage__contentHeader__userheader h4 {
+  margin: 0 10px;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.AskPage__contentHeader__userheader p {
+  font-size: 12px;
+  color: gray;
+}
+
+.AskPage__contentHeader h3 {
+  margin: 20px 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.AskPage__contentHeader > p {
+  font-size: 14px;
+
+  line-height: 25px;
+}
+
+.AskPage__contentHeader__userheader img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.AskPage__contentHeader__footer {
+  display: flex;
+  margin: 20px 0;
+  font-size: 14px;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.AskPage__contentHeader__footer p {
+  color: #d36242;
+  font-size: 12px;
+  font-weight: bold;
+}
+.AskPage__contentHeader__footer button {
+  background-color: white;
+  padding: 5px;
+  border: 1px solid rgba(201, 196, 196, 0.5);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* recommendations list */
+.AskPage__contentRecommendations {
+  height: 2000px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: white;
+  padding: 30px;
+}
+.AskPage__contentRecommendations h4{
+  text-align: center;
+}

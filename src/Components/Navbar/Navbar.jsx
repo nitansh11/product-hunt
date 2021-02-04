@@ -25,13 +25,15 @@ const Navbar = () => {
     : {};
 
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
-  console.log("Navbar is logged in", isLoggedIn);
+
   let currentUser = useSelector((state) => state.authReducer.currentUser);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
     history.push("/");
   };
+
+  
 
   return (
     <div className={styles.Navbar} style={style}>
