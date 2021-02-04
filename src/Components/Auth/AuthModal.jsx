@@ -6,9 +6,11 @@ import { loginSuccess, loginFailure } from "../../Redux/auth/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addUser } from "../../Redux/auth/actions";
-const AuthModal = ({ isOpen, setIsOpen }) => {
+import { AuthContext } from "../../AuthContextProvider";
+const AuthModal = () => {
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   let currentUser = useSelector((state) => state.authReducer.currentUser);
+   const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const history = useHistory();
   const dispatch = useDispatch();
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ProductSidebar.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { updateRecommendation } from "../../Redux/ask/actions";
+import { AuthContext } from "../../AuthContextProvider";
 import { v4 as uuid } from "uuid";
 const ProductSidebar = ({ currentQuestion }) => {
   const [query, setQuery] = React.useState("");
@@ -18,7 +19,7 @@ const ProductSidebar = ({ currentQuestion }) => {
   const handleQueryChange = (e) => {
     let myQuery = e.target.value;
     setQuery(myQuery);
-    if (myQuery === "") {
+    if (myQuery === '') {
       let newFilteredProducts = allProducts;
       setFilteredProducts(allProducts);
     } else {
@@ -28,11 +29,11 @@ const ProductSidebar = ({ currentQuestion }) => {
       setFilteredProducts(newFilteredProducts);
     }
   };
-
+  const { isOpen, setIsOpen } = React.useContext(AuthContext);
   // dispatch an action to change the recommendation array of a particular askedQuestion
   const handleRecommendClick = (product) => {
     if (!isLoggedIn) {
-      alert("Please Log In !");
+      setIsOpen(true);
       return;
     }
     const updatedRecommendations = [
