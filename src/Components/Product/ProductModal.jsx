@@ -223,10 +223,16 @@ function ProductModal() {
                                     <CommentsSection {...item} />
                                 ))}
                            </div>
-                           <div style={{display:"flex"}}>        
-                                <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
-                                <Button onClick={newCommentHandler}>Comment</Button>
-                           </div>
+                           {isLoggedIn ? 
+                            <div style={{display:"flex"}}>   
+                              <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
+                              <Button onClick={newCommentHandler}>Comment</Button>
+                            </div>
+                           :  
+                           <div style={{display:"flex"}}>   
+                                <Input disabled value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
+                                <Button disabled onClick={newCommentHandler}>Comment</Button>
+                           </div>}
                         </div>
                     </div>
                 </div>

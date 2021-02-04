@@ -322,6 +322,7 @@
     box-shadow: 2px 2px 5px rgb(133, 130, 130);
     transition: 1s all ease-in;
     padding: 2px;
+    max-height: 8vh;
 }
 .ScrollNav{
     display: flex;
@@ -330,6 +331,7 @@
     max-width: 1100px;
     justify-content: space-between;
     align-items: center;
+   
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -346,11 +348,13 @@
 
 .ScrollNav__right h2{
     font-size: 18px;
+    
 }
 .ScrollNav__right p{
     font-size: 14px;
     color: rgb(78, 69, 69);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 
 .ScrollNav__right > div img{
