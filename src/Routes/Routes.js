@@ -5,10 +5,10 @@ import Product from "../Components/Product/Product";
 import Mentors from "../Components/Mentors/Mentors";
 import Ask from "../Components/Ask/Ask";
 import { Discussions } from "../Components/Discussions/Discussions";
-import AskPage from '../Components/Ask/AskPage'
+import AskPage from "../Components/Ask/AskPage";
 import ProductModal from "../Components/Product/ProductModal";
 import {Jobs} from "../Components/Jobs/Jobs"
-
+// import MyJobs from "../Components/MyJobs/MyJobs";
 
 const Routes = () => {
   return (
@@ -18,13 +18,14 @@ const Routes = () => {
           <Product></Product>
         </Route>
         <Route path="/product/:id">
-         <ProductModal></ProductModal>
+          <ProductModal></ProductModal>
         </Route>
         <Route path="/founder-club/benefits">
           <Deals />
         </Route>
         <Route path="/jobs" exact>
-         <Jobs/>
+          <Jobs/>
+          {/* <MyJobs /> */}
         </Route>
         <Route path="/discussions" exact>
           <Discussions />

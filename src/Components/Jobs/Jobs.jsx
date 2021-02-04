@@ -3,7 +3,7 @@ import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getjobs,getremote,geteng, getdesign,getcustomer,getproduct,getsales,getmarketing } from "../../Redux/jobs/action";
 const Jobs = () => {
-  const { jobs } = useSelector((state) => state.jobsreducer, shallowEqual);
+  const { jobs } = useSelector((state) => state.jobsreducer);
   const isLoading = useSelector((state) => state.jobsreducer);
   const isError = useSelector((state) => state.jobsreducer);
   const [rem,setRem]=React.useState(false)
@@ -15,10 +15,9 @@ const Jobs = () => {
   const [product,setProduct]=React.useState(false)
   const dispatch = useDispatch();
   
- 
   React.useEffect(() => {
     dispatch(getjobs());
-   
+    
   }, [dispatch]);
 
 const handleremote=()=>{
@@ -34,7 +33,7 @@ const handleeng = ()=>{
 }
 
 const handledesign = ()=>{
-    setDesign(prev=>!prev)
+     setDesign(prev=>!prev)
      dispatch(getdesign({design,rem}))
 }
 
@@ -42,6 +41,7 @@ const handlemarketing=()=>{
   setMarketing(prev=>!prev)
   dispatch(getmarketing({marketing,rem}))
 }
+
 const handlesales=()=>{
   setSales(prev=>!prev)
   dispatch(getsales({sales,rem}))
@@ -54,6 +54,7 @@ const handleproduct=()=>{
   setProduct(prev=>!prev)
   dispatch(getproduct({product,rem}))
 }
+console.log(jobs);
 console.log(rem,eng,design,marketing,sales,customer,product)
   console.log(jobs);
   return (
