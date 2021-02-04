@@ -15,6 +15,7 @@ function Product() {
    const [ showMore , setShowMore ] = React.useState(false)
    const [ showScroll, setShowScroll ] = React.useState(false)
 
+   
    const dispatch = useDispatch()  
    
    //scroll to top
@@ -88,6 +89,7 @@ function Product() {
         getUpcomingProductsHandler()
     },[])
 
+    const dataHandlers =  { getTodayProducts , getBestDealsHandler , getOlderProductsHandler , getUpcomingProductsHandler }
 
     // show more products pagination toggle
     const showMoreHandler = () => {
@@ -113,9 +115,9 @@ function Product() {
                  <div className={styles.Product__main__content}>
                      {!showMore? productData?.filter((_,index) => index < 10)
                      .map( item => (
-                          <ProductCard key={item.id} {...item}></ProductCard>
+                          <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      )) :  productData?.map( item => (
-                          <ProductCard key={item.id} {...item}></ProductCard>
+                          <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      ))}
                     <div  onClick={showMoreHandler} className={styles.Product__main__content__more}>
                          <i className="fas fa-chevron-down"></i> 
@@ -131,9 +133,9 @@ function Product() {
                  </div>
                  <div className={styles.Product__main__content}>
                     {!showMore? bestDealsData.map( item => (
-                          <ProductCard key={item.id} {...item}></ProductCard>
+                          <ProductCard key={item.id}  dataHandlers = {dataHandlers} {...item}></ProductCard>
                      )) :  productData?.map( item => (
-                          <ProductCard key={item.id} {...item}></ProductCard>
+                          <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      ))}
                  </div>
                  <br></br>
@@ -146,9 +148,9 @@ function Product() {
                  <div className={styles.Product__main__content}>
                     {!showMore? olderProductsData?.filter((_,index) => index < 10)
                      .map( item => (
-                          <ProductCard key={item.id} {...item}></ProductCard>
+                          <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      )) :  productData?.map( item => (
-                          <ProductCard key={item.id} {...item}></ProductCard>
+                          <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      ))}
                     <div  onClick={showMoreHandler} className={styles.Product__main__content__more}>
                         <i className="fas fa-chevron-down"></i> 

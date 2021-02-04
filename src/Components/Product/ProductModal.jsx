@@ -5,6 +5,7 @@ import styles from './ProductModal.module.css'
 import { useDispatch , useSelector } from 'react-redux'
 import SideCard from './SideCard'
 import { FacebookShareButton , TwitterShareButton } from 'react-share'
+import { findCurrentUserUpvotes, getAllUsersAuthData, updateUpvotes, upVoteCounter } from '../../Redux/operations/actions'
 
 
 function ProductModal() {
@@ -12,10 +13,14 @@ function ProductModal() {
     const dispatch = useDispatch()
     const soloData = useSelector(state => state.productsReducer.soloData)
     const relatedProductData = useSelector(state => state.productsReducer.relatedProductsData)
+    const upvoted = useSelector(state => state.operationsReducer.upvotes)
+    const isLoggedIn = useSelector(state => state.authReducer.isLoggedIn)
     const history = useHistory()
     const [ showNav , setShowNav ] = React.useState(false)
-
+    const currentUser = useSelector(state => state.authReducer.currentUser)
     
+    
+
 
     const handleShowNav = () => {
         if (window.pageYOffset >= 350){
@@ -50,12 +55,50 @@ function ProductModal() {
         dispatch(action)
     }
 
+  
+    React.useEffect(()=>{
+        if(isLoggedIn){
+            dispatch(findCurrentUserUpvotes(currentUser.email))
+        }
+    },[currentUser])
+
+    const { logo , name , tagline , categories , upvotes , description , developer , video } = soloData
+
+    
     const productUpvoteHandler = () =>{
-        console.log(id , "upvoted Product")
+        if(!isLoggedIn){
+            alert("You need to login")
+            return
+        }
+        dispatch(getAllUsersAuthData({
+            email : currentUser.email
+        }))
+        .then((res) => {
+            if(res.data === undefined){
+                const upvoted = []
+                upvoted.push(Number(id))
+                dispatch(updateUpvotes(upvoted , res.id , currentUser.email))
+                 .then(res => dispatch(findCurrentUserUpvotes(currentUser.email)))
+                 .then(dispatch(upVoteCounter({upvotes : upvotes + 1} , id)))      
+            }
+            else{
+                const findExistence = res.data.find(item => item === Number(id))
+                if(findExistence === undefined){
+                    const updatedUpVotes = [...res.data , Number(id) ]
+                    dispatch(updateUpvotes(updatedUpVotes , res.id , currentUser.email)) 
+                     .then(res => dispatch(findCurrentUserUpvotes(currentUser.email)))    
+                     .then(dispatch(upVoteCounter({upvotes : upvotes + 1} , id)))                     
+                }
+                else{
+                    const updatedUpVotes = res.data.filter(item => item !== Number(id))
+                    dispatch(updateUpvotes(updatedUpVotes , res.id , currentUser.email)) 
+                     .then(res => dispatch(findCurrentUserUpvotes(currentUser.email)))  
+                     .then(dispatch(upVoteCounter({upvotes : upvotes - 1} , id)))    
+                }
+            }
+        })
     }
-
-
-    const { logo , name , tagline , categories , upvotes , comments , description , developer , video   } = soloData
+    
         
     return (
         <div className={styles.ProductModal}>
@@ -120,7 +163,8 @@ function ProductModal() {
                             <button className={styles.button__light}>
                                 GET IT
                             </button>
-                            <button onClick={()=>productUpvoteHandler()} className={styles.button__dark}>
+                            <button onClick={()=>productUpvoteHandler()} 
+                                style={upvoted?.find(item => item === Number(id)) !== undefined && isLoggedIn ? {border:"1px solid rgb(173, 84, 0)" , backgroundColor:"white", color:"rgb(173, 84, 0)"} : {}} className={styles.button__dark}>
                                 <i className="fas fa-caret-up"></i> UPVOTE {upvotes}
                             </button>
                         </div>
@@ -183,9 +227,10 @@ function ProductModal() {
                                 </button>
                             </div>
                             <div>
-                                <button onClick={()=>productUpvoteHandler()}  className={styles.button__dark}>
-                                    <i className="fas fa-caret-up"></i> UPVOTE {upvotes}
-                                </button>
+                                <button onClick={()=>productUpvoteHandler()} 
+                                style={upvoted?.find(item => item === Number(id)) !== undefined && isLoggedIn ? {border:"1px solid rgb(173, 84, 0)" , backgroundColor:"white", color:"rgb(173, 84, 0)"} : {}} className={styles.button__dark}>
+                                <i className="fas fa-caret-up"></i> UPVOTE {upvotes}
+                            </button>
                             </div>
                         </div>
                     </div>
