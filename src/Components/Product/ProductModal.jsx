@@ -18,7 +18,7 @@ function ProductModal() {
     const history = useHistory()
     const [ showNav , setShowNav ] = React.useState(false)
     const currentUser = useSelector(state => state.authReducer.currentUser)
-    
+    const [ trigger , setTrigger ] = React.useState(false)
     
 
 
@@ -40,7 +40,7 @@ function ProductModal() {
 
     React.useEffect(()=>{
         getSoloDataHandler()
-    },[id])
+    },[id,trigger])
 
     const getSoloDataHandler = () => {
         const action = getSoloProduct(id)
@@ -62,8 +62,13 @@ function ProductModal() {
         }
     },[currentUser])
 
+
     const { logo , name , tagline , categories , upvotes , description , developer , video } = soloData
 
+
+    // React.useEffect(()=>{   
+    //     getSoloDataHandler()
+    // },[trigger])
     
     const productUpvoteHandler = () =>{
         if(!isLoggedIn){
@@ -79,7 +84,9 @@ function ProductModal() {
                 upvoted.push(Number(id))
                 dispatch(updateUpvotes(upvoted , res.id , currentUser.email))
                  .then(res => dispatch(findCurrentUserUpvotes(currentUser.email)))
-                 .then(dispatch(upVoteCounter({upvotes : upvotes + 1} , id)))      
+                 .then(res => dispatch(upVoteCounter({upvotes : upvotes + 1} , id))
+                               .then(res=> setTrigger(!trigger))  
+                 )     
             }
             else{
                 const findExistence = res.data.find(item => item === Number(id))
@@ -87,13 +94,17 @@ function ProductModal() {
                     const updatedUpVotes = [...res.data , Number(id) ]
                     dispatch(updateUpvotes(updatedUpVotes , res.id , currentUser.email)) 
                      .then(res => dispatch(findCurrentUserUpvotes(currentUser.email)))    
-                     .then(dispatch(upVoteCounter({upvotes : upvotes + 1} , id)))                     
+                     .then(res => dispatch(upVoteCounter({upvotes : upvotes + 1} , id))
+                     .then(res=> setTrigger(!trigger))  
+                    )                    
                 }
                 else{
                     const updatedUpVotes = res.data.filter(item => item !== Number(id))
                     dispatch(updateUpvotes(updatedUpVotes , res.id , currentUser.email)) 
                      .then(res => dispatch(findCurrentUserUpvotes(currentUser.email)))  
-                     .then(dispatch(upVoteCounter({upvotes : upvotes - 1} , id)))    
+                     .then(res => dispatch(upVoteCounter({upvotes : upvotes - 1} , id))
+                     .then(res=> setTrigger(!trigger))  
+                    )   
                 }
             }
         })
