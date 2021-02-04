@@ -180,7 +180,7 @@ function Product() {
              </div>
         </div>
         <div className={styles.Product__scroll}>
-            <i style={{height: 40, display: showScroll ? 'inline' : 'none'}} onClick={scrollTop} class="fas fa-chevron-circle-up"></i>
+            <i style={{height: 40, display: showScroll ? 'inline' : 'none'}} onClick={scrollTop} className="fas fa-chevron-circle-up"></i>
         </div>
     </div>
     )

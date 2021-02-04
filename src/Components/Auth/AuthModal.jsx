@@ -11,7 +11,6 @@ const AuthModal = ({ isOpen, setIsOpen }) => {
   let currentUser = useSelector((state) => state.authReducer.currentUser);
   const history = useHistory();
   const dispatch = useDispatch();
-
   return (
     <>
       <Modal
