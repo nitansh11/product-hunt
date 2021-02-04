@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getjobs,getremote,geteng, getdesign } from "../../Redux/jobs/action";
+import { getjobs,getremote,geteng, getdesign,getcustomer,getproduct,getsales,getmarketing } from "../../Redux/jobs/action";
 const Jobs = () => {
   const { jobs } = useSelector((state) => state.jobsreducer, shallowEqual);
   const isLoading = useSelector((state) => state.jobsreducer);
@@ -15,7 +15,7 @@ const Jobs = () => {
   const [product,setProduct]=React.useState(false)
   const dispatch = useDispatch();
   
- console.log(rem,eng,design)
+ 
   React.useEffect(() => {
     dispatch(getjobs());
    
@@ -23,33 +23,38 @@ const Jobs = () => {
 
 const handleremote=()=>{
     setRem(prev=>!prev)
-     
-     dispatch(getremote({rem}))
+    // dispatch(getdesign({rem,eng,design,marketing,sales,customer,product}))
+      dispatch(getremote({rem}))
 }
 
 const handleeng = ()=>{
     setEng(prev=>!prev)
-     dispatch(geteng({eng}))
+      dispatch(geteng({eng,rem}))
+    //  dispatch(getdesign({rem,eng,design,marketing,sales,customer,product}))
 }
 
 const handledesign = ()=>{
     setDesign(prev=>!prev)
-     dispatch(getdesign({rem,eng,design,marketing,sales,customer,product}))
+     dispatch(getdesign({design,rem}))
 }
 
 const handlemarketing=()=>{
   setMarketing(prev=>!prev)
+  dispatch(getmarketing({marketing,rem}))
 }
 const handlesales=()=>{
   setSales(prev=>!prev)
+  dispatch(getsales({sales,rem}))
 }
 const handlecustomer=()=>{
   setCustomer(prev=>!prev)
+  dispatch(getcustomer({customer,rem}))
 }
 const handleproduct=()=>{
   setProduct(prev=>!prev)
+  dispatch(getproduct({product,rem}))
 }
-console.log(rem,eng,design)
+console.log(rem,eng,design,marketing,sales,customer,product)
   console.log(jobs);
   return (
     <>
