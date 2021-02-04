@@ -6,12 +6,13 @@ import Modal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { logout } from "../../Redux/auth/actions";
-
+import { AuthContext } from "../../AuthContextProvider";
 import { useHistory } from "react-router-dom";
 
 Modal.setAppElement("#root");
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  // const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const location = useLocation().pathname;
   const history = useHistory();
   const style = location.includes("founder-club/benefits")
@@ -25,7 +26,7 @@ const Navbar = () => {
     : {};
 
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
-  console.log("Navbar is logged in", isLoggedIn);
+
   let currentUser = useSelector((state) => state.authReducer.currentUser);
   const dispatch = useDispatch();
   const handleLogout = () => {
