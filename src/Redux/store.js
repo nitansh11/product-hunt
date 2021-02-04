@@ -3,12 +3,16 @@ import thunk from "redux-thunk";
 import { productsReducer } from "./products/productsReducer";
 import { jobsreducer } from "./jobs/reducer";
 import { authReducer } from "./auth/authReducer";
+import { operationsReducer } from './operations/operationsReducer'
 import { askReducer } from "./ask/askReducer";
+
+
 const rootReducer = combineReducers({
   productsReducer,
   authReducer,
   jobsreducer,
   askReducer,
+  operationsReducer
 });
 
 let composeEnhancers = compose;
