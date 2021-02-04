@@ -75,7 +75,6 @@ export const productsReducer = ( state = initialState , { type , data , relatedD
             isLoading : true
         }
         case GET_RELATED_PRODUCTS_SUCCESS :
-            console.log(relatedData , "checking actions here")
         return {
             ...state ,
             isLoading : false,

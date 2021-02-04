@@ -76,7 +76,6 @@ export const getSoloProduct = (id) => (dispatch) => {
     return  axios.get(`https://product-hunt-mocker.herokuapp.com/product/${id}`)
     .then((res) => {
         dispatch(getSoloSuccess(res.data))
-        console.log(res.data.categories, "checking action")
         return{
             categories : res.data.categories
         }

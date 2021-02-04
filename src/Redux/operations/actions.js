@@ -15,7 +15,6 @@ export const getAllUsersAuthData = (payload) => dispatch => {
         params : payload
     })
     .then((res) => {
-        console.log(res.data[0].id, "checking upoted")
         dispatch(getAllAuthData(res.data[0].upvoted , res.data[0].id))
         return{
             data : res.data[0].upvoted,
@@ -54,7 +53,6 @@ export const findCurrentUserUpvotes = (email) => dispatch => {
 
  
 export const upVoteCounter = (payload , id) => dispatch => {
-    console.log(payload , id , "from upvote counter")
  return axios.patch(`https://product-hunt-mocker.herokuapp.com/product/${id}`,{
      upvotes : payload.upvotes
  })
