@@ -32,13 +32,13 @@ const Discussions = () => {
                         <button>POPULAR</button>
                         <button>NEW</button>
                     </div>
-                    <div className={styles.discussionsPage_buttonsDIv_2}>
+                    {/* <div className={styles.discussionsPage_buttonsDIv_2}>
                         <button>NOW</button>
                         <button>WEEK</button>
                         <button>MONTH</button>
                         <button>YEAR</button>
                         <button>ALL</button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={styles.discussionsParent}>
                     <div className={styles.discussionsList}>
@@ -54,20 +54,31 @@ const Discussions = () => {
                                     <h5>by {item.author} - {item.comments.length} comments</h5>
                                 </div>
                                 <div>
-                                    <Modal isOpen={modalOpen}>
+                                    <Modal isOpen={modalOpen} 
+                                        style={{overlay:{WebkitTapHighlightColor:"transparent",backgroundColor:"hsla(456, 3%, 50%, 0.15)"},
+                                        content:{width:"70%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
+                                        <button onClick={()=>setModalOpen(false)} className={styles.popupCloseButton}><i class="fas fa-times"></i></button>
                                         <p style={{color:"gray",fontWeight:"100"}}>Discussions - {popupData.title}</p>
-                                        <h1>{popupData.title}</h1>
-                                        <p>{popupData.body}</p>
-                                        <div>
-                                             <p>COMMENTS</p>
-                                            {commentsData && popupData.comments?.map((item)=>(
-                                                <div>
-                                                    <p>{item.author}</p>
-                                                    <p>{item.comment}</p>
-                                                </div>
-                                            ))}
+                                        <div className={styles.popupTitleDiv}>                            
+                                            <h1>{popupData.title}</h1>
+                                            <h4>{popupData.body}</h4>
+                                            <p>posted by {popupData.author}</p>
+                                            <div className={styles.popupUpvotes}>
+                                                <i className="fas fa-caret-up"></i>
+                                                <p>{popupData.upvotes}</p>
+                                            </div>
                                         </div>
-                                        <button onClick={()=>setModalOpen(false)}>close</button>
+                                        <div>
+                                            <p style={{marginTop:'15px',fontSize:'14px'}}>COMMENTS</p>
+                                            <div className={styles.commentsDiv}>
+                                                {commentsData && popupData.comments?.map((item)=>(
+                                                    <div className={styles.indivComment}>
+                                                        <h4>{item.author}</h4>
+                                                        <p>{item.comment}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </Modal>
                                 </div>
                             </div>
