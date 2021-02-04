@@ -23,7 +23,6 @@ function ProductCard(props) {
 
     React.useEffect(()=>{
         if(isLoggedIn){
-            console.log(currentUser , "after login")
             dispatch(findCurrentUserUpvotes(currentUser.email))
         }
     },[currentUser])

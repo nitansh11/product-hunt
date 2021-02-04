@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getjobs,getremote } from "../../Redux/jobs/action";
+import { getjobs,getremote,geteng, getdesign,getcustomer,getproduct,getsales,getmarketing } from "../../Redux/jobs/action";
 const Jobs = () => {
   const { jobs } = useSelector((state) => state.jobsreducer, shallowEqual);
   const isLoading = useSelector((state) => state.jobsreducer);
@@ -9,9 +9,13 @@ const Jobs = () => {
   const [rem,setRem]=React.useState(false)
   const [eng,setEng]=React.useState(false)
   const [design,setDesign]=React.useState(false)
+  const [marketing,setMarketing]=React.useState(false)
+  const [sales,setSales]=React.useState(false)
+  const [customer,setCustomer]=React.useState(false)
+  const [product,setProduct]=React.useState(false)
   const dispatch = useDispatch();
   
- console.log(rem,eng,design)
+ 
   React.useEffect(() => {
     dispatch(getjobs());
    
@@ -19,19 +23,38 @@ const Jobs = () => {
 
 const handleremote=()=>{
     setRem(prev=>!prev)
-     
-     dispatch(getremote({rem,eng,design}))
+    // dispatch(getdesign({rem,eng,design,marketing,sales,customer,product}))
+      dispatch(getremote({rem}))
 }
-console.log(rem,eng,design)
+
 const handleeng = ()=>{
-    // setEng(prev=>!prev)
-    //  dispatch(getremote({rem,eng,design}))
+    setEng(prev=>!prev)
+      dispatch(geteng({eng,rem}))
+    //  dispatch(getdesign({rem,eng,design,marketing,sales,customer,product}))
 }
 
 const handledesign = ()=>{
-    // setDesign(prev=>!prev)
-    //  dispatch(getremote({rem,eng,design}))
+    setDesign(prev=>!prev)
+     dispatch(getdesign({design,rem}))
 }
+
+const handlemarketing=()=>{
+  setMarketing(prev=>!prev)
+  dispatch(getmarketing({marketing,rem}))
+}
+const handlesales=()=>{
+  setSales(prev=>!prev)
+  dispatch(getsales({sales,rem}))
+}
+const handlecustomer=()=>{
+  setCustomer(prev=>!prev)
+  dispatch(getcustomer({customer,rem}))
+}
+const handleproduct=()=>{
+  setProduct(prev=>!prev)
+  dispatch(getproduct({product,rem}))
+}
+console.log(rem,eng,design,marketing,sales,customer,product)
   console.log(jobs);
   return (
     <>
@@ -104,22 +127,22 @@ const handledesign = ()=>{
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handlemarketing}/>
                 📢 Marketing
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handlesales}/>
                 📈 Sales
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handlecustomer}/>
                 💖 Customer Support
               </label>
               <br />
               <label>
-                <input className={Styles.Jobs_input} type="checkbox" />
+                <input className={Styles.Jobs_input} type="checkbox" onChange={handleproduct} />
                 💎 Product
               </label>
               <br />
@@ -143,7 +166,7 @@ const handledesign = ()=>{
               </select>
               <div className={Styles.Jobs_checkbox}>
                 <label>
-                  <input className={Styles.Jobs_input} type="checkbox" onChange={handleremote}/>
+                  <input className={Styles.Jobs_input} type="checkbox"  onChange={handleremote}/>
                   🌎 Remote jobs only
                 </label>
                 <br />

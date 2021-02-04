@@ -2,28 +2,36 @@ import * as actionTypes from './actionTypes'
 
 const initState = {
     currentUserId : null,
-    upvotes : []
+    upvotes : [],
+    collection : []
 }
 
-export const operationsReducer = ( state = initState , { type , data , currentUserId }) => {
+export const operationsReducer = ( state = initState , { type , data , currentUserId , collectionData }) => {
     switch (type) {
         case actionTypes.GET_ALL_AUTH_DATA:
-            console.log("operation reducer " , data)
-            console.log("first")
             return {
                 ...state,
                 upvotes : undefined ? [] : data,
-                currentUserId : currentUserId
+                currentUserId : currentUserId,
             }
         
         case actionTypes.GET_CURRENT_UPVOTES : 
-        console.log("second")
         return{
             ...state,
             upvotes: data === undefined ? [] : data
         }
+
+        case actionTypes.GET_CURRENT_COLLECTIONS : 
+        return{
+            ...state,
+            collection : collectionData === undefined ? [] : collectionData
+        }
+
+        case actionTypes.POST_COMMENT:
+            return{
+                ...state,
+            }
            
-    
         default:
            return state
     }

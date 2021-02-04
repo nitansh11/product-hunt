@@ -5,8 +5,10 @@ import styles from './ProductModal.module.css'
 import { useDispatch , useSelector } from 'react-redux'
 import SideCard from './SideCard'
 import { FacebookShareButton , TwitterShareButton } from 'react-share'
-import { findCurrentUserUpvotes, getAllUsersAuthData, updateUpvotes, upVoteCounter } from '../../Redux/operations/actions'
-
+import { findCurrentUserCollections, findCurrentUserUpvotes, getAllUsersAuthData, postNewComments, updateCollections, updateUpvotes, upVoteCounter } from '../../Redux/operations/actions'
+import CommentsSection from './CommentsSection'
+import { Button, Input } from 'antd';
+import { v4 as uuid } from 'uuid'
 
 function ProductModal() {
     let { id } = useParams()
@@ -19,8 +21,8 @@ function ProductModal() {
     const [ showNav , setShowNav ] = React.useState(false)
     const currentUser = useSelector(state => state.authReducer.currentUser)
     const [ trigger , setTrigger ] = React.useState(false)
-    
-
+    const collectionsOfUser = useSelector(state => state.operationsReducer.collection)
+    const [ newComment , setNewComment ] = React.useState("")
 
     const handleShowNav = () => {
         if (window.pageYOffset >= 350){
@@ -63,12 +65,10 @@ function ProductModal() {
     },[currentUser])
 
 
-    const { logo , name , tagline , categories , upvotes , description , developer , video } = soloData
+    let { logo , name , tagline , categories , upvotes , description , developer , video , productDiscussion } = soloData
 
 
-    // React.useEffect(()=>{   
-    //     getSoloDataHandler()
-    // },[trigger])
+    //upvoting and downvoting products
     
     const productUpvoteHandler = () =>{
         if(!isLoggedIn){
@@ -109,8 +109,54 @@ function ProductModal() {
             }
         })
     }
+
+    // adding products to personal collection
+
+    const productCollectionHandler = () =>{
+        if(!isLoggedIn){
+            alert("You need to login")
+            return
+        }
+        dispatch(getAllUsersAuthData({
+            email : currentUser.email
+        }))
+        .then((res) => {
+            if(res.collectionData === undefined){
+                const collection = []
+                collection.push(Number(id))
+                dispatch(updateCollections(collection , res.id ))
+                 .then(res => dispatch(findCurrentUserCollections(currentUser.email)))   
+            }
+            else{
+                const findExistence = res.collectionData.find(item => item === Number(id))
+                if(findExistence === undefined){
+                    const updatedCollection = [...res.collectionData , Number(id) ]
+                    dispatch(updateCollections(updatedCollection , res.id , currentUser.email)) 
+                     .then(res => dispatch(findCurrentUserCollections(currentUser.email)))                    
+                }
+                else{
+                    const updatedCollection = res.collectionData.filter(item => item !== Number(id))
+                    dispatch(updateCollections(updatedCollection , res.id , currentUser.email)) 
+                     .then(res => dispatch(findCurrentUserCollections(currentUser.email)))   
+                }
+            }
+        })
+    }
+
+    const newCommentHandler = () =>{
+    productDiscussion = [...productDiscussion ,  {
+        commentID : uuid(),
+        userImage : currentUser.imageUrl, 
+        userName :currentUser.name,
+        userComment : newComment ,
+        commentUpvotes : 0
+    } ]
+      dispatch(postNewComments(id , productDiscussion))
+     .then(res =>{setTrigger(!trigger)})
+    }     
     
-        
+    
+
     return (
         <div className={styles.ProductModal}>
             <div className={styles.ProductModal__main}>
@@ -156,7 +202,12 @@ function ProductModal() {
                                     <button> <i className="fas fa-code"></i> Embed</button>
                                 </div>
                                 <div>
-                                    <button> <i className="far fa-plus-square"></i> Collect</button>
+                                    <button 
+                                        style={collectionsOfUser?.find(item => item === Number(id)) !== undefined && isLoggedIn ? {border:"1px solid rgb(173, 84, 0)" ,borderRadius: "3px", color: "white" , backgroundColor: "orange"} : {}} 
+                                        onClick={()=>productCollectionHandler()} >
+                                        <i className="far fa-plus-square"></i> 
+                                        {collectionsOfUser?.find(item => item === Number(id)) !== undefined && isLoggedIn ?  "Collected" :  "Collect"}
+                                    </button>
                                 </div>
                             </div>
                             <div>
@@ -166,6 +217,17 @@ function ProductModal() {
                     </div>
                     <div className={styles.ProductModal__main__content__demo__discussion}>
                         <h1>Discussion</h1>
+                        <div className={styles.ProductModal__main__content__demo__discussion__comments}>
+                           <div>
+                            {productDiscussion?.map( item => (
+                                    <CommentsSection {...item} />
+                                ))}
+                           </div>
+                           <div style={{display:"flex"}}>        
+                                <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
+                                <Button onClick={newCommentHandler}>Comment</Button>
+                           </div>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ProductModal__main__content__side}>

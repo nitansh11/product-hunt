@@ -16,12 +16,12 @@ function SideCard(props) {
                 <h2>{name}</h2>
                 <p>{tagline}</p>
                 <div className={styles.SideCard__content__follow} >
-                    <div>
+                    {/* <div>
                         <i className="fas fa-plus"></i>
-                    </div>
-                    <div>   
+                    </div> */}
+                    {/* <div>   
                         <span> FOLLOW (0)</span> 
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className={styles.SideCard__img}>
