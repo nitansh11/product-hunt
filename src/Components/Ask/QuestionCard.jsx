@@ -25,6 +25,7 @@ const QuestionCard = ({
       <p>{description}</p>
       <div className={styles.QuestionCard__footer}>
         <p>{recommendations.length} RECOMMENDED</p>
+     
         <button>FOLLOW</button>
       </div>
     </div>
