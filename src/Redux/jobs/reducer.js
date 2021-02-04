@@ -43,7 +43,7 @@ import {
       case GET_JOBS_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -64,7 +64,7 @@ import {
       case REMOTE_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -86,7 +86,7 @@ import {
       case ENG_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -108,7 +108,7 @@ import {
       case DESIGN_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -130,7 +130,7 @@ import {
       case PRODUCT_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -152,7 +152,7 @@ import {
       case CUSTOMER_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -174,7 +174,7 @@ import {
       case SALES_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }
@@ -196,7 +196,7 @@ import {
       case MARKETING_SUCCESS: {
         return {
           ...state,
-          jobs: [...state.jobs,payload],
+          jobs: payload,
           isLoading: false
         };
       }

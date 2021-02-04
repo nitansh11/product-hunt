@@ -5,7 +5,7 @@ import Product from "../Components/Product/Product";
 import Mentors from "../Components/Mentors/Mentors";
 import ASK from "../Components/Ask/Ask";
 import { Discussions } from "../Components/Discussions/Discussions";
-
+import {postJob} from "../Components/Jobs/postjob"
 import ProductModal from "../Components/Product/ProductModal";
 
 import {Jobs} from "../Components/Jobs/Jobs"
@@ -24,6 +24,9 @@ const Routes = () => {
         </Route>
         <Route path="/jobs" exact>
          <Jobs/>
+        </Route>
+        <Route>
+          <postJob/>
         </Route>
         <Route path="/discussions" exact>
           <Discussions />

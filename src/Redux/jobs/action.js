@@ -281,7 +281,7 @@ export const geteng = (params) => async (dispatch) => {
 };
 export const getdesign = (params) => async (dispatch) => {
   const { design, rem } = params;
-  console.log(design);
+  console.log(design,rem);
   dispatch(designRequest());
   try {
     let res = await axios.get(

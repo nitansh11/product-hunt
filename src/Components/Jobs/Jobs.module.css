@@ -122,6 +122,7 @@
   border-color: transparent;
   border-radius: 2px;
   font-weight: bold;
+  outline:none;
 }
 .Jobs_filterbox {
   width: 80%;

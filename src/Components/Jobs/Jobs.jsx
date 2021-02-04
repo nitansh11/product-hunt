@@ -2,8 +2,9 @@ import React from "react";
 import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getjobs,getremote,geteng, getdesign,getcustomer,getproduct,getsales,getmarketing } from "../../Redux/jobs/action";
+import {useHistory} from "react-router-dom"
 const Jobs = () => {
-  const { jobs } = useSelector((state) => state.jobsreducer, shallowEqual);
+  const { jobs } = useSelector((state) => state.jobsreducer);
   const isLoading = useSelector((state) => state.jobsreducer);
   const isError = useSelector((state) => state.jobsreducer);
   const [rem,setRem]=React.useState(false)
@@ -14,7 +15,7 @@ const Jobs = () => {
   const [customer,setCustomer]=React.useState(false)
   const [product,setProduct]=React.useState(false)
   const dispatch = useDispatch();
-  
+  const history = useHistory()
  
   React.useEffect(() => {
     dispatch(getjobs());
@@ -53,6 +54,9 @@ const handlecustomer=()=>{
 const handleproduct=()=>{
   setProduct(prev=>!prev)
   dispatch(getproduct({product,rem}))
+}
+const handleclick=()=>{
+  history.push("/jobs/postjob")
 }
 console.log(rem,eng,design,marketing,sales,customer,product)
   console.log(jobs);
@@ -111,7 +115,7 @@ console.log(rem,eng,design,marketing,sales,customer,product)
 
                 <h5>Advertise from $299</h5>
 
-                <button className={Styles.jobbutton}>POST A JOB</button>
+                <button className={Styles.jobbutton} onClick={handleclick}>POST A JOB</button>
               </div>
             </div>
             <h3 className={Styles.Jobs_filterbox}>Filters</h3>
