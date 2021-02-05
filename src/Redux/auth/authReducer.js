@@ -5,10 +5,10 @@ const initState = {
   currentUser: null,
   error: false,
   isLoading: false,
+  user: null,
 };
 
 const authReducer = (state = initState, action) => {
- 
   switch (action.type) {
     // login user
     case actionTypes.LOGIN_SUCCESS:
@@ -32,6 +32,14 @@ const authReducer = (state = initState, action) => {
     case actionTypes.ADD_USER_SUCCESS:
       return { ...state, isLoading: false, error: false };
     case actionTypes.ADD_USER_FAILURE:
+      return { ...state, isLoading: false, error: true };
+
+    // adding user if does not exist
+    case actionTypes.GET_USER_BY_EMAIL_REQUEST:
+      return { ...state, isLoading: true, error: false };
+    case actionTypes.GET_USER_BY_EMAIL_SUCCESS:
+      return { ...state, isLoading: false, user: action.payload, error: false };
+    case actionTypes.GET_USER_BY_EMAIL_FAILURE:
       return { ...state, isLoading: false, error: true };
     default:
       return state;
