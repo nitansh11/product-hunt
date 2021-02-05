@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./JobCard.module.css";
-const JobCard = () => {
+import { v4 as uuid } from "uuid";
+const JobCard = ({ id, avatar, title, role, location, pics, tags }) => {
   return (
     <div className={styles.JobCard}>
       <img
@@ -9,19 +10,24 @@ const JobCard = () => {
       />
       <div>
         <div className={styles.JobCard__first}>
-          <h2>Duuoo.io</h2>
-          <span>💎</span>
+          <h2>{title}</h2>
+          <span>{pics}</span>
         </div>
         <div className={styles.JobCard__second}>
           <div>
-            <h3>Product Manager, Duuoo Teams</h3>
-            <p>Copenhagen, Denmark</p>
+            <h3>{role}</h3>
+            <p>{location}</p>
           </div>
           <div>
             <button>SHARE</button>
             <button>APPLY</button>
           </div>
         </div>
+      </div>
+      <div className={styles.JobCard__third}>
+        {tags.map((tag) => (
+          <button key={uuid()}>{tag}</button>
+        ))}
       </div>
     </div>
   );
