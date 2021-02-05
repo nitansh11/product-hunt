@@ -7,7 +7,7 @@ import Ask from "../Components/Ask/Ask";
 import { Discussions } from "../Components/Discussions/Discussions";
 import AskPage from "../Components/Ask/AskPage";
 import ProductModal from "../Components/Product/ProductModal";
-// import { Jobs } from "../Components/Jobs/Jobs";
+ //import { Jobs } from "../Components/Jobs/Jobs";
 import MyJobs from "../Components/MyJobs/MyJobs";
 import {Singlementor} from "../Components/Mentors/singlementor";
 import {CalendarPage} from "../Components/Mentors/calendar"
@@ -25,8 +25,8 @@ const Routes = () => {
           <Deals />
         </Route>
         <Route path="/jobs" exact>
-          {/* <Jobs/> */}
-          <MyJobs />
+           {/* <Jobs/>  */}
+           <MyJobs /> 
         </Route>
         <Route path="/discussions" exact>
           <Discussions />

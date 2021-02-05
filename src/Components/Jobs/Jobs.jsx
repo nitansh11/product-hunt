@@ -3,7 +3,7 @@ import Styles from "./Jobs.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getjobs,getremote,geteng, getdesign,getcustomer,getproduct,getsales,getmarketing } from "../../Redux/jobs/action";
 const Jobs = () => {
-  const { jobs } = useSelector((state) => state.jobsreducer);
+  const  jobs  = useSelector((state) => state.jobsreducer);
   const isLoading = useSelector((state) => state.jobsreducer);
   const isError = useSelector((state) => state.jobsreducer);
   const [rem,setRem]=React.useState(false)
