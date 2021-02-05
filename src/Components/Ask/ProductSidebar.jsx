@@ -18,10 +18,14 @@ const ProductSidebar = ({ currentQuestion }) => {
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
 
   const dispatch = useDispatch();
-  // React.useEffect(() => {
-  //   dispatch(getProducts());
-  //   return () => {};
-  // }, []);
+  React.useEffect(() => {
+    dispatch(getProducts());
+    return () => {};
+  }, []);
+
+  React.useEffect(() => {
+    setFilteredProducts(allProducts);
+  }, [allProducts]);
 
   const handleQueryChange = (e) => {
     let myQuery = e.target.value;
@@ -80,7 +84,7 @@ const ProductSidebar = ({ currentQuestion }) => {
           placeholder="Search Products Here.."
         />
       </div>
-      {/* <ul>{renderProducts()}</ul> */}
+      <ul>{renderProducts()}</ul>
     </div>
   );
 };

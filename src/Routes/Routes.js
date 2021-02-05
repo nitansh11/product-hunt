@@ -76,6 +76,9 @@ const Routes = () => {
           <Error></Error>
         </Route>
         <Route>Page Not Found</Route>
+        <Route>
+          <Error></Error>
+        </Route>
       </Switch>
     </>
   );

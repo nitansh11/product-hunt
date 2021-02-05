@@ -1,4 +1,3 @@
-
 import React from "react";
 import axios from "axios";
 import { Link, useParams, useHistory } from "react-router-dom";
@@ -16,7 +15,7 @@ const Singlementor = () => {
       const res = await axios.get(
         `https://json-server-mocker-masai-gopi.herokuapp.com/posts/${appId}`
       );
-     
+
       setData(res.data);
     } catch (err) {
       console.log(err);
@@ -39,7 +38,7 @@ const Singlementor = () => {
                 )}
                 <div>
                   {data.video_url !== "" ? (
-                    <div >
+                    <div>
                       <video
                         style={{
                           width: "300px",
@@ -48,16 +47,16 @@ const Singlementor = () => {
                           padding: "5px",
                           border: "5px solid  #ffdf70",
                           outline: "none",
-                          marginTop:"50px"
+                          marginTop: "50px",
                         }}
                         size="160px"
                         src={data.video_url}
                         width="600"
                         height="300"
                         controls="controls"
-                         autoplay="true"
-                         loop="loop"
-                         muted="muted"
+                        autoplay="true"
+                        loop="loop"
+                        muted="muted"
                       />
                     </div>
                   ) : (
@@ -68,7 +67,7 @@ const Singlementor = () => {
                           borderRadius: "250px",
                           height: "250px",
                           width: "250px",
-                          marginTop:"30%"
+                          marginTop: "30%",
                         }}
                         alt="img"
                       />
@@ -88,10 +87,17 @@ const Singlementor = () => {
                 {data.para3 !== "" && (
                   <p className={Styles.para}>{data.para3}</p>
                 )}
-                <p className={Styles.para} style={{fontWeight:"700"}}>How can I help?</p>
-                <br/>
+                <p className={Styles.para} style={{ fontWeight: "700" }}>
+                  How can I help?
+                </p>
+                <br />
                 <button onClick={handlegoback} className={Styles.book}>
-                  <Link style={{color: "white",textDecoration:"none"}} to="/mentors">BOOK NOW</Link>
+                  <Link
+                    style={{ color: "white", textDecoration: "none" }}
+                    to="/mentors"
+                  >
+                    BOOK NOW
+                  </Link>
                 </button>
               </div>
             </div>
