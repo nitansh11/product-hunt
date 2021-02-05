@@ -20,7 +20,7 @@ const Discussions = () => {
     const [newBody,setNewBody] = React.useState('')
     const comments = useSelector(state=>state.discussionsReducer.comments)
     const currentUser = useSelector(state=>state.authReducer.currentUser)
-    console.log(currentUser)
+    //console.log(currentUser)
 
 
     const handlePopup=(id)=>{
@@ -59,6 +59,7 @@ const Discussions = () => {
             axios.get("https://janak-routing-project.herokuapp.com/discussions")
             .then((res)=>{
                 setList(res.data)
+                alert("posted succesfully")
             })
         })
         .catch((err)=>{
@@ -167,12 +168,13 @@ const Discussions = () => {
                     <div className={styles.discussionsRightBar}>
                         <div className={styles.discussionsRightBar_1}>
                             <Button onClick={handlePostPopup}>CREATE NEW DISCUSSION</Button>
-                            <Modal isOpen={modalPost}>
+                            <Modal isOpen={modalPost} onRequestClose={()=>setModalPost(false)}
+                                style={{overlay:{WebkitTapHighlightColor:"transparent",backgroundColor:"hsla(456, 3%, 50%, 0.35)"},
+                                content:{width:"70%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
                                 <button onClick={()=>setModalPost(false)}>close</button>
                                 <div>
                                     <input type='text' placeholder='title' value={newTitle} onChange={(e)=>setNewTitle(e.target.value)}/>
                                     <br/>
-                                    {/* <input type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}/> */}
                                     <textarea type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}></textarea>
                                     <br/>
                                     <button onClick={handlePostData}>post</button>
