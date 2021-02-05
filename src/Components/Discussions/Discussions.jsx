@@ -23,21 +23,24 @@ const Discussions = () => {
     const currentUser = useSelector(state=>state.authReducer.currentUser)
     //console.log(currentUser)
     const [ trigger , setTrigger ] = React.useState(false)
+    const [currentId , setCurrentId ] = React.useState(0)
 
     const handlePopup=(id)=>{
+        setCurrentId(id)
         setModalOpen(true)
         const temp = list.filter(item=>item.id===id)[0];
         setPopupData(temp)  
         setCommentsdata(true)
     }
 
-    const newCommentHandler = (id,commentsData) =>{
-         commentsData = [...commentsData ,  {
-            comment_id : uuid() ,
-            author:"janak",
-            comment : newComment
-        } ]
-        dispatch(patchComment(commentsData , id))
+    const newCommentHandler = (currentId,commentsData) =>{
+        // console.log(commentsData , currentId)
+        //  commentsData = [...commentsData ,  {
+        //     comment_id : uuid() ,
+        //     author:"janak",
+        //     comment : newComment
+        // } ]
+        // dispatch(patchComment(commentsData , currentId))
         // .then(res => setTrigger(!trigger))
     }     
 
@@ -112,7 +115,7 @@ const Discussions = () => {
                                     <h5>by {item.author} - {item.comments.length} comments</h5>
                                 </div>
                                 <div>
-                                    <Modal isOpen={modalOpen} onRequestClose={()=>setModalOpen(false)}
+                                    <Modal key={item.id} isOpen={modalOpen} onRequestClose={()=>setModalOpen(false)}
                                         style={{overlay:{WebkitTapHighlightColor:"transparent",backgroundColor:"hsla(456, 3%, 50%, 0.15)"},
                                         content:{width:"70%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
                                         <button onClick={()=>setModalOpen(false)} className={styles.popupCloseButton}><i className="fas fa-times"></i></button>
@@ -210,7 +213,7 @@ const Discussions = () => {
                             <p>About</p>
                             <p>FAQ</p>
                             <p>Terms</p>
-                            <p>Privacy polocy and Cookies</p>
+                            <p>Privacy policy and Cookies</p>
                             <p>Twitter</p>
                             <p>Facebook</p>
                             <p>Instagram</p>
