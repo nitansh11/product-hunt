@@ -46,7 +46,6 @@ const Routes = () => {
 
         <Route path="/discussions" exact>
           <Discussions />
-       
         </Route>
 
         <Route path="/ask" exact>
