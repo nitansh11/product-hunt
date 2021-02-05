@@ -18,7 +18,6 @@ function Product() {
    const [ showScroll, setShowScroll ] = React.useState(false)
    const [ currentFilter , setCurrentFilter ] = React.useState("latest")
    const dispatch = useDispatch()  
-   
  
    //scroll to top
     const checkScrollTop = () => {
@@ -142,7 +141,7 @@ function Product() {
                      ))}
                     <div  onClick={showMoreTodayHandler} className={styles.Product__main__content__more}>
                          <i className="fas fa-chevron-down"></i> 
-                         <button > {showMoreToday ? "Show Less" : `Show ${todaysData.length-10} More`}</button>
+                         {/* <button > {showMoreToday ? "Show Less" : `Show ${todaysData.length-10} More`}</button> */}
                      </div>
                  </div>
                  <br></br>

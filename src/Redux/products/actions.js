@@ -33,10 +33,10 @@ const getAllProducts = (allData) =>{
 
 export const getALLProductsData = () => dispatch => {
     return axios.get("https://product-hunt-mocker.herokuapp.com/product")
-    .then(res => dispatch(getAllProducts(res.data)))
+    .then(res => {
+     
+        dispatch(getAllProducts(res.data))})
 }
-
-
 
 const getProductsRequest = () => {
     return {

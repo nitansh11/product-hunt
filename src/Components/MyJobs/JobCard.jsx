@@ -5,8 +5,8 @@ const JobCard = ({ id, avatar, title, role, location, pics, tags }) => {
   return (
     <div className={styles.JobCard}>
       <img
-        src="https://ph-files.imgix.net/b2f95681-6d10-4ccb-bc00-2612352726d9.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fill-color=fff&fit=fill&fill=solid"
-        alt=""
+        src={avatar}
+        alt="image not available"
       />
       <div>
         <div className={styles.JobCard__first}>

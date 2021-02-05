@@ -40,6 +40,7 @@ const initialState = {
 export const productsReducer = ( state = initialState , { type , data, promotionalData , relatedData ,allData }) => {
     switch ( type ){
         case GET_ALL_PRODUCTS : 
+       
         return {
             ...state,
             allProdcuts : allData

@@ -138,7 +138,7 @@ const postCommentSuccess = (askQuestions) => {
 };
 const postCommentFailure = () => {
   return {
-    type: actionTypes.POST_ASK_QUESTION_COMMENT_FAILURE
+    type: actionTypes.POST_ASK_QUESTION_COMMENT_FAILURE,
   };
 };
 
@@ -160,4 +160,40 @@ const postComment = (id, comments) => {
     }
   };
 };
-export { getAskQuestions, updateRecommendation, postComment, postAskQuestions };
+
+// get all products
+const getProductsRequest = () => {
+  return {
+    type: actionTypes.GET_PRODUCTS_REQUEST,
+  };
+};
+
+const getProductsSuccess = (products) => {
+  return {
+    type: actionTypes.GET_PRODUCTS_SUCCESS,
+    payload: products,
+  };
+};
+
+const getProductsFailure = () => {
+  return {
+    type: actionTypes.GET_PRODUCTS_FAILURE,
+  };
+};
+
+const getProducts = () => {
+  return async (dispatch) => {
+    dispatch(getProductsRequest());
+    try {
+      const res = await axios.get(
+        "https://product-hunt-mocker.herokuapp.com/product"
+      );
+      dispatch(getProductsSuccess(res.data));
+    } catch (err) {
+      console.log("inside get ask questions error", err);
+      dispatch(getProductsFailure());
+    }
+  };
+};
+
+export { getAskQuestions, updateRecommendation, postComment, postAskQuestions,getProducts };

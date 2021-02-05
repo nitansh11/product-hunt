@@ -19,7 +19,7 @@ function ProductCard(props) {
     upvotes,
     tagline,
     id,
-    productDiscussion
+    productDiscussion,
   } = props;
   const [trigger, setTrigger] = React.useState(false);
   const {

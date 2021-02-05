@@ -163,14 +163,20 @@ const Discussions = () => {
                             <Button onClick={handlePostPopup}>CREATE NEW DISCUSSION</Button>
                             <Modal isOpen={modalPost} onRequestClose={()=>setModalPost(false)}
                                 style={{overlay:{WebkitTapHighlightColor:"transparent",backgroundColor:"hsla(456, 3%, 50%, 0.35)"},
-                                content:{width:"70%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
-                                <button onClick={()=>setModalPost(false)}>close</button>
-                                <div>
-                                    <input type='text' placeholder='title' value={newTitle} onChange={(e)=>setNewTitle(e.target.value)}/>
+                                content:{width:"50%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
+                                <button onClick={()=>setModalPost(false)} className={styles.postPopupCLoseBtn}><i class="fas fa-times"></i></button>
+                                <div className={styles.postPopUp}>
                                     <br/>
-                                    <textarea type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}></textarea>
+                                    <p style={{margin:"2px 2px 2px 2px"}}>Title</p>
+                                    <input type='text' placeholder='describe about discussion' value={newTitle} onChange={(e)=>setNewTitle(e.target.value)}/>
+                                    <br/>
+                                    <p style={{margin:"8px 2px 2px 2px"}}>Message</p>
+                                    <textarea type='text' placeholder='write your message here' rows="20" cols="90" value={newBody} onChange={(e)=>setNewBody(e.target.value)}></textarea>
                                     <br/>
                                     <button onClick={handlePostData}>post</button>
+                                </div>
+                                <div>
+
                                 </div>
                             </Modal>
                             <p>
