@@ -2,19 +2,60 @@ import React from 'react'
 import Modal from 'react-modal'
 import styles from './discussions.module.css'
 import axios from "axios"
+import { Button, Input } from 'antd';
+import { PatchComment } from './PatchComment'
+import { useDispatch , useSelector } from 'react-redux'
+import { patchComment } from '../../Redux/discussions/actions';
+import CommentsSection from './Comments';
 
 
 const Discussions = () => {
     const [modalOpen,setModalOpen] = React.useState(false)
+    const [modalPost,setModalPost] = React.useState(false)
     const [popupData,setPopupData] = React.useState('')
     const [list,setList] = React.useState([])
     const [commentsData,setCommentsdata] = React.useState(false)
+    const [ newComment , setNewComment ] = React.useState("")
+    const dispatch = useDispatch()
+    const [newTitle,setNewTitle] = React.useState('')
+    const [newBody,setNewBody] = React.useState('')
+    const comments = useSelector(state=>state.discussionsReducer.comments)
+    const currentUser = useSelector(state=>state.authReducer.currentUser)
+    //console.log(currentUser)
+
 
     const handlePopup=(id)=>{
         setModalOpen(true)
         const temp = list.filter(item=>item.id===id)[0];
         setPopupData(temp)  
         setCommentsdata(true)
+    }
+
+    const newCommentHandler = () =>{
+        comments = [...comments ,  {
+            comment_id : 5,
+            author:"janak",
+            comment : newComment
+        } ]
+        dispatch(patchComment(comments))
+    }     
+
+    const handlePostPopup=()=>{
+        setModalPost(true)
+    }
+
+    const handlePostData=()=>{
+        axios.post("https://janak-routing-project.herokuapp.com/discussions",{
+            title:newTitle,
+            body:newBody,
+            author:currentUser.name,
+            upvotes:10,
+            comments:[],
+            image:currentUser.imageUrl
+        })
+        .then((res)=>{
+            console.log(res.data)
+        })
     }
 
     React.useEffect(()=>{
@@ -24,21 +65,22 @@ const Discussions = () => {
         })
     },[])
 
+    const getPopular=()=>{
+
+    }
+
+    const getNew=()=>{
+
+    }
+
     return (
         <div className={styles.discussionsBackground}>
             <div className={styles.discussionsPage}>
                 <div className={styles.discussionsPage_buttonsDIv}>
                     <div className={styles.discussionsPage_buttonsDIv_1}>
-                        <button>POPULAR</button>
-                        <button>NEW</button>
+                        <button onCLick={()=>getPopular("popular")}>POPULAR</button>
+                        <button onClick={()=>getNew("new")}>NEW</button>
                     </div>
-                    {/* <div className={styles.discussionsPage_buttonsDIv_2}>
-                        <button>NOW</button>
-                        <button>WEEK</button>
-                        <button>MONTH</button>
-                        <button>YEAR</button>
-                        <button>ALL</button>
-                    </div> */}
                 </div>
                 <div className={styles.discussionsParent}>
                     <div className={styles.discussionsList}>
@@ -78,6 +120,18 @@ const Discussions = () => {
                                                     </div>
                                                 ))}
                                             </div>
+                                            <div>
+                                                {/* <PatchComment id={item.id}/> */}
+                                                <div style={{display:"flex"}}>   
+                                                    <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
+                                                    <Button onClick={newCommentHandler}>Comment</Button>
+                                                </div>
+                                                <div>
+                                                    {comments?.map(item=>(
+                                                        <CommentsSection {...item}/>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
                                     </Modal>
                                 </div>
@@ -86,7 +140,15 @@ const Discussions = () => {
                     </div>
                     <div className={styles.discussionsRightBar}>
                         <div className={styles.discussionsRightBar_1}>
-                            <button>CREATE NEW DISCUSSION</button>
+                            <Button onClick={handlePostPopup}>CREATE NEW DISCUSSION</Button>
+                            <Modal isOpen={modalPost}>
+                                <button onClick={()=>setModalPost(false)}>close</button>
+                                <div>
+                                    <input type='text' placeholder='title' value={newTitle} onChange={(e)=>setNewTitle(e.target.value)}/>
+                                    <input type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}/>
+                                    <button onClick={handlePostData}>post</button>
+                                </div>
+                            </Modal>
                             <p>
                                 Before joining or starting a discussion remember to always be civil. 
                                 Treat others with respect. Do not use the discussions board for 

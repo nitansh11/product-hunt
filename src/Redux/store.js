@@ -5,6 +5,7 @@ import { jobsreducer } from "./jobs/reducer";
 import { authReducer } from "./auth/authReducer";
 import { operationsReducer } from './operations/operationsReducer'
 import { askReducer } from "./ask/askReducer";
+import {discussionsReducer} from './discussions/discussiosReducer'
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   authReducer,
   jobsreducer,
   askReducer,
-  operationsReducer
+  operationsReducer,
+  discussionsReducer
 });
 
 let composeEnhancers = compose;
