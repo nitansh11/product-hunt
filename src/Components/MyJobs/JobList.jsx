@@ -13,9 +13,16 @@ const JobList = () => {
       return <JobCard key={job.id} {...job} />;
     });
   };
-  return <div className={styles.JobList}>
-    <h1>{filteredJobs.length} JOBS FOUND !!!</h1>
-    {renderJobs()}</div>;
+  return (
+    <div className={styles.JobList}>
+      {filteredJobs.length === 0 ? (
+        <h1>{filteredJobs.length} JOBS FOUND !!!😔</h1>
+      ) : (
+        <h1>{filteredJobs.length} JOBS FOUND !!!🤩</h1>
+      )}
+      {renderJobs()}
+    </div>
+  );
 };
 
 export default JobList;
