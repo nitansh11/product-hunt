@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
  
 
 const initState = {
-    status : "PROMOTIONAL",
+    status : "TODAY",
     logo : "",
     name : "",
     tagline : "",
@@ -47,7 +47,7 @@ function PostProduct() {
 
   
 
-    const { name , plan , logo , tagline , categories , description , video  } = formData
+    const { name ,  logo , tagline , categories , description , video  } = formData
 
     return (
         <div className={styles.PostProduct}>
@@ -89,23 +89,6 @@ function PostProduct() {
                                 <option value ="Design">Design</option>
                             </select>
                         </div>
-
-                        <div>
-                            <label>Post Type</label>
-                            <select required value={status} name="status"  onChange={e => setStatus(e.target.value)} >
-                                <option value ="TODAY">Organic</option>
-                                <option value ="PROMOTIONAL">Promotional</option>
-                            </select>
-                        </div>
-
-                        {status === "PROMOTIONAL" && <div>
-                            <label>Choose a Package</label>
-                            <select required value={plan} name="plan"  onChange={onChangeHandler} >
-                                <option value ="ALPHA">Alpha</option>
-                                <option value ="BETA">Beta</option>
-                            </select>
-                        </div>}
-
                         <div>
                             <label>Product Image</label>
                             <input  required value={logo}  name="logo" onChange={onChangeHandler} type="url"></input>
