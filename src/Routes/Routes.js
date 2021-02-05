@@ -17,7 +17,7 @@ import MyJobs from "../Components/MyJobs/MyJobs";
 import { Singlementor } from "../Components/Mentors/singlementor";
 import { CalendarPage } from "../Components/Mentors/calendar";
 import { Mentorsdetails } from "../Components/Mentors/Mentorsdetails";
-import { DiscussionsTest } from "../Components/Discussions/Testing";
+ 
 const Routes = () => {
  
   return (
@@ -46,7 +46,7 @@ const Routes = () => {
 
         <Route path="/discussions" exact>
           <Discussions />
-          {/* <DiscussionsTest></DiscussionsTest> */}
+       
         </Route>
 
         <Route path="/ask" exact>

@@ -9,9 +9,11 @@ import SideCardJobs from './SideCardJobs'
 import { Link } from 'react-router-dom'
 import { getAllDiscussion } from '../../Redux/discussions/actions'
 import SideCardDiscussions from './SideCardDiscussions'
+import { Button } from 'antd'
  
  
  
+
 function Product() {
    const todaysData = useSelector ( state => state.productsReducer.todaysData)
    const upcomingProductsData = useSelector ( state => state.productsReducer.upcomingProductsData)
@@ -192,6 +194,9 @@ function Product() {
                             <SideCard key={item.id} {...item}></SideCard>
                         ))}
                     </div>
+                </div>
+                <div className={styles.Product__side__highlight}>
+                     <Button>Post a Job</Button>
                 </div>
                 <div className={styles.Product__side__highlight}>
                     <h2>Hiring Now</h2>
