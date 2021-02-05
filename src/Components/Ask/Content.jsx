@@ -4,6 +4,7 @@ import QuestionCard from "./QuestionCard";
 import { useSelector, useDispatch } from "react-redux";
 import { getAskQuestions } from "../../Redux/ask/actions";
 import { AuthContext } from "../../AuthContextProvider";
+import { getUserByEmail } from "../../Redux/auth/actions";
 import { postAskQuestions } from "../../Redux/ask/actions";
 import { v4 as uuid } from "uuid";
 const Content = () => {
@@ -12,6 +13,8 @@ const Content = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   const currentUser = useSelector((state) => state.authReducer.currentUser);
+  const user = useSelector((state) => state.authReducer.user);
+  console.log("Curret user:", currentUser);
   const askQuestions = useSelector((state) => state.askReducer.askQuestions);
   const { isOpen, setIsOpen } = React.useContext(AuthContext);
 
@@ -19,7 +22,9 @@ const Content = () => {
   React.useEffect(() => {
     dispatch(getAskQuestions());
   }, []);
-
+  React.useEffect(() => {
+    dispatch(getUserByEmail(currentUser.email));
+  }, []);
   const renderQuestions = () => {
     if (askQuestions.length === 0) return;
     return askQuestions.map((question) => (
@@ -28,9 +33,9 @@ const Content = () => {
   };
 
   const handlePostAskQuestion = () => {
-    if(title===''){
+    if (title === "") {
       alert("type title...");
-      return
+      return;
     }
     //dispatch action here
     let askQuestion = {
@@ -44,19 +49,17 @@ const Content = () => {
       comments: [],
     };
     console.log("ready question is:", askQuestion);
-     dispatch(postAskQuestions(askQuestion));
-     setTitle("");
-     setDescription("");
+    dispatch(postAskQuestions(askQuestion));
+    setTitle("");
+    setDescription("");
   };
+
   return (
     <div className={styles.Content}>
       <div className={styles.Content__postQuestion}>
         {isLoggedIn ? (
           <div>
-            <img
-              src="https://lh3.googleusercontent.com/ogw/ADGmqu8MW1sSd6pu_D3NjPp6juiOyCKYx-VyEYQCQzm08Q=s83-c-mo"
-              alt="image"
-            />
+            <img src={user ? user.imageUrl : null} alt="image" />
             <div>
               <input
                 type="text"

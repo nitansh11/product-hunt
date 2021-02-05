@@ -20,9 +20,12 @@ const ProductSidebar = ({ currentQuestion }) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getProducts());
-    setFilteredProducts(allProducts);
     return () => {};
   }, []);
+
+  React.useEffect(() => {
+    setFilteredProducts(allProducts);
+  }, [allProducts]);
 
   const handleQueryChange = (e) => {
     let myQuery = e.target.value;
