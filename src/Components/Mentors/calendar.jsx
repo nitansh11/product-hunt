@@ -11,7 +11,6 @@ import "./calendar.module.css";
 
 export function CalendarPage() {
   const [data, setData] = React.useState(null);
-
   const { appId } = useParams();
   const history = useHistory();
   const currentUser = useSelector((state) => state.authReducer.currentUser);
@@ -21,6 +20,7 @@ export function CalendarPage() {
   }, []);
   const book = () => {
     postdetails();
+    
     history.push("/mentors/mentorsdetails");
   };
   const postdetails = () => {
@@ -29,8 +29,10 @@ export function CalendarPage() {
       mentor: data.title,
       time: displaytime,
       date: moment(dateState).format("MMMM Do YYYY"),
+      image: data.avatar,
     });
   };
+
   const getdetails = async () => {
     try {
       const res = await axios.get(
@@ -340,9 +342,9 @@ export function CalendarPage() {
                     <button
                       style={{ width: "100%" }}
                       onClick={handleconfirm1}
-                      value="11:00 PM"
+                      value="11:00 AM"
                     >
-                      11:00 PM
+                      11:00 AM
                     </button>
                     {!con1 && (
                       <button style={{ display: "none" }}>confirm</button>
@@ -358,9 +360,9 @@ export function CalendarPage() {
                     <button
                       style={{ width: "100%" }}
                       onClick={handleconfirm2}
-                      value="11:30 PM"
+                      value="11:30 AM"
                     >
-                      11:30 PM
+                      11:30 AM
                     </button>
                     {!con2 && (
                       <button style={{ display: "none" }}>confirm</button>
