@@ -8,9 +8,10 @@ import { Discussions } from "../Components/Discussions/Discussions";
 import {postJob} from "../Components/Jobs/postjob"
 import AskPage from "../Components/Ask/AskPage";
 import ProductModal from "../Components/Product/ProductModal";
-import {Jobs} from "../Components/Jobs/Jobs"
-// import MyJobs from "../Components/MyJobs/MyJobs";
-
+// import { Jobs } from "../Components/Jobs/Jobs";
+import MyJobs from "../Components/MyJobs/MyJobs";
+import {Singlementor} from "../Components/Mentors/singlementor";
+import {CalendarPage} from "../Components/Mentors/calendar"
 const Routes = () => {
   return (
     <>
@@ -25,8 +26,8 @@ const Routes = () => {
           <Deals />
         </Route>
         <Route path="/jobs" exact>
-          <Jobs/>
-          {/* <MyJobs /> */}
+          {/* <Jobs/> */}
+          <MyJobs />
         </Route>
         <Route>
           <postJob/>
@@ -40,8 +41,14 @@ const Routes = () => {
         <Route path="/ask/:id" exact>
           <AskPage />
         </Route>
-        <Route path="/mentors" exact>
+        <Route exact path="/mentors" >
           <Mentors />
+        </Route>
+        <Route exact path="/mentors/:appId">
+          <Singlementor/>
+        </Route>
+        <Route exact path="/mentors/:appId/calendar">
+          <CalendarPage/>
         </Route>
         <Route>Page Not Found</Route>
       </Switch>

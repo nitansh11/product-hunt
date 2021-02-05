@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 
 const initState = {
-  loading: false,
+  isLoading: false,
   error: false,
   askQuestions: [],
 };
@@ -31,6 +31,19 @@ const askReducer = (state = initState, action) => {
         error: false,
       };
     case actionTypes.UPDATE_RECOMMENDATION_FAILURE:
+      return { ...state, isLoading: false, error: true };
+ 
+
+    // post comment
+    case actionTypes.POST_ASK_QUESTIONS_REQUEST:
+      return { ...state, isLoading: true, error: false };
+    case actionTypes.POST_ASK_QUESTIONS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+      };
+    case actionTypes.POST_ASK_QUESTIONS_FAILURE:
       return { ...state, isLoading: false, error: true };
     default:
       return state;
