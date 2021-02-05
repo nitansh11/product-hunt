@@ -1,6 +1,4 @@
-
 .JobCard {
-
   background-color: white;
   display: grid;
   grid-template-columns: 15% 85%;
@@ -8,6 +6,7 @@
   padding: 0px 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 .JobCard button {
   border: 1px solid rgba(202, 198, 198, 0.384);
@@ -18,9 +17,7 @@
   font-weight: bold;
   font-size: 12px;
 }
-.JobCard button:first-child {
-  color: gray;
-}
+
 .JobCard__first {
   display: flex;
   justify-content: space-between;
@@ -42,4 +39,15 @@
 .JobCard__second p {
   color: gray;
   font-size: 14px;
+}
+.JobCard__third {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+  margin-top: 10px;
+}
+.JobCard__third button {
+  color: #da552f;
+  text-transform: uppercase;
+  width: 150px;
 }

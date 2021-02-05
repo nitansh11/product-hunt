@@ -34,4 +34,11 @@ const getJobs = () => {
   };
 };
 
-export { getJobs };
+const updateFilteredJobs = (updatedFilteredJobs) => {
+  return {
+    type: actionTypes.UPDATE_FILTERED_JOBS,
+    payload: updatedFilteredJobs,
+  };
+};
+
+export { getJobs, updateFilteredJobs };
