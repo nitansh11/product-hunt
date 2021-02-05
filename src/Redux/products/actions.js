@@ -17,9 +17,23 @@ import {
     GET_BEST_FAILURE,
     GET_OLDER_REQUEST,
     GET_OLDER_SUCCESS,
-    GET_OLDER_FAILURE
+    GET_OLDER_FAILURE,
+    GET_ALL_PRODUCTS
    
 } from './actionTypes'
+
+const getAllProducts = (allData) =>{
+    return{
+        type : GET_ALL_PRODUCTS,
+        allData
+    }
+}
+
+export const getALLProductsData = () => dispatch => {
+    return axios.get("https://product-hunt-mocker.herokuapp.com/product")
+    .then(res => dispatch(getAllProducts(res.data)))
+}
+
 
 
 const getProductsRequest = () => {
@@ -50,6 +64,9 @@ export const getProducts = (params = {}) => (dispatch) => {
     .then(res => dispatch(getProductsSuccess(res.data)))
     .catch(err => dispatch(getProductsFailure()))
 }
+
+
+
 
 const getSoloRequest = () => {
     return {
@@ -209,3 +226,4 @@ export const getUpcomingProducts = (params = {}) => (dispatch) => {
     .then(res => dispatch(getUpcomingSuccess(res.data)))
     .catch(err => dispatch(getUpcomingFailure()))
 }
+

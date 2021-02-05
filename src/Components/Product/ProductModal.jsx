@@ -9,6 +9,8 @@ import { findCurrentUserCollections, findCurrentUserUpvotes, getAllUsersAuthData
 import CommentsSection from './CommentsSection'
 import { Button, Input } from 'antd';
 import { v4 as uuid } from 'uuid'
+import { AuthContext } from "../../AuthContextProvider";
+
 
 function ProductModal() {
     let { id } = useParams()
@@ -23,6 +25,8 @@ function ProductModal() {
     const [ trigger , setTrigger ] = React.useState(false)
     const collectionsOfUser = useSelector(state => state.operationsReducer.collection)
     const [ newComment , setNewComment ] = React.useState("")
+    const { isOpen, setIsOpen } = React.useContext(AuthContext);
+
 
     const handleShowNav = () => {
         if (window.pageYOffset >= 350){
@@ -42,6 +46,9 @@ function ProductModal() {
 
     React.useEffect(()=>{
         getSoloDataHandler()
+        return ()=>{
+            //clean up
+        }
     },[id,trigger])
 
     const getSoloDataHandler = () => {
@@ -49,8 +56,6 @@ function ProductModal() {
         dispatch(action)
         .then(res =>  getRelatedProductsHandler(res.categories))
     }
-
-
 
     const getRelatedProductsHandler = (categories) => {
         const action = getRelatedProducts(categories)
@@ -62,6 +67,9 @@ function ProductModal() {
         if(isLoggedIn){
             dispatch(findCurrentUserUpvotes(currentUser.email))
         }
+        return()=>{
+            //clean up
+        }
     },[currentUser])
 
 
@@ -72,7 +80,7 @@ function ProductModal() {
     
     const productUpvoteHandler = () =>{
         if(!isLoggedIn){
-            alert("You need to login")
+            setIsOpen(true);
             return
         }
         dispatch(getAllUsersAuthData({
@@ -114,7 +122,7 @@ function ProductModal() {
 
     const productCollectionHandler = () =>{
         if(!isLoggedIn){
-            alert("You need to login")
+            setIsOpen(true);
             return
         }
         dispatch(getAllUsersAuthData({
@@ -144,6 +152,10 @@ function ProductModal() {
     }
 
     const newCommentHandler = () =>{
+    if(!isLoggedIn){
+        setIsOpen(true);
+        return
+    }
     productDiscussion = [...productDiscussion ,  {
         commentID : uuid(),
         userImage : currentUser.imageUrl, 
@@ -153,8 +165,12 @@ function ProductModal() {
     } ]
       dispatch(postNewComments(id , productDiscussion))
      .then(res =>{setTrigger(!trigger)})
+     .then(setNewComment(""))
     }     
     
+    const handleTrigger = () =>{
+        setTrigger(!trigger)
+    }
     
 
     return (
@@ -220,19 +236,13 @@ function ProductModal() {
                         <div className={styles.ProductModal__main__content__demo__discussion__comments}>
                            <div>
                             {productDiscussion?.map( item => (
-                                    <CommentsSection {...item} />
+                                    <CommentsSection handleTrigger = {handleTrigger} getSoloDataHandler = {getSoloDataHandler} productDiscussion = {productDiscussion} {...item} />
                                 ))}
                            </div>
-                           {isLoggedIn ? 
                             <div style={{display:"flex"}}>   
                               <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
                               <Button onClick={newCommentHandler}>Comment</Button>
                             </div>
-                           :  
-                           <div style={{display:"flex"}}>   
-                                <Input disabled value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
-                                <Button disabled onClick={newCommentHandler}>Comment</Button>
-                           </div>}
                         </div>
                     </div>
                 </div>
