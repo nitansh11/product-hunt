@@ -54,7 +54,10 @@ const Discussions = () => {
             image:currentUser.imageUrl
         })
         .then((res)=>{
-            console.log(res.data)
+            axios.get("https://janak-routing-project.herokuapp.com/discussions")
+            .then((res)=>{
+                setList(res.data)
+            })
         })
     }
 

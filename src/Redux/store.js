@@ -1,17 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { productsReducer } from "./products/productsReducer";
-import { jobsreducer } from "./jobs/reducer";
+// import { jobsreducer } from "./jobs/reducer";
+import { myJobsReducer } from "./myjobs/myJobsReducer";
 import { authReducer } from "./auth/authReducer";
-import { operationsReducer } from './operations/operationsReducer'
+import { operationsReducer } from "./operations/operationsReducer";
 import { askReducer } from "./ask/askReducer";
 import {discussionsReducer} from './discussions/discussiosReducer'
-
 
 const rootReducer = combineReducers({
   productsReducer,
   authReducer,
-  jobsreducer,
+  myJobsReducer,
   askReducer,
   operationsReducer,
   discussionsReducer

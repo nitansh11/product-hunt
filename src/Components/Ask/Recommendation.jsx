@@ -9,10 +9,11 @@ const Recommendation = ({ id, productId, name, imageUrl }) => {
   )[0];
   console.log("current product", currentProduct);
   const renderCurrentProduct = () => {
+  
     if (!currentProduct) {
       return (
         <div className={styles.Recommendation}>
-          <h4>Loading Product...</h4>
+          <h4></h4>
         </div>
       );
     }
