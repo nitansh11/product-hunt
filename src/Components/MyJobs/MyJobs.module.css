@@ -1,0 +1,21 @@
+.MyJobs {
+  height: 2000px;
+  background-color: #f3f3f3;
+  
+  
+  padding-top: 20px;
+}
+.MyJobs__child{
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px;   
+}
+.MyJobs__child > div{
+    display: grid;
+    grid-template-columns: 70% 30%;
+   
+}
+.MyJobs__child > div > div{
+    
+    padding: 20px;
+}

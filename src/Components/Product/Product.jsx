@@ -4,7 +4,7 @@ import { useSelector , useDispatch } from 'react-redux'
 import { getBestProducts, getOlderProducts, getProducts, getPromotionalProducts, getUpcomingProducts } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
-import PromotionalCard from './PromotionalCard'
+ 
  
  
 function Product() {
@@ -54,11 +54,8 @@ function Product() {
         }
     }
 
-    //getPromotional Data
-    const getPromotionalProductsHandler = () => {
-        const action =  getPromotionalProducts() 
-         dispatch(action)
-    }
+    
+ 
 
     // get best deals
     

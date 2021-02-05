@@ -1,0 +1,11 @@
+.SingleComment{
+    border: 1px solid rgba(218, 208, 208, 0.7);
+    padding: 20px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    border-radius: 10px;
+}
+.SingleComment img{
+    border-radius: 50%;
+}

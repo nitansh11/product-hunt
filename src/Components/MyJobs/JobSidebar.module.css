@@ -1,0 +1,108 @@
+.JobSidebar * {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+.JobSidebar__image {
+  background-image: url("https://ph-static.imgix.net/jobs/jobs_cta_background.png?auto=format&amp;auto=compress");
+  background-color: #da552f;
+  width: 100%;
+  min-height: 100px;
+  max-height: 150px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  padding-bottom: 20px;
+  border-radius: 2px;
+}
+.JobSidebar__image img {
+  margin: 20px;
+}
+.JobSidebar__image h2 {
+  font-size: 16px;
+  color: white;
+  margin-top: 20px;
+}
+.JobSidebar__image p {
+  font-size: 12px;
+  color: white;
+  margin: 10px 0;
+}
+
+.JobSidebar__image button {
+  background-color: white;
+  color: #da552f;
+  border: none;
+  padding: 5px 0px;
+  border-radius: 5px;
+  width: 100px;
+  font-weight: bold;
+}
+/**********/
+
+.JobSidebar__filters {
+  margin-top: 20px;
+}
+.JobSidebar__filters > p{
+  font-size: 16px;
+  font-weight: bold;
+}
+.JobSidebar__filters > div {
+  background-color: white;
+  margin-top: 10px;
+}
+.JobSidebar__filters_one {
+  padding: 20px;
+}
+.JobSidebar__filters_one > div {
+  margin-bottom: 10px;
+}
+.JobSidebar__filters_one > div label {
+  margin-left: 10px;
+}
+
+.JobSidebar__filters_two {
+  padding-left: 20px;
+}
+.JobSidebar__filters_two select {
+  border: 1px solid gray;
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
+  color: gray;
+  outline: none;
+}
+.JobSidebar__filters_two select option {
+  color: darkgray;
+}
+.JobSidebar__filters_three {
+  padding: 20px;
+}
+.JobSidebar__filters_three label {
+  margin-left: 10px;
+}
+
+.JobSidebar__subscribe {
+ border-radius: 3px;
+  background-color: white;
+  margin-top: 20px;
+  padding: 20px;
+}
+.JobSidebar__subscribe p:nth-child(1) {
+  font-weight: bold;
+}
+.JobSidebar__subscribe p:nth-child(2) {
+  margin: 10px 0;
+  color: gray;
+}
+.JobSidebar__subscribe button {
+  width: 100%;
+  border: none;
+  background-color: #da552f;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  height: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}

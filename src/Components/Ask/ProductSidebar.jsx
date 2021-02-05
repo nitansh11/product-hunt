@@ -8,6 +8,7 @@ const ProductSidebar = ({ currentQuestion }) => {
   const [query, setQuery] = React.useState("");
   const [filteredProducts, setFilteredProducts] = React.useState([]);
   const allProducts = useSelector((state) => state.productsReducer.productData);
+  console.log(allProducts)
   const currentUser = useSelector((state) => state.authReducer.currentUser);
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   

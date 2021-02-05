@@ -77,7 +77,7 @@ const updateRecommendation = (id, updatedRecommendations) => {
         `https://json-server-nitansh-1.herokuapp.com/askedQuestions/${id}`,
         { recommendations: updatedRecommendations }
       );
-   
+
       dispatch(getAskQuestions());
       dispatch(updateRecommendationSuccess());
     } catch (err) {
@@ -87,4 +87,41 @@ const updateRecommendation = (id, updatedRecommendations) => {
   };
 };
 
-export { getAskQuestions, updateRecommendation };
+// post comment in asked questions
+
+const postCommentRequest = () => {
+  return {
+    type: actionTypes.POST_ASK_QUESTIONS_REQUEST,
+  };
+};
+
+const postCommentSuccess = (askQuestions) => {
+  return {
+    type: actionTypes.POST_ASK_QUESTIONS_SUCCESS,
+  };
+};
+const postCommentFailure = () => {
+  return {
+    type: actionTypes.POST_ASK_QUESTIONS_FAILURE,
+  };
+};
+
+const postComment = (id, comments) => {
+  console.log("Question to update:"+id);
+  console.log("updated comments:"+comments)
+  return async (dispatch) => {
+    dispatch(postCommentRequest());
+    try {
+      const response = await axios.patch(
+        `https://json-server-nitansh-1.herokuapp.com/askedQuestions/${id}`,
+        { comments: comments }
+      );
+      dispatch(getAskQuestions());
+      dispatch(postCommentSuccess());
+    } catch (err) {
+      console.log("inside post comment error", err);
+      dispatch(postCommentFailure());
+    }
+  };
+};
+export { getAskQuestions, updateRecommendation, postComment };

@@ -35,15 +35,14 @@
   margin-right: 20px;
 }
 .Navbar__logo div {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: rgb(218, 85, 47);
 }
 .Navbar__logo h1 {
   color: white;
-  font-size: 28px;
-  padding-top: 5px;
+  font-size: 30px;
 }
 .Navbar ul {
   list-style: none;
