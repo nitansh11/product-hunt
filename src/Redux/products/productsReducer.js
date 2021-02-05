@@ -16,24 +16,35 @@ import {
     GET_BEST_FAILURE,
     GET_OLDER_REQUEST,
     GET_OLDER_SUCCESS,
-    GET_OLDER_FAILURE
+    GET_OLDER_FAILURE,
+    GET_ALL_PRODUCTS,
+    POST_PRODUCT,
+    GET_PROMOTIONAL_PRODUCTS
   
 } from './actionTypes'
 
 const initialState = {
     isLoading : false,
     isError : false,
-    productData : [],
+    allData : [],
+    todaysData : [],
     soloData : {},
     relatedProductsData : [],
     bestDealsData : [],
     upcomingProductsData : [],
-    olderProductsData : []
+    olderProductsData : [],
+    promotionalProductsData : []
 }
 
 
-export const productsReducer = ( state = initialState , { type , data , relatedData }) => {
+export const productsReducer = ( state = initialState , { type , data, promotionalData , relatedData ,allData }) => {
     switch ( type ){
+        case GET_ALL_PRODUCTS : 
+        return {
+            ...state,
+            allProdcuts : allData
+        }
+
         case GET_PRODUCTS_REQUEST : 
         return {
             ...state ,
@@ -43,7 +54,7 @@ export const productsReducer = ( state = initialState , { type , data , relatedD
         return {
             ...state ,
             isLoading : false,
-            productData : data,
+            todaysData : data,
         }
         case GET_PRODUCTS_FAILURE : 
         return {
@@ -139,6 +150,16 @@ export const productsReducer = ( state = initialState , { type , data , relatedD
             ...state ,
             isLoading : false,
             isError : true
+        }
+
+        case POST_PRODUCT : 
+        return {
+            ...state
+        }
+
+        case GET_PROMOTIONAL_PRODUCTS : 
+        return {
+            promotionalProductsData : promotionalData
         }
     
         default : return state

@@ -28,4 +28,11 @@ export const GET_UPCOMING_REQUEST = "GET_UPCOMING_REQUEST"
 export const GET_UPCOMING_SUCCESS = "GET_UPCOMING_SUCCESS"
 export const GET_UPCOMING_FAILURE = "GET_UPCOMING_FAILURE"
  
- 
+//Total Products
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS" 
+
+//Post a Product
+export const POST_PRODUCT = "POST_PRODUCT"
+
+//Get promotional Products
+export const GET_PROMOTIONAL_PRODUCTS = "GET_PROMOTIONAL_PRODUCTS" 

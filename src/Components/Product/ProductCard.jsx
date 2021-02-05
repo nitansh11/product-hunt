@@ -20,6 +20,7 @@ function ProductCard(props) {
     comments,
     tagline,
     id,
+    productDiscussion
   } = props;
   const [trigger, setTrigger] = React.useState(false);
   const {
@@ -27,6 +28,7 @@ function ProductCard(props) {
     getBestDealsHandler,
     getOlderProductsHandler,
     getUpcomingProductsHandler,
+    currentFilter
   } = dataHandlers;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -92,11 +94,13 @@ function ProductCard(props) {
   };
 
   React.useEffect(() => {
-    getTodayProducts("popular");
+    getTodayProducts();
     getBestDealsHandler();
     getOlderProductsHandler();
-    getUpcomingProductsHandler();
-  }, [trigger]);
+    return ()=>{
+      //cleanup
+    }
+    }, [trigger]);
 
   return (
     <div className={styles.ProductCard}>
@@ -117,7 +121,7 @@ function ProductCard(props) {
         <div className={styles.ProductCard__content__footer}>
           <div>
             <i className="fas fa-comment"></i>
-            <span>{comments}</span>
+            <span>{productDiscussion.length}</span>
           </div>
           <div>
             <span>{category}</span>

@@ -32,9 +32,20 @@ const askReducer = (state = initState, action) => {
       };
     case actionTypes.UPDATE_RECOMMENDATION_FAILURE:
       return { ...state, isLoading: false, error: true };
- 
 
     // post comment
+    case actionTypes.POST_ASK_QUESTION_COMMENT_REQUEST:
+      return { ...state, isLoading: true, error: false };
+    case actionTypes.POST_ASK_QUESTION_COMMENT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+      };
+    case actionTypes.POST_ASK_QUESTION_COMMENT_FAILURE:
+      return { ...state, isLoading: false, error: true };
+
+    // post questions
     case actionTypes.POST_ASK_QUESTIONS_REQUEST:
       return { ...state, isLoading: true, error: false };
     case actionTypes.POST_ASK_QUESTIONS_SUCCESS:
@@ -45,6 +56,7 @@ const askReducer = (state = initState, action) => {
       };
     case actionTypes.POST_ASK_QUESTIONS_FAILURE:
       return { ...state, isLoading: false, error: true };
+
     default:
       return state;
   }

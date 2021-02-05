@@ -1,23 +1,25 @@
 import React from 'react'
 import styles from './Product.module.css'
 import { useSelector , useDispatch } from 'react-redux'
-import { getBestProducts, getOlderProducts, getProducts, getUpcomingProducts } from '../../Redux/products/actions'
+import { getBestProducts, getOlderProducts, getProducts, getPromotionalProducts, getUpcomingProducts } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
  
-
+ 
  
 function Product() {
-   const productData = useSelector ( state => state.productsReducer.productData)
+   const todaysData = useSelector ( state => state.productsReducer.todaysData)
    const upcomingProductsData = useSelector ( state => state.productsReducer.upcomingProductsData)
    const olderProductsData = useSelector ( state => state.productsReducer.olderProductsData)
    const bestDealsData = useSelector ( state => state.productsReducer.bestDealsData)
-   const [ showMore , setShowMore ] = React.useState(false)
+   const promotionalProductsData = useSelector ( state => state.productsReducer.promotionalProductsData)
+   const [ showMoreToday , setShowMoreToday ] = React.useState(false)
+   const [ showMoreOlder , setShowMoreOlder ] = React.useState(false)
    const [ showScroll, setShowScroll ] = React.useState(false)
-
-   
+   const [ currentFilter , setCurrentFilter ] = React.useState("latest")
    const dispatch = useDispatch()  
    
+ 
    //scroll to top
     const checkScrollTop = () => {
         if (!showScroll && window.pageYOffset > 400){
@@ -28,14 +30,13 @@ function Product() {
     };
     
     window.addEventListener('scroll', checkScrollTop)
-
     const scrollTop = () =>{
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
-    //getting all products
-    const getTodayProducts = (params) => {
-        if(params === "popular"){
+    //getting todays products
+    const getTodayProducts = (currentFilter) => {
+        if(currentFilter === "popular"){
             const action = getProducts({
                 "_sort" : "upvotes",
                "_order": "desc",
@@ -46,13 +47,17 @@ function Product() {
         else{
             const action = getProducts({
                 "_sort" : "id",
-               "_order": "asc",
+               "_order": "desc",
                "status":"TODAY"
             })
             dispatch(action)
         }
     }
 
+    
+ 
+
+    // get best deals
     
     const getBestDealsHandler = () =>{
         const action = getBestProducts({
@@ -83,45 +88,61 @@ function Product() {
     }
 
     React.useEffect(()=>{
-        getTodayProducts("popular")
+        getTodayProducts(currentFilter)
+        return ()=>{
+            //clean up
+        }
+    },[currentFilter])
+
+    React.useEffect(()=>{
         getBestDealsHandler()
         getOlderProductsHandler()
         getUpcomingProductsHandler()
+        return ()=>{
+            //clean up
+        }
     },[])
 
-    const dataHandlers =  { getTodayProducts , getBestDealsHandler , getOlderProductsHandler , getUpcomingProductsHandler }
+
+
+    const dataHandlers =  { currentFilter , getTodayProducts , getBestDealsHandler , getOlderProductsHandler }
 
     // show more products pagination toggle
-    const showMoreHandler = () => {
-        setShowMore(!showMore)
+    const showMoreTodayHandler = () => {
+        setShowMoreToday(!showMoreToday)
+    }
+    const showMoreOlderHandler = () => {
+        setShowMoreOlder(!showMoreOlder)
     }
     
- 
     
+
 
     return (
     <div className={styles.Product__Parent}>
         <div className={styles.Product}>
              <div className={styles.Product__main}>
                  <div className={styles.Product__main__head}>
+                     {/* {promotionalProductsData.length !== 0 &&
+                     <PromotionalCard   dataHandlers = {dataHandlers} {...promotionalProductsData[0]}></PromotionalCard>} */}
                     <div>
                         <h2>Today</h2>
                     </div>
                     <div>
-                        <span onClick={()=>getTodayProducts("popular")}>POPULAR</span> <b>|
-                        </b> <span onClick={()=>getTodayProducts("newest")}>NEWEST</span>
+                        {/* <span onClick={()=>setCurrentFilter("popular")}>POPULAR</span> <b>|
+                        </b> <span onClick={()=>setCurrentFilter("latest")}>NEWEST</span> */}
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                     {!showMore? productData?.filter((_,index) => index < 10)
+                     {!showMoreToday? todaysData?.filter((_,index) => index < 10)
                      .map( item => (
                           <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
-                     )) :  productData?.map( item => (
+                     )) :  todaysData?.map( item => (
                           <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      ))}
-                    <div  onClick={showMoreHandler} className={styles.Product__main__content__more}>
+                    <div  onClick={showMoreTodayHandler} className={styles.Product__main__content__more}>
                          <i className="fas fa-chevron-down"></i> 
-                         <button > {showMore ? "Show Less" : `Show ${productData.length-10} More`}</button>
+                         <button > {showMoreToday ? "Show Less" : `Show ${todaysData.length-10} More`}</button>
                      </div>
                  </div>
                  <br></br>
@@ -132,10 +153,8 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                    {!showMore? bestDealsData.map( item => (
+                    {bestDealsData.map( item => (
                           <ProductCard key={item.id}  dataHandlers = {dataHandlers} {...item}></ProductCard>
-                     )) :  productData?.map( item => (
-                          <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      ))}
                  </div>
                  <br></br>
@@ -146,15 +165,15 @@ function Product() {
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
-                    {!showMore? olderProductsData?.filter((_,index) => index < 10)
+                    {!showMoreOlder? olderProductsData?.filter((_,index) => index < 10)
                      .map( item => (
                           <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
-                     )) :  productData?.map( item => (
+                     )) :  olderProductsData?.map( item => (
                           <ProductCard dataHandlers = {dataHandlers}  key={item.id} {...item}></ProductCard>
                      ))}
-                    <div  onClick={showMoreHandler} className={styles.Product__main__content__more}>
+                    <div  onClick={showMoreOlderHandler} className={styles.Product__main__content__more}>
                         <i className="fas fa-chevron-down"></i> 
-                        <button > {showMore ? "Show Less" : `Show ${olderProductsData.length-10} More`}</button>
+                        <button > {showMoreOlder ? "Show Less" : `Show ${olderProductsData.length-10} More`}</button>
                      </div>
                  </div>
              </div>
@@ -169,14 +188,11 @@ function Product() {
                             <SideCard key={item.id} {...item}></SideCard>
                         ))}
                     </div>
-                    <div className={styles.Product__side__highlight__button}>
-                        <button>View All</button>
-                    </div>
                 </div>
                 <div className={styles.Product__side__highlight}>
                     <h2>Hiring Now</h2>
                     <div className={styles.Product__side__highlight__cards}>
-                        {productData?.filter((item,index) => index < 3).map( item => (
+                        {todaysData?.filter((item,index) => index < 3).map( item => (
                             <SideCard key={item.id} {...item}></SideCard>
                         ))}
                     </div>
@@ -187,7 +203,7 @@ function Product() {
                 <div className={styles.Product__side__highlight}>
                     <h2>Top Discussions</h2>
                     <div className={styles.Product__side__highlight__cards}>
-                        {productData?.filter((item,index) => index < 4).map( item => (
+                        {todaysData?.filter((_,index) => index < 4).map( item => (
                             <SideCard key={item.id} {...item}></SideCard>
                         ))}
                     </div>

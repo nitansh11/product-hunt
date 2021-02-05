@@ -48,7 +48,10 @@
 }
 
 
-
+.ProductModal__main__head__info img{
+    width: 100px;
+    height: 100px;
+}
 /* 
 .ProductModal__main__head__info > div:nth-child(1){
     width: 25%;
