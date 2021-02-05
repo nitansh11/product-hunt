@@ -3,9 +3,8 @@ import Modal from 'react-modal'
 import styles from './discussions.module.css'
 import axios from "axios"
 import { Button, Input } from 'antd';
-import { PatchComment } from './PatchComment'
 import { useDispatch , useSelector } from 'react-redux'
-import { patchComment } from '../../Redux/discussions/actions';
+// import { patchComment } from '../../Redux/discussions/actions';
 import CommentsSection from './Comments';
 
 
@@ -21,7 +20,7 @@ const Discussions = () => {
     const [newBody,setNewBody] = React.useState('')
     const comments = useSelector(state=>state.discussionsReducer.comments)
     const currentUser = useSelector(state=>state.authReducer.currentUser)
-    //console.log(currentUser)
+    console.log(currentUser)
 
 
     const handlePopup=(id)=>{
@@ -32,12 +31,12 @@ const Discussions = () => {
     }
 
     const newCommentHandler = () =>{
-        comments = [...comments ,  {
-            comment_id : 5,
-            author:"janak",
-            comment : newComment
-        } ]
-        dispatch(patchComment(comments))
+        // comments = [...comments ,  {
+        //     comment_id : 5,
+        //     author:"janak",
+        //     comment : newComment
+        // } ]
+        // dispatch(patchComment([...comments]))
     }     
 
     const handlePostPopup=()=>{
@@ -45,6 +44,9 @@ const Discussions = () => {
     }
 
     const handlePostData=()=>{
+        if(currentUser===null){
+            alert("LOGIN TO START A DISCUSSION")
+        }else{
         axios.post("https://janak-routing-project.herokuapp.com/discussions",{
             title:newTitle,
             body:newBody,
@@ -59,6 +61,10 @@ const Discussions = () => {
                 setList(res.data)
             })
         })
+        .catch((err)=>{
+            console.log(err)
+        })
+        }
     }
 
     React.useEffect(()=>{
@@ -69,11 +75,15 @@ const Discussions = () => {
     },[])
 
     const getPopular=()=>{
-
+        let newList = list.sort((a,b) => (a.upvotes > b.upvotes) ? -1 : 
+        ((b.upvotes > a.upvotes) ? 1 : 0))
+        setList([...newList])
     }
 
     const getNew=()=>{
-
+        let newList = list.sort((a,b) => (a.id > b.id) ? -1 : 
+        ((b.id > a.id) ? 1 : 0))
+        setList([...newList])
     }
 
     return (
@@ -81,8 +91,8 @@ const Discussions = () => {
             <div className={styles.discussionsPage}>
                 <div className={styles.discussionsPage_buttonsDIv}>
                     <div className={styles.discussionsPage_buttonsDIv_1}>
-                        <button onCLick={()=>getPopular("popular")}>POPULAR</button>
-                        <button onClick={()=>getNew("new")}>NEW</button>
+                        <button onClick={getPopular}>POPULAR</button>
+                        <button onClick={getNew}>NEW</button>
                     </div>
                 </div>
                 <div className={styles.discussionsParent}>
@@ -99,18 +109,29 @@ const Discussions = () => {
                                     <h5>by {item.author} - {item.comments.length} comments</h5>
                                 </div>
                                 <div>
-                                    <Modal isOpen={modalOpen} 
+                                    <Modal isOpen={modalOpen} onRequestClose={()=>setModalOpen(false)}
                                         style={{overlay:{WebkitTapHighlightColor:"transparent",backgroundColor:"hsla(456, 3%, 50%, 0.15)"},
                                         content:{width:"70%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
                                         <button onClick={()=>setModalOpen(false)} className={styles.popupCloseButton}><i class="fas fa-times"></i></button>
                                         <p style={{color:"gray",fontWeight:"100"}}>Discussions - {popupData.title}</p>
-                                        <div className={styles.popupTitleDiv}>                            
-                                            <h1>{popupData.title}</h1>
-                                            <h4>{popupData.body}</h4>
-                                            <p>posted by {popupData.author}</p>
-                                            <div className={styles.popupUpvotes}>
-                                                <i className="fas fa-caret-up"></i>
-                                                <p>{popupData.upvotes}</p>
+                                        <div className={styles.popupTitleAndUserDivs}>
+                                            <div className={styles.popupTitleDiv}>                            
+                                                <h1>{popupData.title}</h1>
+                                                <h4>{popupData.body}</h4>
+                                                <p>posted by {popupData.author}</p>
+                                                <div className={styles.popupUpvotes}>
+                                                    <i className="fas fa-caret-up"></i>
+                                                    <p>{popupData.upvotes}</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.popupUserDetais}>
+                                                {currentUser!=null?
+                                                (<div className={styles.popupUser}>
+                                                    <img src={currentUser.imageUrl} alt=''/>
+                                                    <h2>{currentUser.name}</h2>
+                                                    <h5>{currentUser.email}</h5>
+                                                </div>)
+                                                :(<h1 className={styles.popupUserWarning}>login to view details</h1>)}
                                             </div>
                                         </div>
                                         <div>
@@ -118,15 +139,17 @@ const Discussions = () => {
                                             <div className={styles.commentsDiv}>
                                                 {commentsData && popupData.comments?.map((item)=>(
                                                     <div className={styles.indivComment}>
-                                                        <h4>{item.author}</h4>
+                                                        <div style={{display:"flex"}}>
+                                                            <p>{item.author[0]}</p>
+                                                            <h4>{item.author}</h4>
+                                                        </div>
                                                         <p>{item.comment}</p>
                                                     </div>
                                                 ))}
                                             </div>
                                             <div>
-                                                {/* <PatchComment id={item.id}/> */}
                                                 <div style={{display:"flex"}}>   
-                                                    <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" allowClear ></Input>
+                                                    <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" style={{width:"56%"}} allowClear ></Input>
                                                     <Button onClick={newCommentHandler}>Comment</Button>
                                                 </div>
                                                 <div>
@@ -148,7 +171,10 @@ const Discussions = () => {
                                 <button onClick={()=>setModalPost(false)}>close</button>
                                 <div>
                                     <input type='text' placeholder='title' value={newTitle} onChange={(e)=>setNewTitle(e.target.value)}/>
-                                    <input type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}/>
+                                    <br/>
+                                    {/* <input type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}/> */}
+                                    <textarea type='text' placeholder='body' value={newBody} onChange={(e)=>setNewBody(e.target.value)}></textarea>
+                                    <br/>
                                     <button onClick={handlePostData}>post</button>
                                 </div>
                             </Modal>
