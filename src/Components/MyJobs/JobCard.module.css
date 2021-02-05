@@ -8,6 +8,12 @@
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
+.JobCard img{
+   
+    max-width: 80px;
+    max-height: 80px;
+   
+}
 .JobCard button {
   border: 1px solid rgba(202, 198, 198, 0.384);
   background-color: white;
