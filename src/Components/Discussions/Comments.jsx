@@ -3,12 +3,11 @@ import { Comment , Avatar } from 'antd'
 import 'antd/dist/antd.css'
 
 function CommentsSection(props) {
-    const { comment_id , userImage , userName , userComment } = props 
+    const { comment_id , author , comment } = props 
 
     
     const actions = [
-      // <CaretUpFilled />,
-      // <CaretUpOutlined/>    
+    
     ];
   
     return (
@@ -16,34 +15,40 @@ function CommentsSection(props) {
         key={comment_id}
         //className={styles.CommentsSection}
         actions={actions}
-        author={userName}
-        children={<Comment
-            //className={styles.CommentsSection}
-            actions={actions}
-            author={"Han Solo"}
-            avatar={
-                <Avatar
-                  src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                  alt="Han Solo"
-                />
-              }
-            content={
-                <p>
-                  {userComment}
-                </p>
-              }
-            />
-            }
+        author={author}
         avatar={
           <Avatar
-            src={userImage}
-            alt="Han Solo"
-          />
+          src="https://i.pravatar.cc/300"
+          alt="Author"
+        />
         }
+        // children={<Comment
+        //     //className={styles.CommentsSection}
+        //     actions={actions}
+        //     author={"Han Solo"}
+        //     avatar={
+        //         <Avatar
+        //           src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        //           alt="Han Solo"
+        //         />
+        //       }
+        //     content={
+        //         <p>
+        //           {comment}
+        //         </p>
+        //       }
+        //     />
+        //     }
+        // avatar={
+        //   <Avatar
+        //     src={userImage}
+        //     alt="Han Solo"
+        //   />
+        // }
         
         content={
           <p>
-           {userComment}
+           {comment}
           </p>
         }
       />

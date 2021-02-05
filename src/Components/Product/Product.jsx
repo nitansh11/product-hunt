@@ -90,7 +90,7 @@ function Product() {
     React.useEffect(()=>{
         getTodayProducts(currentFilter)
         return ()=>{
-            //clean up
+           
         }
     },[currentFilter])
 

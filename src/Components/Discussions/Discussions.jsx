@@ -6,7 +6,8 @@ import { Button, Input } from 'antd';
 import { useDispatch , useSelector } from 'react-redux'
 // import { patchComment } from '../../Redux/discussions/actions';
 import CommentsSection from './Comments';
-
+import { v4 as uuid } from 'uuid'
+import { patchComment } from '../../Redux/discussions/actions';
 
 const Discussions = () => {
     const [modalOpen,setModalOpen] = React.useState(false)
@@ -18,10 +19,10 @@ const Discussions = () => {
     const dispatch = useDispatch()
     const [newTitle,setNewTitle] = React.useState('')
     const [newBody,setNewBody] = React.useState('')
-    const comments = useSelector(state=>state.discussionsReducer.comments)
+    let comments = useSelector(state=>state.discussionsReducer.comments)
     const currentUser = useSelector(state=>state.authReducer.currentUser)
     //console.log(currentUser)
-
+    const [ trigger , setTrigger ] = React.useState(false)
 
     const handlePopup=(id)=>{
         setModalOpen(true)
@@ -30,13 +31,14 @@ const Discussions = () => {
         setCommentsdata(true)
     }
 
-    const newCommentHandler = () =>{
-        // comments = [...comments ,  {
-        //     comment_id : 5,
-        //     author:"janak",
-        //     comment : newComment
-        // } ]
-        // dispatch(patchComment([...comments]))
+    const newCommentHandler = (id,commentsData) =>{
+         commentsData = [...commentsData ,  {
+            comment_id : uuid() ,
+            author:"janak",
+            comment : newComment
+        } ]
+        dispatch(patchComment(commentsData , id))
+        // .then(res => setTrigger(!trigger))
     }     
 
     const handlePostPopup=()=>{
@@ -113,7 +115,7 @@ const Discussions = () => {
                                     <Modal isOpen={modalOpen} onRequestClose={()=>setModalOpen(false)}
                                         style={{overlay:{WebkitTapHighlightColor:"transparent",backgroundColor:"hsla(456, 3%, 50%, 0.15)"},
                                         content:{width:"70%",margin:"auto",backgroundColor:"rgb(249,249,249)"}}}>
-                                        <button onClick={()=>setModalOpen(false)} className={styles.popupCloseButton}><i class="fas fa-times"></i></button>
+                                        <button onClick={()=>setModalOpen(false)} className={styles.popupCloseButton}><i className="fas fa-times"></i></button>
                                         <p style={{color:"gray",fontWeight:"100"}}>Discussions - {popupData.title}</p>
                                         <div className={styles.popupTitleAndUserDivs}>
                                             <div className={styles.popupTitleDiv}>                            
@@ -139,24 +141,15 @@ const Discussions = () => {
                                             <p style={{marginTop:'15px',fontSize:'14px'}}>COMMENTS</p>
                                             <div className={styles.commentsDiv}>
                                                 {commentsData && popupData.comments?.map((item)=>(
-                                                    <div className={styles.indivComment}>
-                                                        <div style={{display:"flex"}}>
-                                                            <p>{item.author[0]}</p>
-                                                            <h4>{item.author}</h4>
-                                                        </div>
-                                                        <p>{item.comment}</p>
+                                                    <div key={item.Comment_id} className={styles.indivComment}>
+                                                          <CommentsSection  {...item}/>
                                                     </div>
                                                 ))}
                                             </div>
                                             <div>
                                                 <div style={{display:"flex"}}>   
                                                     <Input value={newComment} onChange={(e)=>setNewComment(e.target.value)} bordered="false" style={{width:"56%"}} allowClear ></Input>
-                                                    <Button onClick={newCommentHandler}>Comment</Button>
-                                                </div>
-                                                <div>
-                                                    {comments?.map(item=>(
-                                                        <CommentsSection {...item}/>
-                                                    ))}
+                                                    <Button onClick={()=>newCommentHandler(item.id,popupData.comments)}>Comment</Button>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,13 +184,13 @@ const Discussions = () => {
                         <div className={styles.discussionsRightBar_2}>
                             <form>
                                 <input type="checkbox" name="amas"/>
-                                <label for="amas">AMAs</label>
+                                <label htmlFor="amas">AMAs</label>
                                 <br/>
                                 <input type="checkbox" name="amas"/>
-                                <label for="amas">Request for Feedback</label>
+                                <label htmlFor="amas">Request for Feedback</label>
                                 <br/>
                                 <input type="checkbox" name="amas"/>
-                                <label for="amas">Help</label>
+                                <label htmlFor="amas">Help</label>
                             </form>
                         </div>
                         <div className={styles.discussionsRightBar_3}>
