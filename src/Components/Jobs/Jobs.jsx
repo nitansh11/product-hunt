@@ -12,7 +12,7 @@ import {
   getmarketing,
 } from "../../Redux/jobs/action";
 const Jobs = () => {
-  const { jobs } = useSelector((state) => state.jobsreducer);
+  const  jobs  = useSelector((state) => state.jobsreducer);
   const isLoading = useSelector((state) => state.jobsreducer);
   const isError = useSelector((state) => state.jobsreducer);
   const [rem, setRem] = React.useState(false);

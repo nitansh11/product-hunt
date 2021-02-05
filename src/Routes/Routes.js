@@ -7,6 +7,7 @@ import Ask from "../Components/Ask/Ask";
 import { Discussions } from "../Components/Discussions/Discussions";
 import AskPage from "../Components/Ask/AskPage";
 import ProductModal from "../Components/Product/ProductModal";
+ //import { Jobs } from "../Components/Jobs/Jobs";
 import {Jobs} from "../Components/Jobs/Jobs"
 import PostProduct from "../Components/Product/PostProduct";
 import Error from "../Components/404/404Error";
@@ -16,6 +17,7 @@ import Error from "../Components/404/404Error";
 import MyJobs from "../Components/MyJobs/MyJobs";
 import {Singlementor} from "../Components/Mentors/singlementor";
 import {CalendarPage} from "../Components/Mentors/calendar"
+import {Mentorsdetails} from "../Components/Mentors/Mentorsdetails";
 const Routes = () => {
   return (
     <>
@@ -38,8 +40,8 @@ const Routes = () => {
         </Route>
 
         <Route path="/jobs" exact>
-          {/* <Jobs/> */}
-          <MyJobs />
+           {/* <Jobs/>  */}
+           <MyJobs /> 
         </Route>
 
         <Route path="/discussions" exact>
@@ -63,6 +65,9 @@ const Routes = () => {
         </Route>
         <Route exact path="/mentors" >
           <Mentors />
+        </Route>
+        <Route exact path="/mentors/mentorsdetails">
+          <Mentorsdetails/>
         </Route>
         <Route exact path="/mentors/:appId">
           <Singlementor/>
