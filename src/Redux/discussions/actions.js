@@ -1,4 +1,4 @@
-import { PATCH_COMMENT_FAILURE, PATCH_COMMENT_REQUEST, PATCH_COMMENT_SUCCESS } from "./actionTypes"
+import { GET_ALL_DISCUSSIONS ,PATCH_COMMENT_FAILURE, PATCH_COMMENT_REQUEST, PATCH_COMMENT_SUCCESS } from "./actionTypes"
 import axios from 'axios'
 
 const patchCommentRequest=()=>{
@@ -53,3 +53,17 @@ const postNewDiscussion=(payload)=>dispatch=>{
 }
 
 export { postNewDiscussion}
+
+
+
+const getAllDiscussionHandle = (discussion) => {
+    return {
+        type : GET_ALL_DISCUSSIONS,
+        data : discussion
+    }
+}
+
+export const getAllDiscussion = () => dispatch => {
+    return axios.get("https://janak-routing-project.herokuapp.com/discussions")
+    .then(res => dispatch(getAllDiscussionHandle(res.data)))
+}

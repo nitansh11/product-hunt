@@ -9,7 +9,7 @@ import CommentsSection from './Comments';
 import { v4 as uuid } from 'uuid'
 import { patchComment } from '../../Redux/discussions/actions';
 
-const Discussions = () => {
+const DiscussionsTest = () => {
     const [modalOpen,setModalOpen] = React.useState(false)
     const [modalPost,setModalPost] = React.useState(false)
     const [popupData,setPopupData] = React.useState('')
@@ -226,4 +226,4 @@ const Discussions = () => {
     )
 }
 
-export {Discussions}
+export {DiscussionsTest}

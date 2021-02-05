@@ -36,3 +36,5 @@ export const POST_PRODUCT = "POST_PRODUCT"
 
 //Get promotional Products
 export const GET_PROMOTIONAL_PRODUCTS = "GET_PROMOTIONAL_PRODUCTS" 
+
+

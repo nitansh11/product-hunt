@@ -26,6 +26,7 @@ function ProductCard(props) {
     getTodayProducts,
     getBestDealsHandler,
     getOlderProductsHandler,
+    currentFilter,
   } = dataHandlers;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -39,11 +40,7 @@ function ProductCard(props) {
     history.push(`/product/${id}`);
   };
 
-  // React.useEffect(() => {
-  //   if (isLoggedIn) {
-  //     dispatch(findCurrentUserUpvotes(currentUser.email));
-  //   }
-  // }, [currentUser]);
+   
 
   const productUpvoteHandler = () => {
     if (!isLoggedIn) {
@@ -75,7 +72,7 @@ function ProductCard(props) {
               dispatch(
                 upVoteCounter({ upvotes: upvotes + 1 }, id)
               ).then((res) =>  {
-                 getTodayProducts();
+                 getTodayProducts(currentFilter);
                  getBestDealsHandler();
                 getOlderProductsHandler();
               } )
@@ -88,7 +85,7 @@ function ProductCard(props) {
               dispatch(
                 upVoteCounter({ upvotes: upvotes - 1 }, id)
               ).then((res) => {
-                getTodayProducts();
+                getTodayProducts(currentFilter);
                 getBestDealsHandler();
                getOlderProductsHandler();
               } )

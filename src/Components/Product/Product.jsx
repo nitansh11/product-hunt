@@ -4,6 +4,11 @@ import { useSelector , useDispatch } from 'react-redux'
 import { getBestProducts, getOlderProducts, getProducts, getPromotionalProducts, getUpcomingProducts } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
+import { getJobs } from '../../Redux/myjobs/actions'
+import SideCardJobs from './SideCardJobs'
+import { Link } from 'react-router-dom'
+import { getAllDiscussion } from '../../Redux/discussions/actions'
+import SideCardDiscussions from './SideCardDiscussions'
  
  
  
@@ -12,13 +17,15 @@ function Product() {
    const upcomingProductsData = useSelector ( state => state.productsReducer.upcomingProductsData)
    const olderProductsData = useSelector ( state => state.productsReducer.olderProductsData)
    const bestDealsData = useSelector ( state => state.productsReducer.bestDealsData)
-   const promotionalProductsData = useSelector ( state => state.productsReducer.promotionalProductsData)
+   const myJobs = useSelector ( state => state.myJobsReducer.myJobs)
+   const allDiscussion = useSelector( state => state.discussionsReducer.allDiscussion)
    const [ showMoreToday , setShowMoreToday ] = React.useState(false)
    const [ showMoreOlder , setShowMoreOlder ] = React.useState(false)
    const [ showScroll, setShowScroll ] = React.useState(false)
    const [ currentFilter , setCurrentFilter ] = React.useState("latest")
+
    const dispatch = useDispatch()  
- 
+    
    //scroll to top
     const checkScrollTop = () => {
         if (!showScroll && window.pageYOffset > 400){
@@ -54,8 +61,6 @@ function Product() {
     }
 
     
- 
-
     // get best deals
     
     const getBestDealsHandler = () =>{
@@ -85,7 +90,7 @@ function Product() {
         })
         dispatch(action)
     }
-
+     
     React.useEffect(()=>{
         getTodayProducts(currentFilter)
         return ()=>{
@@ -97,6 +102,8 @@ function Product() {
         getBestDealsHandler()
         getOlderProductsHandler()
         getUpcomingProductsHandler()
+        dispatch(getJobs())
+        dispatch(getAllDiscussion())
         return ()=>{
             //clean up
         }
@@ -122,14 +129,12 @@ function Product() {
         <div className={styles.Product}>
              <div className={styles.Product__main}>
                  <div className={styles.Product__main__head}>
-                     {/* {promotionalProductsData.length !== 0 &&
-                     <PromotionalCard   dataHandlers = {dataHandlers} {...promotionalProductsData[0]}></PromotionalCard>} */}
                     <div>
                         <h2>Today</h2>
                     </div>
                     <div>
-                        {/* <span onClick={()=>setCurrentFilter("popular")}>POPULAR</span> <b>|
-                        </b> <span onClick={()=>setCurrentFilter("latest")}>NEWEST</span> */}
+                        <span onClick={()=>setCurrentFilter("popular")}>POPULAR</span> <b>|
+                        </b> <span onClick={()=>setCurrentFilter("latest")}>NEWEST</span>
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>
@@ -141,7 +146,7 @@ function Product() {
                      ))}
                     <div  onClick={showMoreTodayHandler} className={styles.Product__main__content__more}>
                          <i className="fas fa-chevron-down"></i> 
-                         {/* <button > {showMoreToday ? "Show Less" : `Show ${todaysData.length-10} More`}</button> */}
+                         <button > {showMoreToday ? "Show Less" : `Show ${todaysData?.length-10} More`}</button>
                      </div>
                  </div>
                  <br></br>
@@ -191,23 +196,27 @@ function Product() {
                 <div className={styles.Product__side__highlight}>
                     <h2>Hiring Now</h2>
                     <div className={styles.Product__side__highlight__cards}>
-                        {todaysData?.filter((item,index) => index < 3).map( item => (
-                            <SideCard key={item.id} {...item}></SideCard>
+                        {myJobs?.filter((_,index) => index < 5).map( item => (
+                            <SideCardJobs key={item.id} {...item}></SideCardJobs>
                         ))}
                     </div>
                     <div className={styles.Product__side__highlight__button}>
-                        <button>View All Jobs</button>
+                       <Link to="/jobs">
+                            <button>View All Jobs</button>
+                        </Link> 
                     </div>
                 </div>
                 <div className={styles.Product__side__highlight}>
                     <h2>Top Discussions</h2>
                     <div className={styles.Product__side__highlight__cards}>
-                        {todaysData?.filter((_,index) => index < 4).map( item => (
-                            <SideCard key={item.id} {...item}></SideCard>
+                        {allDiscussion?.filter((_,index) => index < 4).map( item => (
+                            <SideCardDiscussions key={item.id} {...item}></SideCardDiscussions>
                         ))}
                     </div>
                     <div className={styles.Product__side__highlight__button}>
-                        <button>View More Discussions</button>
+                        <Link to="/discussions">
+                            <button>View More Discussions</button>
+                        </Link> 
                     </div>
                 </div>
                 <div className={styles.FooterMini}>
