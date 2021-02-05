@@ -1,0 +1,94 @@
+.JobPostModal__modal {
+  padding: 10px;
+  background-color: white;
+  width: 70%;
+  height: 700px;
+  margin: 5px auto;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 206, 206, 0.466);
+}
+.JobPostModal_heading {
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 5px;
+}
+.JobPostModal_heading h1 {
+  color: #da552f;
+  font-weight: bold;
+}
+.JobPostModal___ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ece8e89f;
+}
+.JobPostModal__form {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+}
+
+.JobPostModal__form input {
+  border: none;
+  border: 1px solid rgba(212, 206, 206, 0.582);
+  border-radius: 2px;
+
+  padding: 5px;
+  outline: none;
+}
+
+.JobPostModal__form input:focus {
+  border: 1px solid #da552f;
+}
+.JobPostModal__form button {
+  background-color: #da552f;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin: 10px auto;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.JobPostModal__form > div {
+  margin: 10px;
+}
+.JobPostModal__form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.JobPostModal__formCategory > div > div {
+  display: inline-block;
+  border: 1px solid rgba(224, 217, 217, 0.527);
+  border-radius: 5px;
+  margin-right: 20px;
+  padding: 5px;
+}
+.JobPostModal__formCategory div label {
+  display: inline-block;
+  margin-left: 10px;
+  color: #da552f;
+  padding: 5px;
+}
+.JobPostModal__formButton {
+  text-align: center;
+}
+
+.JobPostModal__formLocation select {
+  width: 400px;
+  padding: 5px;
+  outline: none;
+}
+.JobPostModal__formTitle input,
+.JobPostModal__formRole input,
+.JobPostModal__formLogo input,
+.JobPostModal__formDescription input {
+  width: 90%;
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
 
+// get jobs
 const getJobsRequest = () => {
   return {
     type: actionTypes.GET_MYJOBS_REQUEST,
@@ -34,6 +35,8 @@ const getJobs = () => {
   };
 };
 
+// Update filtered jobs
+
 const updateFilteredJobs = (updatedFilteredJobs) => {
   return {
     type: actionTypes.UPDATE_FILTERED_JOBS,
@@ -41,4 +44,41 @@ const updateFilteredJobs = (updatedFilteredJobs) => {
   };
 };
 
-export { getJobs, updateFilteredJobs };
+// Post jobs
+
+const postJobsRequest = () => {
+  return {
+    type: actionTypes.POST_MYJOBS_REQUEST,
+  };
+};
+
+const postJobsSuccess = () => {
+  return {
+    type: actionTypes.POST_MYJOBS_SUCCESS,
+  };
+};
+
+const postJobsFailure = () => {
+  return {
+    type: actionTypes.POST_MYJOBS_FAILURE,
+  };
+};
+
+const postJobs = (job) => {
+  return async (dispatch) => {
+    dispatch(postJobsRequest());
+    try {
+      const res = await axios.post(
+        "https://json-server-nitansh-1.herokuapp.com/myjobs",
+        job
+      );
+      dispatch(getJobs());
+      dispatch(postJobsSuccess());
+      alert("job posted!")
+    } catch (err) {
+      dispatch(postJobsFailure());
+    }
+  };
+};
+
+export { getJobs, updateFilteredJobs, postJobs };

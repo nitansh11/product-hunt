@@ -49,6 +49,42 @@ const getAskQuestions = () => {
   };
 };
 
+// post all asked questions
+const postAskQuestionsRequest = () => {
+  return {
+    type: actionTypes.POST_ASK_QUESTIONS_REQUEST,
+  };
+};
+
+const postAskQuestionsSuccess = () => {
+  return {
+    type: actionTypes.POST_ASK_QUESTIONS_SUCCESS,
+  };
+};
+
+const postAskQuestionsFailure = () => {
+  return {
+    type: actionTypes.POST_ASK_QUESTIONS_FAILURE,
+  };
+};
+
+const postAskQuestions = (askQuestion) => {
+  return async (dispatch) => {
+    dispatch(postAskQuestionsRequest());
+    try {
+      const resQues = await axios.post(
+        "https://json-server-nitansh-1.herokuapp.com/askedQuestions",
+        askQuestion
+      );
+      dispatch(getAskQuestions());
+      dispatch(postAskQuestionsSuccess());
+    } catch (err) {
+      console.log("inside post ask questions error", err);
+      dispatch(postAskQuestionsFailure());
+    }
+  };
+};
+
 // update recommendation array of a particular product
 
 const updateRecommendationRequest = () => {
@@ -91,24 +127,24 @@ const updateRecommendation = (id, updatedRecommendations) => {
 
 const postCommentRequest = () => {
   return {
-    type: actionTypes.POST_ASK_QUESTIONS_REQUEST,
+    type: actionTypes.POST_ASK_QUESTION_COMMENT_REQUEST,
   };
 };
 
 const postCommentSuccess = (askQuestions) => {
   return {
-    type: actionTypes.POST_ASK_QUESTIONS_SUCCESS,
+    type: actionTypes.POST_ASK_QUESTION_COMMENT_SUCCESS,
   };
 };
 const postCommentFailure = () => {
   return {
-    type: actionTypes.POST_ASK_QUESTIONS_FAILURE,
+    type: actionTypes.POST_ASK_QUESTION_COMMENT_FAILURE
   };
 };
 
 const postComment = (id, comments) => {
-  console.log("Question to update:"+id);
-  console.log("updated comments:"+comments)
+  console.log("Question to update:" + id);
+  console.log("updated comments:" + comments);
   return async (dispatch) => {
     dispatch(postCommentRequest());
     try {
@@ -124,4 +160,4 @@ const postComment = (id, comments) => {
     }
   };
 };
-export { getAskQuestions, updateRecommendation, postComment };
+export { getAskQuestions, updateRecommendation, postComment, postAskQuestions };
