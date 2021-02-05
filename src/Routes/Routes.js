@@ -7,28 +7,26 @@ import Ask from "../Components/Ask/Ask";
 import { Discussions } from "../Components/Discussions/Discussions";
 import AskPage from "../Components/Ask/AskPage";
 import ProductModal from "../Components/Product/ProductModal";
- //import { Jobs } from "../Components/Jobs/Jobs";
-import {Jobs} from "../Components/Jobs/Jobs"
+//import { Jobs } from "../Components/Jobs/Jobs";
+import { Jobs } from "../Components/Jobs/Jobs";
 import PostProduct from "../Components/Product/PostProduct";
 import Error from "../Components/404/404Error";
 
-
 // import { Jobs } from "../Components/Jobs/Jobs";
 import MyJobs from "../Components/MyJobs/MyJobs";
-import {Singlementor} from "../Components/Mentors/singlementor";
-import {CalendarPage} from "../Components/Mentors/calendar"
-import {Mentorsdetails} from "../Components/Mentors/Mentorsdetails";
+import { Singlementor } from "../Components/Mentors/singlementor";
+import { CalendarPage } from "../Components/Mentors/calendar";
+import { Mentorsdetails } from "../Components/Mentors/Mentorsdetails";
 const Routes = () => {
   return (
     <>
       <Switch>
-
         <Route path="/" exact>
           <Product></Product>
         </Route>
 
         <Route path="/product/post">
-            <PostProduct></PostProduct>
+          <PostProduct></PostProduct>
         </Route>
 
         <Route path="/product/:id">
@@ -40,8 +38,8 @@ const Routes = () => {
         </Route>
 
         <Route path="/jobs" exact>
-           {/* <Jobs/>  */}
-           <MyJobs /> 
+          {/* <Jobs/>  */}
+          <MyJobs />
         </Route>
 
         <Route path="/discussions" exact>
@@ -60,18 +58,20 @@ const Routes = () => {
           <Mentors />
         </Route>
 
-        
-        <Route exact path="/mentors" >
+        <Route exact path="/mentors">
           <Mentors />
         </Route>
         <Route exact path="/mentors/mentorsdetails">
-          <Mentorsdetails/>
+          <Mentorsdetails />
         </Route>
         <Route exact path="/mentors/:appId">
-          <Singlementor/>
+          <Singlementor />
         </Route>
         <Route exact path="/mentors/:appId/calendar">
-          <CalendarPage/>
+          <CalendarPage />
+        </Route>
+        <Route>
+          <Error></Error>
         </Route>
         <Route>Page Not Found</Route>
         <Route>

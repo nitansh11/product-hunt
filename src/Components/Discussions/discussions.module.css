@@ -326,3 +326,50 @@
     text-align: center;
     font-size: 25px;
 }
+
+.postPopUp > p{
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(56, 55, 55);
+    margin: 0px;
+}
+
+.postPopUp > input{
+    width: 85%;
+    outline: none;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.postPopUp > textarea{
+    width: 85%;
+    padding: 5px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.postPopUp > button{
+    background-color: white;
+    border: 0px;
+    outline: none;
+    color: white;
+    background-color: rgb(185, 68, 36);
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.postPopupCLoseBtn{
+    background-color: rgb(249,249,249);
+    border: 0px;
+    outline: none;
+    color: gray;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
