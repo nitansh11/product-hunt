@@ -86,12 +86,12 @@ function Product() {
         dispatch(action)
     }
 
-    // React.useEffect(()=>{
-    //     getTodayProducts(currentFilter)
-    //     return ()=>{
-    //         //clean up
-    //     }
-    // },[currentFilter])
+    React.useEffect(()=>{
+        getTodayProducts(currentFilter)
+        return ()=>{
+           
+        }
+    },[currentFilter])
 
     React.useEffect(()=>{
         getBestDealsHandler()

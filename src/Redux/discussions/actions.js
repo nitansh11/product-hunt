@@ -23,20 +23,23 @@ const patchCommentFailure=(error)=>{
     }
 }
 
-const patchComment=(comments,id)=>(dispatch)=>{
-    dispatch(patchCommentRequest());
-    return axios
-    .patch(`https://janak-routing-project.herokuapp.com/discussions/${id}`,{
-        comments,
-        author:"janak"
-    })
-    .then((res)=>{
-        dispatch(patchCommentSuccess(res.data))
-    })
-    .catch((err)=>{
-        dispatch(patchCommentFailure(err))
-    })
+export const patchComment=(comments,id)=>(dispatch)=>{
+    console.log(comments , id)
+    // dispatch(patchCommentRequest());
+    // return axios
+    // .patch(`https://janak-routing-project.herokuapp.com/discussions/${id}`,{
+    //     comments,
+    //     author:"janak"
+    // })
+    // .then((res)=>{
+    //     dispatch(patchCommentSuccess(res.data))
+    // })
+    // .catch((err)=>{
+    //     dispatch(patchCommentFailure(err))
+    // })
 }
+
+
 
 const postNewDiscussion=(payload)=>dispatch=>{
     return axios.post("https://janak-routing-project.herokuapp.com/discussions",{
@@ -49,4 +52,4 @@ const postNewDiscussion=(payload)=>dispatch=>{
     })
 }
 
-export {patchComment,postNewDiscussion}
+export { postNewDiscussion}

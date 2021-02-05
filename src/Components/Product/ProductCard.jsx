@@ -17,7 +17,6 @@ function ProductCard(props) {
     name,
     category,
     upvotes,
-    comments,
     tagline,
     id,
     productDiscussion,
@@ -27,8 +26,6 @@ function ProductCard(props) {
     getTodayProducts,
     getBestDealsHandler,
     getOlderProductsHandler,
-    getUpcomingProductsHandler,
-    currentFilter,
   } = dataHandlers;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -42,11 +39,11 @@ function ProductCard(props) {
     history.push(`/product/${id}`);
   };
 
-  React.useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(findCurrentUserUpvotes(currentUser.email));
-    }
-  }, [currentUser]);
+  // React.useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dispatch(findCurrentUserUpvotes(currentUser.email));
+  //   }
+  // }, [currentUser]);
 
   const productUpvoteHandler = () => {
     if (!isLoggedIn) {
@@ -77,7 +74,11 @@ function ProductCard(props) {
             .then((res) =>
               dispatch(
                 upVoteCounter({ upvotes: upvotes + 1 }, id)
-              ).then((res) => setTrigger(!trigger))
+              ).then((res) =>  {
+                 getTodayProducts();
+                 getBestDealsHandler();
+                getOlderProductsHandler();
+              } )
             );
         } else {
           const updatedUpVotes = res.data.filter((item) => item !== id);
@@ -86,21 +87,18 @@ function ProductCard(props) {
             .then((res) =>
               dispatch(
                 upVoteCounter({ upvotes: upvotes - 1 }, id)
-              ).then((res) => setTrigger(!trigger))
+              ).then((res) => {
+                getTodayProducts();
+                getBestDealsHandler();
+               getOlderProductsHandler();
+              } )
             );
         }
       }
     });
   };
 
-  // React.useEffect(() => {
-  //   getTodayProducts();
-  //   getBestDealsHandler();
-  //   getOlderProductsHandler();
-  //   return ()=>{
-  //     //cleanup
-  //   }
-  //   }, [trigger]);
+  
 
   return (
     <div className={styles.ProductCard}>
