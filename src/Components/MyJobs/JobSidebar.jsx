@@ -3,6 +3,8 @@ import styles from "./JobSidebar.module.css";
 import { getJobs, updateFilteredJobs } from "../../Redux/myjobs/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { filterJobs } from "../../utils";
+import JobPostModal from "./JobPostModal";
+import { AuthContext } from "../../AuthContextProvider";
 const initState = {
   engineering: false,
   design: false,
@@ -17,6 +19,9 @@ const JobSidebar = () => {
   const [formValues, setFormValues] = React.useState(initState);
   const [filteredJobs, setFilteredJobs] = React.useState([]);
   const [changed, setChanged] = React.useState(false);
+  const [isOpenPost, setIsOpenPost] = React.useState(false);
+  const { isOpen, setIsOpen } = React.useContext(AuthContext);
+  const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   const handleChange = (e) => {
     const name = e.target.name;
     const value =
@@ -39,15 +44,15 @@ const JobSidebar = () => {
 
   //updating the filteredJobs state when user make a change through filter
   React.useEffect(() => {
-    console.log("----------------------------------------")
+    console.log("----------------------------------------");
     console.log("Changed: " + changed);
     let updatedFilteredJobs = filterJobs(jobs, formValues);
-    console.log("Filtered Jobs inside useEffect",  updatedFilteredJobs);
-    console.log("----------------------------------------")
-// dispatch an action to update the filtered jobs
+    console.log("Filtered Jobs inside useEffect", updatedFilteredJobs);
+    console.log("----------------------------------------");
+    // dispatch an action to update the filtered jobs
     dispatch(updateFilteredJobs(updatedFilteredJobs));
-    
   }, [changed]);
+
   return (
     <div className={styles.JobSidebar}>
       <div className={styles.JobSidebar__image}>
@@ -58,7 +63,17 @@ const JobSidebar = () => {
         <div>
           <h2>Are you hiring?</h2>
           <p>Advertise from $299</p>
-          <button>POST A JOB</button>
+          <button
+            onClick={() => {
+              if (!isLoggedIn) {
+                setIsOpen(true);
+                return;
+              }
+              setIsOpenPost(true);
+            }}
+          >
+            POST A JOB
+          </button>
         </div>
       </div>
 
@@ -161,6 +176,7 @@ const JobSidebar = () => {
         <p>Get email updates when new jobs are added ✌</p>
         <button>SUBSCRIBE</button>
       </div>
+      <JobPostModal isOpen={isOpenPost} setIsOpen={setIsOpenPost} />
     </div>
   );
 };
