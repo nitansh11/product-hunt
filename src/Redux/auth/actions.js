@@ -51,7 +51,7 @@ const addUser = (currentUser) => {
       const existingUser = res.data.find((user) => {
         return user.email === currentUser.email;
       });
-
+ 
       if (!existingUser) {
         await axios.post(
           "https://json-server-nitansh-1.herokuapp.com/users",
@@ -65,38 +65,7 @@ const addUser = (currentUser) => {
   };
 };
 
-//get user by email:
-const getUserByEmailRequest = () => {
-  return {
-    type: actionTypes.GET_USER_BY_EMAIL_REQUEST,
-  };
-};
-const getUserByEmailSuccess = (user) => {
-  return {
-    type: actionTypes.GET_USER_BY_EMAIL_SUCCESS,
-    payload:user
-  };
-};
+export { loginSuccess, loginFailure, logout, addUser };
 
-const getUserByEmailFailure = () => {
-  return {
-    type: actionTypes.GET_USER_BY_EMAIL_FAILURE,
-  };
-};
 
-const getUserByEmail = (email) => {
-  return async (dispatch) => {
-    dispatch(getUserByEmailRequest());
-    try {
-      const res = await axios.get(
-        "https://json-server-nitansh-1.herokuapp.com/users"
-      );
-      const user = res.data.map((user) => user.email === email);
-      dispatch(getUserByEmailSuccess(user));
-    } catch (err) {
-      dispatch(getUserByEmailFailure());
-    }
-  };
-};
-
-export { loginSuccess, loginFailure, logout, addUser, getUserByEmail };
+ 

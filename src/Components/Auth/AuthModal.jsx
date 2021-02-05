@@ -10,10 +10,10 @@ import { AuthContext } from "../../AuthContextProvider";
 const AuthModal = () => {
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   let currentUser = useSelector((state) => state.authReducer.currentUser);
-   const { isOpen, setIsOpen } = React.useContext(AuthContext);
+  const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   return (
     <>
       <Modal
@@ -48,7 +48,6 @@ const AuthModal = () => {
             onSuccess={(response) => {
               dispatch(loginSuccess(response));
               dispatch(addUser(response.profileObj));
-              
               setIsOpen(false);
             }}
             onFailure={(response) => dispatch(loginFailure(response))}
