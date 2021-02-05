@@ -30,3 +30,6 @@ export const GET_UPCOMING_FAILURE = "GET_UPCOMING_FAILURE"
  
 //Total Products
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS" 
+
+//Post a Product
+export const POST_PRODUCT = "POST_PRODUCT"

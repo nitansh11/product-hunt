@@ -1,0 +1,119 @@
+.PostProduct{
+    background-color: #F3F3F3;
+    min-height: 100vh;
+    width: 100%;
+    padding-bottom: 100px;
+}
+.PostProduct__head{
+    width: 100%;
+    height: 40vh;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.PostProduct__head > div{
+    width: 100%;
+    text-align: left;
+    max-width: 800px;
+    margin: auto;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.PostProduct__head h1{
+    font-size: 45px;
+    line-height: 70px;
+    font-weight: 700;
+    color: white;
+}
+
+.PostProduct__head p{
+    background-color:rgb(64,87,96);
+    width: fit-content;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.PostProduct__head hr{
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    color: white;
+}
+
+.PostProduct__head span{
+    line-height: 70px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.PostProduct__form{
+    width: 100%;
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 50px;
+    box-shadow: 2px 2px 6px rgb(187, 183, 183);
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.PostProduct__form form > div{
+    margin-bottom: 20px;
+}
+
+.PostProduct__form label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.PostProduct__form input{
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+    border-radius: 3px;
+    border: 1px solid rgb(153, 146, 146);
+}
+
+.PostProduct__form select{
+    width: 100%;
+    outline: none;
+    border: 1px solid rgb(153, 146, 146);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.PostProduct__form option{
+   font-size: 14px;
+   border-radius: 3px;
+}
+
+.PostProduct__form > form div:nth-last-child(1){
+    text-align: center;
+}
+
+.PostProduct__form button{
+    background-color: #df6c0e;
+    padding: 5px 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: white;
+    border:none;
+    border-radius: 5px;
+}
+
+
+ 
+
+ 

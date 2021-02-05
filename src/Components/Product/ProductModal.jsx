@@ -206,12 +206,16 @@ function ProductModal() {
                             <div>
                                 <div className={styles.Twitter}>
                                     <TwitterShareButton url={window.location.href}>
+                                     <div>
                                      <button > <i className="fab fa-twitter"></i> Tweet</button>
+                                     </div>
                                     </TwitterShareButton>
                                 </div>
                                 <div className={styles.Facebook}>
                                     <FacebookShareButton url={window.location.href}>
+                                        <div>
                                         <button> <i className="fab fa-facebook-f"></i> Share</button>
+                                        </div>
                                     </FacebookShareButton>
                                 </div>
                                 <div>
@@ -227,7 +231,7 @@ function ProductModal() {
                                 </div>
                             </div>
                             <div>
-                                <button>Featured 11 hour ago</button>
+                                {/* <button>Featured 11 hour ago</button> */}
                             </div>
                         </div>
                     </div>
@@ -236,7 +240,7 @@ function ProductModal() {
                         <div className={styles.ProductModal__main__content__demo__discussion__comments}>
                            <div>
                             {productDiscussion?.map( item => (
-                                    <CommentsSection handleTrigger = {handleTrigger} getSoloDataHandler = {getSoloDataHandler} productDiscussion = {productDiscussion} {...item} />
+                                    <CommentsSection key={item.commentID} handleTrigger = {handleTrigger} getSoloDataHandler = {getSoloDataHandler} productDiscussion = {productDiscussion} {...item} />
                                 ))}
                            </div>
                             <div style={{display:"flex"}}>   
@@ -260,8 +264,8 @@ function ProductModal() {
                         <div className={styles.ProductModal__main__content__side__head__upvoters}>
                             {
                               new Array(14).fill(0).map((_,index)=>(
-                                <div key={index+1}>
-                                    <img src={`https://i.pravatar.cc/150?img=${index+1}`} alt="voters"></img>
+                                <div key={uuid()}>
+                                    <img  key={uuid()} src={`https://i.pravatar.cc/150?img=${index+1}`} alt="voters"></img>
                                 </div>
                               ))   
                             }     
@@ -295,7 +299,7 @@ function ProductModal() {
               </div>
             </div>
             <div onClick={modalToggleHandler} className={styles.ProductModal__close}>
-                <i class="fas fa-times-circle"></i>
+                <i className="fas fa-times-circle"></i>
             </div>
             { showNav && <div className={styles.ScrollNav__parent}>
                 <div className = {styles.ScrollNav}>
@@ -318,7 +322,7 @@ function ProductModal() {
                             <div>
                                 <button onClick={()=>productUpvoteHandler()} 
                                 style={upvoted?.find(item => item === Number(id)) !== undefined && isLoggedIn ? {border:"1px solid rgb(173, 84, 0)" , backgroundColor:"white", color:"rgb(173, 84, 0)"} : {}} className={styles.button__dark}>
-                                <i className="fas fa-caret-up"></i> UPVOTE {upvotes}
+                                <i className="fas fa-caret-up"></i> UPVOTES {upvotes}
                             </button>
                             </div>
                         </div>

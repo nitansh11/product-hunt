@@ -28,7 +28,6 @@ function Product() {
     };
     
     window.addEventListener('scroll', checkScrollTop)
-
     const scrollTop = () =>{
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
@@ -46,7 +45,7 @@ function Product() {
         else{
             const action = getProducts({
                 "_sort" : "id",
-               "_order": "asc",
+               "_order": "desc",
                "status":"TODAY"
             })
             dispatch(action)

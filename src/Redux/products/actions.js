@@ -18,7 +18,8 @@ import {
     GET_OLDER_REQUEST,
     GET_OLDER_SUCCESS,
     GET_OLDER_FAILURE,
-    GET_ALL_PRODUCTS
+    GET_ALL_PRODUCTS,
+    POST_PRODUCT
    
 } from './actionTypes'
 
@@ -227,3 +228,14 @@ export const getUpcomingProducts = (params = {}) => (dispatch) => {
     .catch(err => dispatch(getUpcomingFailure()))
 }
 
+
+const postingProduct = () => {
+    return{
+        type : POST_PRODUCT
+    }
+}
+
+export const postingNewProduct = (formData) => dispatch => {
+    return axios.post("https://product-hunt-mocker.herokuapp.com/product",formData)
+    .then((res) => dispatch(postingProduct()))
+}

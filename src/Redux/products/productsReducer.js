@@ -17,7 +17,8 @@ import {
     GET_OLDER_REQUEST,
     GET_OLDER_SUCCESS,
     GET_OLDER_FAILURE,
-    GET_ALL_PRODUCTS
+    GET_ALL_PRODUCTS,
+    POST_PRODUCT
   
 } from './actionTypes'
 
@@ -147,6 +148,11 @@ export const productsReducer = ( state = initialState , { type , data , relatedD
             ...state ,
             isLoading : false,
             isError : true
+        }
+
+        case POST_PRODUCT : 
+        return {
+            ...state
         }
     
         default : return state
