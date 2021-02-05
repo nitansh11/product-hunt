@@ -6,13 +6,16 @@ import Modal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { logout } from "../../Redux/auth/actions";
-
+import { AuthContext } from "../../AuthContextProvider";
 import { useHistory } from "react-router-dom";
 
 Modal.setAppElement("#root");
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  // const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const location = useLocation().pathname;
+  console.log("location is:", location);
+
   const history = useHistory();
   const style = location.includes("founder-club/benefits")
     ? {
@@ -25,7 +28,7 @@ const Navbar = () => {
     : {};
 
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
-  console.log("Navbar is logged in", isLoggedIn);
+  const activeStyle = { color: "#DA552F" };
   let currentUser = useSelector((state) => state.authReducer.currentUser);
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -54,24 +57,52 @@ const Navbar = () => {
         </div>
         <ul>
           <li>
-            <Link to="/ask">Ask</Link>
+            <Link
+              to="/ask"
+              style={location.includes("/ask") ? activeStyle : null}
+            >
+              Ask
+            </Link>
           </li>
 
           <li>
-            <Link to="/jobs">Jobs</Link>
+            <Link
+              to="/jobs"
+              style={location.includes("/jobs") ? activeStyle : null}
+            >
+              Jobs
+            </Link>
           </li>
           <li>
-            <Link to="/discussions">Discussions</Link>
+            <Link
+              to="/discussions"
+              style={location.includes("/discussions") ? activeStyle : null}
+            >
+              Discussions
+            </Link>
           </li>
 
           <li>
-            <Link to="/mentors">Mentors</Link>
+            <Link
+              to="/mentors"
+              style={location.includes("/mentors") ? activeStyle : null}
+            >
+              Mentors
+            </Link>
           </li>
           <li>
-            <Link to="/founder-club/benefits">Deals</Link>
+            <Link
+              to="/founder-club/benefits"
+              style={
+                location.includes("/founder-club/benefits") ? activeStyle : null
+              }
+            >
+              Deals
+            </Link>
           </li>
           <i className="fas fa-ellipsis-h"></i>
         </ul>
+
         {!isLoggedIn ? (
           <div className={styles.Navbar__buttons}>
             <button onClick={() => setIsOpen(true)}>LOG IN</button>

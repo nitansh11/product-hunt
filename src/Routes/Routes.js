@@ -3,12 +3,14 @@ import { Switch, Route } from "react-router-dom";
 import Deals from "../Components/Deals/Deals";
 import Product from "../Components/Product/Product";
 import Mentors from "../Components/Mentors/Mentors";
-import ASK from "../Components/Ask/Ask";
+import Ask from "../Components/Ask/Ask";
 import { Discussions } from "../Components/Discussions/Discussions";
 import {postJob} from "../Components/Jobs/postjob"
+import AskPage from "../Components/Ask/AskPage";
 import ProductModal from "../Components/Product/ProductModal";
-
 import {Jobs} from "../Components/Jobs/Jobs"
+// import MyJobs from "../Components/MyJobs/MyJobs";
+
 const Routes = () => {
   return (
     <>
@@ -17,13 +19,14 @@ const Routes = () => {
           <Product></Product>
         </Route>
         <Route path="/product/:id">
-         <ProductModal></ProductModal>
+          <ProductModal></ProductModal>
         </Route>
         <Route path="/founder-club/benefits">
           <Deals />
         </Route>
         <Route path="/jobs" exact>
-         <Jobs/>
+          <Jobs/>
+          {/* <MyJobs /> */}
         </Route>
         <Route>
           <postJob/>
@@ -32,7 +35,10 @@ const Routes = () => {
           <Discussions />
         </Route>
         <Route path="/ask" exact>
-          Ask Page
+          <Ask />
+        </Route>
+        <Route path="/ask/:id" exact>
+          <AskPage />
         </Route>
         <Route path="/mentors" exact>
           <Mentors />

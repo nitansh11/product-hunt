@@ -26,7 +26,7 @@
     margin: 100px auto;
     padding: 30px 50px;
     border-radius: 3px;
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .ProductModal__main__head{
@@ -179,6 +179,14 @@
     color: #fff;
 }
 
+.ProductModal__main__content__demo__discussion__comments{
+    width: 94%;
+    padding: 3%;
+    border-radius: 3px;
+    background-color: white;
+}
+
+
 
 .ProductModal__main__content__side{
     width: 31%;   
@@ -298,6 +306,7 @@
 
 .Product__sideModal__main__content__side__cards{
     background-color: white;
+    border-radius: 3px;
 }
 
 
@@ -312,6 +321,8 @@
     background-color: white;
     box-shadow: 2px 2px 5px rgb(133, 130, 130);
     transition: 1s all ease-in;
+    padding: 2px;
+    max-height: 8vh;
 }
 .ScrollNav{
     display: flex;
@@ -320,29 +331,35 @@
     max-width: 1100px;
     justify-content: space-between;
     align-items: center;
+   
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ScrollNav__right{
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .ScrollNav__right > div:nth-child(1){
     width: 30%;
+    padding: 10px;
 }
 
 .ScrollNav__right h2{
     font-size: 18px;
+    
 }
 .ScrollNav__right p{
     font-size: 14px;
     color: rgb(78, 69, 69);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 
 .ScrollNav__right > div img{
-    width: 100%;
+    width: 50px;
+    height: 50px;
 }
 
 .ScrollNav__left{
@@ -364,4 +381,14 @@
 
 .button__light{
     border: 1px solid rgb(212, 206, 206) !important;
+}
+
+.button__dark{
+    border: 1px solid rgb(173, 84, 0) !important;
+}
+
+.button__dark__upvoted{
+    background-color: white;
+    color: rgb(173, 84, 0);
+    border: 1px solid rgb(173, 84, 0) !important;
 }

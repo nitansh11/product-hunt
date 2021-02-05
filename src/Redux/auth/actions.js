@@ -51,7 +51,7 @@ const addUser = (currentUser) => {
       const existingUser = res.data.find((user) => {
         return user.email === currentUser.email;
       });
-      console.log("existing user is:", existingUser);
+ 
       if (!existingUser) {
         await axios.post(
           "https://json-server-nitansh-1.herokuapp.com/users",
@@ -66,3 +66,6 @@ const addUser = (currentUser) => {
 };
 
 export { loginSuccess, loginFailure, logout, addUser };
+
+
+ 

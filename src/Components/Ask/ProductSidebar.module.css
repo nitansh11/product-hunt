@@ -1,0 +1,79 @@
+.ProductSidebar {
+  padding: 20px;
+  background-color: white;
+  margin-left: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* seaech bar */
+.ProductSidebar__search input{
+    width: 100%;
+    margin: 0px auto;
+    padding: 5px;
+    border: 1px solid rgba(173, 168, 168, 0.8);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* product list */
+.ProductSidebar ul {
+  list-style: none;
+}
+
+.ProductSidebar__productItem {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+  margin: 20px 0;
+  transition: 0.3s;
+  border-bottom: 1px solid rgba(194, 184, 184, 0.432);
+  padding-bottom: 10px;
+}
+.ProductSidebar__productItem__button {
+  text-align: center;
+
+  width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.ProductSidebar__productItem button {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid black;
+  margin: 10px 0;
+  transition: 0.5s;
+}
+.ProductSidebar__productItem button:hover {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid black;
+  margin: 10px 0;
+  transition: 0.5s;
+}
+
+.ProductSidebar__productItem img {
+  width: 70px;
+  height: 70px;
+}
+
+.ProductSidebar__productItem h4 {
+  margin-bottom: 5px;
+}
+.ProductSidebar__productItem p {
+  color: gray;
+  font-size: 14px;
+}

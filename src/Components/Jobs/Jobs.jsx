@@ -17,9 +17,10 @@ const Jobs = () => {
   const dispatch = useDispatch();
   const history = useHistory()
  
+  
   React.useEffect(() => {
     dispatch(getjobs());
-   
+    
   }, [dispatch]);
 
 const handleremote=()=>{
@@ -35,7 +36,7 @@ const handleeng = ()=>{
 }
 
 const handledesign = ()=>{
-    setDesign(prev=>!prev)
+     setDesign(prev=>!prev)
      dispatch(getdesign({design,rem}))
 }
 
@@ -43,6 +44,7 @@ const handlemarketing=()=>{
   setMarketing(prev=>!prev)
   dispatch(getmarketing({marketing,rem}))
 }
+
 const handlesales=()=>{
   setSales(prev=>!prev)
   dispatch(getsales({sales,rem}))
@@ -58,6 +60,7 @@ const handleproduct=()=>{
 const handleclick=()=>{
   history.push("/jobs/postjob")
 }
+console.log(jobs);
 console.log(rem,eng,design,marketing,sales,customer,product)
   console.log(jobs);
   return (

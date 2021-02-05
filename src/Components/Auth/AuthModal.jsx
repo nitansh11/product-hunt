@@ -6,12 +6,14 @@ import { loginSuccess, loginFailure } from "../../Redux/auth/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addUser } from "../../Redux/auth/actions";
-const AuthModal = ({ isOpen, setIsOpen }) => {
+import { AuthContext } from "../../AuthContextProvider";
+const AuthModal = () => {
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   let currentUser = useSelector((state) => state.authReducer.currentUser);
+   const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const history = useHistory();
   const dispatch = useDispatch();
-
+  
   return (
     <>
       <Modal
@@ -19,8 +21,8 @@ const AuthModal = ({ isOpen, setIsOpen }) => {
         onRequestClose={() => {
           setIsOpen(false);
         }}
-        className={styles.Navbar__modal}
-        overlayClassName={styles.Navbar___ModalOverlay}
+        className={styles.AuthModal__modal}
+        overlayClassName={styles.AuthModal___ModalOverlay}
       >
         <img
           src="https://ph-static.imgix.net/category-tech/kitty.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=100&h=92&fit=max"
@@ -31,7 +33,7 @@ const AuthModal = ({ isOpen, setIsOpen }) => {
           Join our community of friendly folks discovering and sharing the
           latest products in tech.
         </p>
-        <div className={styles.Navbar__modalButtons}>
+        <div className={styles.AuthModal__modalButtons}>
           <button style={{ backgroundColor: "#00ACED", color: "white" }}>
             <i className="fa fa-twitter"></i>
             LOG IN WITH TWITTER
@@ -46,6 +48,7 @@ const AuthModal = ({ isOpen, setIsOpen }) => {
             onSuccess={(response) => {
               dispatch(loginSuccess(response));
               dispatch(addUser(response.profileObj));
+              
               setIsOpen(false);
             }}
             onFailure={(response) => dispatch(loginFailure(response))}

@@ -1,0 +1,21 @@
+.Ask{
+  background-color: #F3F3F3;
+  
+  padding-top: 30px;
+}
+
+.Ask__child{
+    
+    width: 70%;
+    margin: 0 auto;
+}
+
+.Ask__childContent{
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  margin-top: 30px;
+}
+.Ask__childContent > div{
+  
+  
+}

@@ -1,9 +1,19 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { productsReducer } from './products/productsReducer'
-import {jobsreducer} from "./jobs/reducer"
+import { productsReducer } from "./products/productsReducer";
+import { jobsreducer } from "./jobs/reducer";
 import { authReducer } from "./auth/authReducer";
-const rootReducer = combineReducers({ productsReducer,  authReducer,jobsreducer });
+import { operationsReducer } from './operations/operationsReducer'
+import { askReducer } from "./ask/askReducer";
+
+
+const rootReducer = combineReducers({
+  productsReducer,
+  authReducer,
+  jobsreducer,
+  askReducer,
+  operationsReducer
+});
 
 let composeEnhancers = compose;
 
