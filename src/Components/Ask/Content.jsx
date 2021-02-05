@@ -23,8 +23,10 @@ const Content = () => {
     dispatch(getAskQuestions());
   }, []);
   React.useEffect(() => {
-    dispatch(getUserByEmail(currentUser.email));
-  }, []);
+    if (currentUser) {
+      dispatch(getUserByEmail(currentUser.email));
+    }
+  }, [currentUser]);
   const renderQuestions = () => {
     if (askQuestions.length === 0) return;
     return askQuestions.map((question) => (

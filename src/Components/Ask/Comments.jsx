@@ -26,8 +26,10 @@ const Comments = ({ questionId, allComments }) => {
   };
 
   React.useEffect(() => {
-    dispatch(getUserByEmail(currentUser.email));
-  }, []);
+    if (currentUser) {
+      dispatch(getUserByEmail(currentUser.email));
+    }
+  }, [currentUser]);
   const dispatch = useDispatch();
   const handleCommentPost = () => {
     if (!currentUser) {
