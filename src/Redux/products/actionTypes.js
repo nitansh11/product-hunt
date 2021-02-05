@@ -33,3 +33,6 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 
 //Post a Product
 export const POST_PRODUCT = "POST_PRODUCT"
+
+//Get promotional Products
+export const GET_PROMOTIONAL_PRODUCTS = "GET_PROMOTIONAL_PRODUCTS" 

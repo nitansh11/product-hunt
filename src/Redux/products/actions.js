@@ -19,7 +19,8 @@ import {
     GET_OLDER_SUCCESS,
     GET_OLDER_FAILURE,
     GET_ALL_PRODUCTS,
-    POST_PRODUCT
+    POST_PRODUCT,
+    GET_PROMOTIONAL_PRODUCTS
    
 } from './actionTypes'
 
@@ -238,4 +239,23 @@ const postingProduct = () => {
 export const postingNewProduct = (formData) => dispatch => {
     return axios.post("https://product-hunt-mocker.herokuapp.com/product",formData)
     .then((res) => dispatch(postingProduct()))
+}
+
+
+ 
+
+const getPromotionalData = (data) => {
+    return {
+        type : GET_PROMOTIONAL_PRODUCTS,
+        promotionalData : data,
+    }
+}
+
+export const getPromotionalProducts = () => dispatch => {
+    return axios.get("https://product-hunt-mocker.herokuapp.com/product",{
+        params : {
+            "status" : "PROMOTIONAL",
+        }
+    })
+    .then((res) => dispatch(getPromotionalData(res.data)))
 }

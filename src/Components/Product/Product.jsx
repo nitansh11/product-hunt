@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './Product.module.css'
 import { useSelector , useDispatch } from 'react-redux'
-import { getBestProducts, getOlderProducts, getProducts, getUpcomingProducts } from '../../Redux/products/actions'
+import { getBestProducts, getOlderProducts, getProducts, getPromotionalProducts, getUpcomingProducts } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
+import PromotionalCard from './PromotionalCard'
  
  
 function Product() {
@@ -11,13 +12,14 @@ function Product() {
    const upcomingProductsData = useSelector ( state => state.productsReducer.upcomingProductsData)
    const olderProductsData = useSelector ( state => state.productsReducer.olderProductsData)
    const bestDealsData = useSelector ( state => state.productsReducer.bestDealsData)
+   const promotionalProductsData = useSelector ( state => state.productsReducer.promotionalProductsData)
    const [ showMoreToday , setShowMoreToday ] = React.useState(false)
    const [ showMoreOlder , setShowMoreOlder ] = React.useState(false)
    const [ showScroll, setShowScroll ] = React.useState(false)
    const [ currentFilter , setCurrentFilter ] = React.useState("latest")
    const dispatch = useDispatch()  
-
    
+ 
    //scroll to top
     const checkScrollTop = () => {
         if (!showScroll && window.pageYOffset > 400){
@@ -50,6 +52,12 @@ function Product() {
             })
             dispatch(action)
         }
+    }
+
+    //getPromotional Data
+    const getPromotionalProductsHandler = () => {
+        const action =  getPromotionalProducts() 
+         dispatch(action)
     }
 
     // get best deals
@@ -90,7 +98,6 @@ function Product() {
     },[currentFilter])
 
     React.useEffect(()=>{
-       
         getBestDealsHandler()
         getOlderProductsHandler()
         getUpcomingProductsHandler()
@@ -99,7 +106,7 @@ function Product() {
         }
     },[])
 
-    
+
 
     const dataHandlers =  { currentFilter , getTodayProducts , getBestDealsHandler , getOlderProductsHandler }
 
@@ -119,12 +126,14 @@ function Product() {
         <div className={styles.Product}>
              <div className={styles.Product__main}>
                  <div className={styles.Product__main__head}>
+                     {/* {promotionalProductsData.length !== 0 &&
+                     <PromotionalCard   dataHandlers = {dataHandlers} {...promotionalProductsData[0]}></PromotionalCard>} */}
                     <div>
                         <h2>Today</h2>
                     </div>
                     <div>
-                        <span onClick={()=>setCurrentFilter("popular")}>POPULAR</span> <b>|
-                        </b> <span onClick={()=>setCurrentFilter("latest")}>NEWEST</span>
+                        {/* <span onClick={()=>setCurrentFilter("popular")}>POPULAR</span> <b>|
+                        </b> <span onClick={()=>setCurrentFilter("latest")}>NEWEST</span> */}
                     </div>
                  </div>
                  <div className={styles.Product__main__content}>

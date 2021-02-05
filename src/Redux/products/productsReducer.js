@@ -18,7 +18,8 @@ import {
     GET_OLDER_SUCCESS,
     GET_OLDER_FAILURE,
     GET_ALL_PRODUCTS,
-    POST_PRODUCT
+    POST_PRODUCT,
+    GET_PROMOTIONAL_PRODUCTS
   
 } from './actionTypes'
 
@@ -31,11 +32,12 @@ const initialState = {
     relatedProductsData : [],
     bestDealsData : [],
     upcomingProductsData : [],
-    olderProductsData : []
+    olderProductsData : [],
+    promotionalProductsData : []
 }
 
 
-export const productsReducer = ( state = initialState , { type , data , relatedData ,allData }) => {
+export const productsReducer = ( state = initialState , { type , data, promotionalData , relatedData ,allData }) => {
     switch ( type ){
         case GET_ALL_PRODUCTS : 
         return {
@@ -153,6 +155,11 @@ export const productsReducer = ( state = initialState , { type , data , relatedD
         case POST_PRODUCT : 
         return {
             ...state
+        }
+
+        case GET_PROMOTIONAL_PRODUCTS : 
+        return {
+            promotionalProductsData : promotionalData
         }
     
         default : return state
