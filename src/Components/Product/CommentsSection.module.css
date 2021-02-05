@@ -1,4 +1,11 @@
-.CommentsSection{
-   
+
+.CommentsSection {
+    cursor: pointer;
+}
  
+.RepliesInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
 }

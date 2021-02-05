@@ -17,9 +17,25 @@ import {
     GET_BEST_FAILURE,
     GET_OLDER_REQUEST,
     GET_OLDER_SUCCESS,
-    GET_OLDER_FAILURE
+    GET_OLDER_FAILURE,
+    GET_ALL_PRODUCTS,
+    POST_PRODUCT,
+    GET_PROMOTIONAL_PRODUCTS
    
 } from './actionTypes'
+
+const getAllProducts = (allData) =>{
+    return{
+        type : GET_ALL_PRODUCTS,
+        allData
+    }
+}
+
+export const getALLProductsData = () => dispatch => {
+    return axios.get("https://product-hunt-mocker.herokuapp.com/product")
+    .then(res => dispatch(getAllProducts(res.data)))
+}
+
 
 
 const getProductsRequest = () => {
@@ -50,6 +66,9 @@ export const getProducts = (params = {}) => (dispatch) => {
     .then(res => dispatch(getProductsSuccess(res.data)))
     .catch(err => dispatch(getProductsFailure()))
 }
+
+
+
 
 const getSoloRequest = () => {
     return {
@@ -208,4 +227,35 @@ export const getUpcomingProducts = (params = {}) => (dispatch) => {
     })
     .then(res => dispatch(getUpcomingSuccess(res.data)))
     .catch(err => dispatch(getUpcomingFailure()))
+}
+
+
+const postingProduct = () => {
+    return{
+        type : POST_PRODUCT
+    }
+}
+
+export const postingNewProduct = (formData) => dispatch => {
+    return axios.post("https://product-hunt-mocker.herokuapp.com/product",formData)
+    .then((res) => dispatch(postingProduct()))
+}
+
+
+ 
+
+const getPromotionalData = (data) => {
+    return {
+        type : GET_PROMOTIONAL_PRODUCTS,
+        promotionalData : data,
+    }
+}
+
+export const getPromotionalProducts = () => dispatch => {
+    return axios.get("https://product-hunt-mocker.herokuapp.com/product",{
+        params : {
+            "status" : "PROMOTIONAL",
+        }
+    })
+    .then((res) => dispatch(getPromotionalData(res.data)))
 }
