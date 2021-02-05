@@ -2,14 +2,12 @@ import React from "react";
 import styles from "./Recommendation.module.css";
 import { useSelector, useDispatch } from "react-redux";
 const Recommendation = ({ id, productId, name, imageUrl }) => {
-  const allProducts = useSelector((state) => state.productsReducer.productData);
-
+  const allProducts = useSelector((state) => state.askReducer.allProducts);
   const currentProduct = allProducts.filter(
     (product) => product.id == productId
   )[0];
   console.log("current product", currentProduct);
   const renderCurrentProduct = () => {
-  
     if (!currentProduct) {
       return (
         <div className={styles.Recommendation}>
