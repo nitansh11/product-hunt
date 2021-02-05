@@ -16,7 +16,7 @@ const Singlementor = () => {
       const res = await axios.get(
         `https://json-server-mocker-masai-gopi.herokuapp.com/posts/${appId}`
       );
-
+     
       setData(res.data);
     } catch (err) {
       console.log(err);

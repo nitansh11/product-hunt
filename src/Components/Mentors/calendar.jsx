@@ -6,21 +6,41 @@ import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
+import {useSelector} from "react-redux"
 import "./calendar.module.css";
 export function CalendarPage() {
   const [data, setData] = React.useState(null);
+  
   const { appId } = useParams();
   const history = useHistory();
+  const currentUser = useSelector((state) => state.authReducer.currentUser);
+  currentUser!==null && console.log(currentUser.email)
   React.useEffect(() => {
     getdetails();
   }, []);
-
+  const book=()=>{
+    postdetails()
+  }
+    const postdetails=()=>{
+     
+    axios.post(
+        
+      `https://json-server-mocker-masai-gopi.herokuapp.com/details`,{
+          
+            email:currentUser.email,
+            mentor:data.title,
+            time:displaytime,
+            date:moment(dateState).format("MMMM Do YYYY")
+          
+      }
+    );
+   }
   const getdetails = async () => {
     try {
       const res = await axios.get(
         `https://json-server-mocker-masai-gopi.herokuapp.com/posts/${appId}`
       );
-
+      
       setData(res.data);
     } catch (err) {
       console.log(err);
@@ -205,7 +225,8 @@ export function CalendarPage() {
 
     {showd && <p >
       <h1 style={{ textAlign:"center" }}>
-        YOU HAVE BOOKED AN APPOINTMENT ON <b>{moment(dateState).format("MMMM Do YYYY")}</b> AT <b>{displaytime}</b>
+        YOU HAVE SELECTED AN APPOINTMENT ON <b>{moment(dateState).format("MMMM Do YYYY")}</b> AT <b>{displaytime}</b>
+        
       </h1>
     </p>}
     <div
@@ -498,6 +519,8 @@ export function CalendarPage() {
         
       </div>
       </div>
+      {showd && <button style={{width:"20%",margin:"auto",marginBottom:"30px"}} onClick={book}>BOOK AN APPOINTMENT</button>}
     </div>
+    
   );
 }

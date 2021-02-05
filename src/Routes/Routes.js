@@ -11,6 +11,7 @@ import ProductModal from "../Components/Product/ProductModal";
 import MyJobs from "../Components/MyJobs/MyJobs";
 import {Singlementor} from "../Components/Mentors/singlementor";
 import {CalendarPage} from "../Components/Mentors/calendar"
+import {Mentorsdetails} from "../Components/Mentors/Mentorsdetails";
 const Routes = () => {
   return (
     <>
@@ -39,6 +40,9 @@ const Routes = () => {
         </Route>
         <Route exact path="/mentors" >
           <Mentors />
+        </Route>
+        <Route exact path="/mentors/mentorsdetails">
+          <Mentorsdetails/>
         </Route>
         <Route exact path="/mentors/:appId">
           <Singlementor/>
