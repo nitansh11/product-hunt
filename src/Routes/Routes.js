@@ -60,9 +60,7 @@ const Routes = () => {
           <Mentors />
         </Route>
 
-        <Route>
-          <Error></Error>
-        </Route>
+        
         <Route exact path="/mentors" >
           <Mentors />
         </Route>
@@ -76,6 +74,9 @@ const Routes = () => {
           <CalendarPage/>
         </Route>
         <Route>Page Not Found</Route>
+        <Route>
+          <Error></Error>
+        </Route>
       </Switch>
     </>
   );
