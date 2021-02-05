@@ -4,6 +4,7 @@ const initState = {
   isLoading: false,
   error: false,
   askQuestions: [],
+  allProducts: [],
 };
 
 const askReducer = (state = initState, action) => {
@@ -55,6 +56,20 @@ const askReducer = (state = initState, action) => {
         error: false,
       };
     case actionTypes.POST_ASK_QUESTIONS_FAILURE:
+      return { ...state, isLoading: false, error: true };
+
+    // getting products
+    case actionTypes.GET_PRODUCTS_REQUEST:
+      return { ...state, isLoading: true, error: false };
+    case actionTypes.GET_PRODUCTS_SUCCESS:
+    
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+        allProducts: action.payload,
+      };
+    case actionTypes.GET_PRODUCTS_FAILURE:
       return { ...state, isLoading: false, error: true };
 
     default:

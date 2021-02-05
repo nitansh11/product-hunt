@@ -9,7 +9,6 @@ import { v4 as uuid } from "uuid";
 const Content = () => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   const currentUser = useSelector((state) => state.authReducer.currentUser);

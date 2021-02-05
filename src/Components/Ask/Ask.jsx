@@ -4,7 +4,14 @@ import AskHeader from "./AskHeader";
 import RightSideBar from "./RightSidebar";
 import LeftSideBar from "./LeftSidebar";
 import Content from "./Content";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../Redux/ask/actions";
 const Ask = () => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getProducts());
+    return () => {};
+  }, []);
   return (
     <div className={styles.Ask}>
       <div className={styles.Ask__child}>

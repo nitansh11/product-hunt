@@ -3,25 +3,30 @@ import styles from "./ProductSidebar.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { updateRecommendation } from "../../Redux/ask/actions";
 import { AuthContext } from "../../AuthContextProvider";
+import { getALLProductsData } from "../../Redux/products/actions";
+import { getProducts } from "../../Redux/ask/actions";
 import { v4 as uuid } from "uuid";
 const ProductSidebar = ({ currentQuestion }) => {
   const [query, setQuery] = React.useState("");
   const [filteredProducts, setFilteredProducts] = React.useState([]);
-  const allProducts = useSelector((state) => state.productsReducer.productData);
-  console.log(allProducts)
+  const allProducts = useSelector((state) => state.askReducer.allProducts);
+  console.log("--------------------------------");
+  console.log("all products:", allProducts);
+  console.log("filtered products:", filteredProducts);
+  console.log("--------------------------------");
   const currentUser = useSelector((state) => state.authReducer.currentUser);
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
-  
+
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    setFilteredProducts(allProducts);
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(getProducts());
+  //   return () => {};
+  // }, []);
 
   const handleQueryChange = (e) => {
     let myQuery = e.target.value;
     setQuery(myQuery);
-    if (myQuery === '') {
-      let newFilteredProducts = allProducts;
+    if (myQuery === "") {
       setFilteredProducts(allProducts);
     } else {
       let newFilteredProducts = allProducts.filter((product) =>
@@ -64,8 +69,6 @@ const ProductSidebar = ({ currentQuestion }) => {
     });
   };
 
-  React.useEffect(() => {}, [query]);
-
   return (
     <div className={styles.ProductSidebar}>
       <div className={styles.ProductSidebar__search}>
@@ -77,7 +80,7 @@ const ProductSidebar = ({ currentQuestion }) => {
           placeholder="Search Products Here.."
         />
       </div>
-      <ul>{renderProducts()}</ul>
+      {/* <ul>{renderProducts()}</ul> */}
     </div>
   );
 };

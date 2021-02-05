@@ -20,7 +20,7 @@ function ProductCard(props) {
     comments,
     tagline,
     id,
-    productDiscussion
+    productDiscussion,
   } = props;
   const [trigger, setTrigger] = React.useState(false);
   const {
@@ -28,7 +28,7 @@ function ProductCard(props) {
     getBestDealsHandler,
     getOlderProductsHandler,
     getUpcomingProductsHandler,
-    currentFilter
+    currentFilter,
   } = dataHandlers;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -93,14 +93,14 @@ function ProductCard(props) {
     });
   };
 
-  React.useEffect(() => {
-    getTodayProducts();
-    getBestDealsHandler();
-    getOlderProductsHandler();
-    return ()=>{
-      //cleanup
-    }
-    }, [trigger]);
+  // React.useEffect(() => {
+  //   getTodayProducts();
+  //   getBestDealsHandler();
+  //   getOlderProductsHandler();
+  //   return ()=>{
+  //     //cleanup
+  //   }
+  //   }, [trigger]);
 
   return (
     <div className={styles.ProductCard}>
