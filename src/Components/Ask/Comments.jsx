@@ -5,9 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { postComment } from "../../Redux/ask/actions";
 import { AuthContext } from "../../AuthContextProvider";
 import { v4 as uuid } from "uuid";
-const Comments = ({ questionId,allComments }) => {
+import { getUserByEmail } from "../../Redux/auth/actions";
+const Comments = ({ questionId, allComments }) => {
   const currentUser = useSelector((state) => state.authReducer.currentUser);
- // console.log("current user:", currentUser);
+  const user = useSelector((state) => state.authReducer.user);
+  console.log("------------------------------------");
+  console.log("current user:", currentUser);
+  console.log("user:", user);
+  console.log("------------------------------------");
+
   const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const [commentText, setCommentText] = React.useState("");
   const renderComments = () => {
@@ -19,6 +25,9 @@ const Comments = ({ questionId,allComments }) => {
     });
   };
 
+  React.useEffect(() => {
+    dispatch(getUserByEmail(currentUser.email));
+  }, []);
   const dispatch = useDispatch();
   const handleCommentPost = () => {
     if (!currentUser) {
@@ -33,9 +42,9 @@ const Comments = ({ questionId,allComments }) => {
       ...allComments,
       { id: uuid(), text: commentText, email: currentUser.email, upvotes: 0 },
     ];
-    // console.log("updated comments:",updatedComments);
+
     //dispatch
-    dispatch(postComment(questionId,updatedComments));
+    dispatch(postComment(questionId, updatedComments));
     setCommentText("");
   };
   return (

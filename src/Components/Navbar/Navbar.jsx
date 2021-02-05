@@ -8,10 +8,12 @@ import { useLocation } from "react-router-dom";
 import { logout } from "../../Redux/auth/actions";
 import { AuthContext } from "../../AuthContextProvider";
 import { useHistory } from "react-router-dom";
-
+import { getLocalStorage } from "../../utils";
 Modal.setAppElement("#root");
 const Navbar = () => {
   // const [isOpen, setIsOpen] = React.useState(false);
+
+
   const { isOpen, setIsOpen } = React.useContext(AuthContext);
   const location = useLocation().pathname;
   console.log("location is:", location);
@@ -28,8 +30,8 @@ const Navbar = () => {
     : {};
 
   let isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
+
   const activeStyle = { color: "#DA552F" };
-  let currentUser = useSelector((state) => state.authReducer.currentUser);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());

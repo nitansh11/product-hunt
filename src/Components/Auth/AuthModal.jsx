@@ -48,6 +48,7 @@ const AuthModal = () => {
             onSuccess={(response) => {
               dispatch(loginSuccess(response));
               dispatch(addUser(response.profileObj));
+              console.log("Current user:",currentUser)
               setIsOpen(false);
             }}
             onFailure={(response) => dispatch(loginFailure(response))}

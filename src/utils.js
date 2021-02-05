@@ -1,9 +1,14 @@
-export const postLocalStorage = (key, value) => {
+export const saveData = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const getLocalStorage = (key) => {
-  return localStorage.getItem(key);
+export const loadData = (key) => {
+  let value = localStorage.getItem(key);
+  if (value) {
+    return JSON.parse(value);
+  } else {
+    return null;
+  }
 };
 
 export const filterJobs = (jobs, formValues) => {
