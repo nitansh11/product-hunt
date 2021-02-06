@@ -74,7 +74,7 @@ const postJobs = (job) => {
       );
       dispatch(getJobs());
       dispatch(postJobsSuccess());
-      alert("job posted!")
+    
     } catch (err) {
       dispatch(postJobsFailure());
     }
