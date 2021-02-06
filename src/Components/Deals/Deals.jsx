@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Deals.module.css";
 import StripeCheckout from "react-stripe-checkout";
 import { useHistory } from "react-router-dom";
+import Confetti from "react-confetti";
 const Deals = () => {
+  const [height, setHeight] = useState(null);
+  const [width, setWidth] = useState(null);
+  const [show, setShow] = useState(false);
+  const [showConfetti, setShowConfetti] = React.useState(false);
+  const confettiRef = useRef(null);
   const [product, setProduct] = React.useState({
     name: "Founder Club Membership",
     price: 799,
@@ -25,14 +31,19 @@ const Deals = () => {
       .then((response) => {
         console.log("RESPONSE ", response);
         const { status } = response;
-        alert("Congrtulation!! You are now a FOUNDER CLUB MEMBER");
         console.log("STATUS ", status);
-        history.push("/");
+        setShowConfetti(true);
+        // history.push("/");
       })
       .catch((error) => console.log(error));
   };
+
+  React.useEffect(() => {
+    setHeight(confettiRef.current.clientHeight);
+    setWidth(confettiRef.current.clientWidth);
+  }, []);
   return (
-    <div className={styles.Deals}>
+    <div className={styles.Deals} ref={confettiRef}>
       <div className={styles.Deals__banner}>
         <div className={styles.Deals__bannerEmoji}>✨</div>
         <div className={styles.Deals__bannerHeader}>
@@ -51,7 +62,11 @@ const Deals = () => {
             // shippingAddress
             // billingAddress
           >
-            <button>JOIN FOUNDER CLUB</button>
+            {showConfetti ? (
+              <button>CONGRATULATIONS!</button>
+            ) : (
+              <button>JOIN FOUNDER CLUB</button>
+            )}
           </StripeCheckout>
           {/* <button>JOIN FOUNDER CLUB</button> */}
           <p>Got an invite code?</p>
@@ -72,6 +87,14 @@ const Deals = () => {
           </div>
         </div>
       </div>
+      {showConfetti ? (
+        <Confetti
+          recycle={show}
+          numberOfPieces={1000}
+          width={width}
+          height={height}
+        />
+      ) : null}
     </div>
   );
 };

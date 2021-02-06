@@ -20,7 +20,7 @@ export function CalendarPage() {
   }, []);
   const book = () => {
     postdetails();
-    
+
     history.push("/mentors/mentorsdetails");
   };
   const postdetails = () => {
@@ -212,7 +212,6 @@ export function CalendarPage() {
   console.log(dateState);
   return (
     <div
-      className={styles.Calendar}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -330,6 +329,7 @@ export function CalendarPage() {
             {show && (
               <div>
                 <div
+                  className={styles.Calendar}
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -344,11 +344,17 @@ export function CalendarPage() {
                       style={{ width: "100%" }}
                       onClick={handleconfirm1}
                       value="11:00 AM"
+                      className={styles.Calendar}
                     >
                       11:00 AM
                     </button>
                     {!con1 && (
-                      <button style={{ display: "none" }}>confirm</button>
+                      <button
+                        className={styles.Calendar}
+                        style={{ display: "none" }}
+                      >
+                        confirm
+                      </button>
                     )}
                     {con1 && (
                       <button style={{ width: "100%" }} onClick={handleshowd}>
@@ -518,7 +524,18 @@ export function CalendarPage() {
       </div>
       {showd && (
         <button
-          style={{ width: "20%", margin: "auto", marginBottom: "30px" }}
+          style={{
+            outline: "none",
+            border: "1px solid blue",
+            color: "#2186eb",
+            width: "20%",
+            margin: "auto",
+            marginBottom: "30px",
+            backgroundColor: "#f0f7ff",
+            borderRadius: "10px",
+            height: "40px",
+            padding: "5px",
+          }}
           onClick={book}
         >
           BOOK AN APPOINTMENT

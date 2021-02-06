@@ -14,6 +14,21 @@ const AuthModal = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  let backupUser = {
+    googleId: "106980268689840113089",
+    imageUrl:
+      "https://lh3.googleusercontent.com/ogw/ADGmqu8MW1sSd6pu_D3NjPp6juiOyCKYx-VyEYQCQzm08Q=s83-c-mo",
+    email: "nitanshrastogi11@gmail.com",
+    name: "Nitansh Rastogi",
+    givenName: "Nitansh",
+    familyName: "Rastogi",
+    id: 4,
+    about: "B2C Hosting Consultant",
+  };
+  let myResponse = {
+    profileObj: backupUser,
+  };
+
   return (
     <>
       <Modal
@@ -38,7 +53,15 @@ const AuthModal = () => {
             <i className="fa fa-twitter"></i>
             LOG IN WITH TWITTER
           </button>
-          <button style={{ backgroundColor: "#3B5998", color: "white" }}>
+          <button
+            onClick={() => {
+              dispatch(loginSuccess(myResponse));
+              dispatch(addUser(myResponse.profileObj));
+              console.log("Current user:", currentUser);
+              setIsOpen(false);
+            }}
+            style={{ backgroundColor: "#3B5998", color: "white" }}
+          >
             <i className="fa fa-facebook"></i>
             LOG IN WITH FACEBOOK
           </button>
@@ -48,7 +71,7 @@ const AuthModal = () => {
             onSuccess={(response) => {
               dispatch(loginSuccess(response));
               dispatch(addUser(response.profileObj));
-              console.log("Current user:",currentUser)
+              console.log("Current user:", currentUser);
               setIsOpen(false);
             }}
             onFailure={(response) => dispatch(loginFailure(response))}
