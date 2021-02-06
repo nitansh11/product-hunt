@@ -11,7 +11,7 @@ Product Hunt Alpha is a product research website where users can research produc
 ## Credits
 * Images -  [Product Hunt](https://www.producthunt.com/)
 * Content - [Product Hunt](https://www.producthunt.com/)
-* Icons -  [Product Hunt]https://www.producthunt.com/) | [fontawesome](https://fontawesome.com/)
+* Icons -  [Product Hunt](https://www.producthunt.com/) | [fontawesome](https://fontawesome.com/)
 * References - [MDN](https://developer.mozilla.org/en-US/) | [w3schools](https://www.w3schools.com/)
 
 ## Tech Stack
@@ -19,6 +19,7 @@ Product Hunt Alpha is a product research website where users can research produc
 * CSS
 * JavaScript
 * React
+* Basic Express.js
 
 ## Libraries
 * React
