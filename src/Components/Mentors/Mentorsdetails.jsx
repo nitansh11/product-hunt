@@ -60,7 +60,9 @@ export const Mentorsdetails = () => {
                     backgroundColor: "#cc4d29",
                     boxShadow: "10px 10px 10px white",
                     borderRadius: "10px",
+                    
                   }}
+                  className={Styles.Mentorsdetails__text}
                 >
                   <div style={{ margin: "auto" }}>
                     <img
