@@ -141,6 +141,7 @@
     color: #6F6F6F;  /*default */
 }
 
+
 .ProductModal__main__content__demo__video__footer > div:nth-child(1) button i{
     margin-right: 5px;
 }
@@ -408,15 +409,15 @@
 }
 
 .button__light{
-    border: 1px solid rgb(212, 206, 206) !important;
+    border: 2px solid rgb(212, 206, 206) !important;
 }
 
 .button__dark{
-    border: 1px solid rgb(173, 84, 0) !important;
+    border: 2px solid rgb(173, 84, 0) !important;
 }
 
 .button__dark__upvoted{
     background-color: white;
     color: rgb(173, 84, 0);
-    border: 1px solid rgb(173, 84, 0) !important;
+    border: 2px solid rgb(173, 84, 0) !important;
 }
