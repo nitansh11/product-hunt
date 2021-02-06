@@ -19,7 +19,7 @@ Product Hunt Alpha is a product research website where users can research produc
 * CSS
 * JavaScript
 * React
-* Basic Express.js
+* Basic Express.js (for Stripe)
 
 ## Libraries
 * React
