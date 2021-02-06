@@ -6,10 +6,10 @@ import ProductCard from './ProductCard'
 import SideCard from './SideCard'
 import { getJobs } from '../../Redux/myjobs/actions'
 import SideCardJobs from './SideCardJobs'
-import { Link } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { getAllDiscussion } from '../../Redux/discussions/actions'
 import SideCardDiscussions from './SideCardDiscussions'
-import { Button } from 'antd'
+import { AuthContext } from "../../AuthContextProvider";
  
  
  
@@ -25,7 +25,9 @@ function Product() {
    const [ showMoreOlder , setShowMoreOlder ] = React.useState(false)
    const [ showScroll, setShowScroll ] = React.useState(false)
    const [ currentFilter , setCurrentFilter ] = React.useState("latest")
-
+   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
+   const { isOpen, setIsOpen } = React.useContext(AuthContext);
+   const history = useHistory()
    const dispatch = useDispatch()  
     
    //scroll to top
@@ -41,6 +43,18 @@ function Product() {
     const scrollTop = () =>{
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
+
+    //post a product button handler 
+    const postProductButtonHandler = () =>{
+        if(isLoggedIn){
+            history.push("/product/post")
+        }
+        else{
+            setIsOpen(true);
+        }
+        
+    }
+
 
     //getting todays products
     const getTodayProducts = (currentFilter) => {
@@ -185,7 +199,12 @@ function Product() {
              </div>
              <div className={styles.Product__side}>
                 <div className={styles.Product__side__awards}>
-                        
+                         
+                </div>
+                <div className={styles.Product__side__highlight}>
+                    <div className={styles.PostProduct_button}>
+                       <button onClick={postProductButtonHandler}>Post a Product</button>
+                    </div>
                 </div>
                 <div className={styles.Product__side__highlight}>
                     <h2>Upcoming products <span>powered by Masai</span></h2>
@@ -194,9 +213,6 @@ function Product() {
                             <SideCard key={item.id} {...item}></SideCard>
                         ))}
                     </div>
-                </div>
-                <div className={styles.Product__side__highlight}>
-                     <Button>Post a Job</Button>
                 </div>
                 <div className={styles.Product__side__highlight}>
                     <h2>Hiring Now</h2>

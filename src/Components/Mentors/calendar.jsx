@@ -7,7 +7,7 @@ import moment from "moment";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./calendar.module.css";
+import styles from "./calendar.module.css";
 
 export function CalendarPage() {
   const [data, setData] = React.useState(null);
@@ -212,6 +212,7 @@ export function CalendarPage() {
   console.log(dateState);
   return (
     <div
+      className={styles.Calendar}
       style={{
         display: "flex",
         flexDirection: "column",

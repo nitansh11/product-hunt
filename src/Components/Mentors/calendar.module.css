@@ -1,4 +1,4 @@
-button {
+.Calendar button {
   border-radius: 10px;
   height: 40px;
   width: "fit-content";
@@ -9,6 +9,6 @@ button {
   border: 1px solid blue;
   margin: 5px;
 }
-button :hover {
+.Calendar button :hover {
   cursor: pointer;
 }
