@@ -1,5 +1,9 @@
 # Product Hunt Alpha by Team Alpha
 
+
+## Usage 
+### If first-time/new-user then Sign Up using Google first, then only Login using google.
+
 Product Hunt Alpha is a product research website where users can research products also add their own products. This was built as a construct week project by Masai School Students.
 
 ## Features
@@ -33,10 +37,6 @@ Product Hunt Alpha is a product research website where users can research produc
 * Stripe
 * Express.js
 
-
-
-## Usage 
-### If first-time/new-user then Sign Up using Google first, then only Login using google.
  
 
 ## Screenshots
