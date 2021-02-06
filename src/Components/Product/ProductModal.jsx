@@ -322,7 +322,8 @@ function ProductModal() {
                             <div>
                                 <button onClick={()=>productUpvoteHandler()} 
                                 style={upvoted?.find(item => item === Number(id)) !== undefined && isLoggedIn ? {border:"1px solid rgb(173, 84, 0)" , backgroundColor:"white", color:"rgb(173, 84, 0)"} : {}} className={styles.button__dark}>
-                                <i className="fas fa-caret-up"></i> UPVOTES {upvotes}
+                                <i className="fas fa-caret-up"></i> 
+                                 UPVOTES {upvotes}
                             </button>
                             </div>
                         </div>
