@@ -64,7 +64,8 @@ const Discussions = () => {
             axios.get("https://janak-routing-project.herokuapp.com/discussions")
             .then((res)=>{
                 setList(res.data)
-                alert("posted succesfully")
+                setModalPost(false);
+                // alert("posted succesfully")
             })
         })
         .catch((err)=>{
