@@ -40,13 +40,14 @@ function PostProduct() {
 
     const onSubmitHandler = (e) => {
         e.preventDefault() 
+        console.log(formData)
         dispatch(postingNewProduct(formData))
         .then(res => history.push("/"))
     } 
 
   
 
-    const { name , logo , tagline , categories , description , video  } = formData
+    const { name , status , logo , tagline , categories , description , video  } = formData
 
     return (
         <div className={styles.PostProduct}>
@@ -86,6 +87,13 @@ function PostProduct() {
                                 <option value ="Photography">Photography</option>
                                 <option value ="Dating">Dating</option>
                                 <option value ="Design">Design</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Type of Product</label>
+                            <select required value={status} name="status"  onChange={onChangeHandler} >
+                                <option value ="TODAY">Launched</option>
+                                <option value ="UPCOMING">Upcoming</option>
                             </select>
                         </div>
                         <div>
