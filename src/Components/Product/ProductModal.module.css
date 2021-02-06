@@ -49,8 +49,8 @@
 
 
 .ProductModal__main__head__info img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 /* 
 .ProductModal__main__head__info > div:nth-child(1){
@@ -195,6 +195,12 @@
     width: 31%;   
 }
 
+
+.ProductModal__main__content__side p{
+     margin: 0;
+     padding: 0;
+}
+
 .ProductModal__main__content__side__head__upvoters{
     display: flex;
     flex-wrap: wrap;
@@ -204,7 +210,7 @@
 
 .ProductModal__main__content__side__head__upvoters > div{
     width: 10%;
-    margin: 0 5px;
+    margin: 2px 5px;
 }
 
 
@@ -228,6 +234,7 @@
     padding: 12px 17px;
     border-radius: 3px;
     border: none;
+    
 }
 
 
@@ -327,6 +334,12 @@
     padding: 2px;
     max-height: 8vh;
 }
+
+.ScrollNav h2 , .ScrollNav p {
+    margin: 0;
+    padding: 0;
+}
+
 .ScrollNav{
     display: flex;
     width: 100%;
@@ -334,7 +347,6 @@
     max-width: 1100px;
     justify-content: space-between;
     align-items: center;
-   
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -342,11 +354,22 @@
     display: flex;
     align-items: center;
     white-space: nowrap;
+
 }
 
 .ScrollNav__right > div:nth-child(1){
     width: 30%;
     padding: 10px;
+  
+}
+
+
+.ScrollNav__right > div:nth-child(2){
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 
 .ScrollNav__right h2{
@@ -363,11 +386,13 @@
 .ScrollNav__right > div img{
     width: 50px;
     height: 50px;
+  
 }
 
 .ScrollNav__left{
     align-items: center;
     display: flex;
+ 
 }
 
 .ScrollNav button{

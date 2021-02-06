@@ -113,7 +113,14 @@
     border-radius: 5px;
 }
 
+.PostProduct_button a{
+    text-decoration: none;
+    font-size: 20px;
+}
 
+.PostProduct_button button {
+  
+}
  
 
  

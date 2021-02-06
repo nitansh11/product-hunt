@@ -217,7 +217,31 @@
 
 
 
+
 /* ------------------------------------------- SIDECARD -------------------------------------------------- */
+
+.PostProduct_button{
+  text-align: center;
+}
+
+.PostProduct_button button{
+  background-color: #DA552F;
+  width: 80%;
+  margin: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.PostProduct_button button:hover{
+  background-color: white;
+  color: orange;
+  outline: none;
+}
 
 .Product__side{
     width: 31%;

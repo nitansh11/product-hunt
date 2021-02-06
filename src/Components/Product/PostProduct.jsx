@@ -25,29 +25,28 @@ function PostProduct() {
     const currentUser = useSelector ( state => state.authReducer.currentUser)
     const dispatch = useDispatch()
     const history = useHistory()
-    const [ openSelection , setOpenSelection ] = React.useState(true)
-    const [ status , setStatus] = React.useState("PROMOTIONAL")
-    // setFormData({...formData , developer : currentUser.name})
-
+    
+    // 
     React.useEffect(()=>{
-        setFormData({...formData , status : status }) 
-    },[status])
+        setFormData({...formData , developer : currentUser.name})
+    },[])
+   
  
     const onChangeHandler = (e) => {       
         let {name , value } = e.target
         setFormData({...formData , [name] : value }) 
+     
     } 
 
     const onSubmitHandler = (e) => {
         e.preventDefault() 
-        console.log(formData)
         dispatch(postingNewProduct(formData))
         .then(res => history.push("/"))
     } 
 
   
 
-    const { name ,  logo , tagline , categories , description , video  } = formData
+    const { name , logo , tagline , categories , description , video  } = formData
 
     return (
         <div className={styles.PostProduct}>
@@ -63,15 +62,15 @@ function PostProduct() {
                 <form onSubmit={onSubmitHandler}>
                         <div>
                             <label>Name</label>
-                            <input required value={name} name="name" onChange={onChangeHandler} type="text" placeholder="" ></input>
+                            <input required value={name} name="name" onChange={onChangeHandler} type="text"  ></input>
                         </div>
                         <div>
                             <label>Tagline</label>
-                            <input required value={tagline} name="tagline" onChange={onChangeHandler} type="text" placeholder="" ></input>
+                            <input required value={tagline} name="tagline" onChange={onChangeHandler} type="text"></input>
                         </div>
                         <div>
                             <label>Description</label>
-                            <input required value={description} name="description"  onChange={onChangeHandler}   placeholder="" ></input>
+                            <input required value={description} name="description"  onChange={onChangeHandler}   ></input>
                         </div>
                         
                         <div>
