@@ -1,15 +1,16 @@
 import React from 'react'
 import styles from './Product.module.css'
 import { useSelector , useDispatch } from 'react-redux'
-import { getBestProducts, getOlderProducts, getProducts, getPromotionalProducts, getUpcomingProducts } from '../../Redux/products/actions'
+import { getBestProducts, getOlderProducts, getProducts,  getUpcomingProducts } from '../../Redux/products/actions'
 import ProductCard from './ProductCard'
 import SideCard from './SideCard'
 import { getJobs } from '../../Redux/myjobs/actions'
 import SideCardJobs from './SideCardJobs'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { getAllDiscussion } from '../../Redux/discussions/actions'
 import SideCardDiscussions from './SideCardDiscussions'
 import { AuthContext } from "../../AuthContextProvider";
+import { getAllUsersAuthData } from '../../Redux/operations/actions'
  
  
  
@@ -27,6 +28,7 @@ function Product() {
    const [ currentFilter , setCurrentFilter ] = React.useState("latest")
    const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
    const { isOpen, setIsOpen } = React.useContext(AuthContext);
+   const currentUser = useSelector((state) => state.authReducer.currentUser);
    const history = useHistory()
    const dispatch = useDispatch()  
     
@@ -120,10 +122,24 @@ function Product() {
         getUpcomingProductsHandler()
         dispatch(getJobs())
         dispatch(getAllDiscussion())
+        
         return ()=>{
             //clean up
         }
     },[])
+
+    React.useEffect(()=>{
+        if(isLoggedIn){
+            dispatch(
+                getAllUsersAuthData({
+                  email: currentUser.email,
+                })
+              )
+        }
+        return ()=>{
+            //clean up
+        }
+    },[isLoggedIn])
 
 
 
