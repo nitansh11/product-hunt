@@ -36,7 +36,7 @@ Product Hunt Alpha is a product research website where users can research produc
 
 
 ## Usage 
-### Signup first then login with google account
+### If first-time/new-user then Sign Up using Google first, then only Login using google.
  
 
 ## Screenshots
