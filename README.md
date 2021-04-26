@@ -55,7 +55,11 @@ Product Hunt Alpha is a product research website where users can research produc
 
 
 
-
+## Team
+* Nitansh Rastogi
+* Gopi Chandana
+* Janakbharadwaj Adluri
+* Akshay Kadam
  
 
  
