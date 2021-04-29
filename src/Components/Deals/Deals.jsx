@@ -71,7 +71,7 @@ const Deals = () => {
           {/* <button>JOIN FOUNDER CLUB</button> */}
           <p>Got an invite code?</p>
         </div>
-        <div className={styles.Deals__bannerSort}>
+        {/* <div className={styles.Deals__bannerSort}>
           <p>Sort by:</p>
           <select>
             <option value="">Recommended</option>
@@ -85,7 +85,7 @@ const Deals = () => {
               type="text"
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {showConfetti ? (
         <Confetti

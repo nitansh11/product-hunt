@@ -3,11 +3,13 @@
 }
 
 .mentors_outerbox {
-  width: 49%;
+  width: 100%;
+  max-width: 1200px;
   margin: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
 }
 
 .mentors_h1 {
@@ -27,7 +29,7 @@
   height: fit-content;
   margin: auto;
   line-height: 20px;
-  font-size: 12px;
+  font-size: 16px;
   color: rgb(61, 60, 60);
   margin-bottom: 7%;
 }
@@ -42,7 +44,7 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  font-size: 12px;
+  font-size: 16px;
   color: rgb(61, 60, 60);
   text-align: left;
 }
@@ -64,7 +66,7 @@
   width: fit-content;
   height: 30px;
   margin-left: 10%;
-  font-size: 11px;
+  font-size: 14px;
   background-color: #cc4d29;
   outline: none;
   color: white;
@@ -85,6 +87,6 @@
   border-radius: 2px;
 }
 .startbuttondiv {
-  margin: auto;
+  margin: 0 auto;
   width: 50%;
 }

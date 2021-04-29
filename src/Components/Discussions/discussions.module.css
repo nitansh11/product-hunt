@@ -1,375 +1,374 @@
-.indivItem{
-    /* border: 1px solid black; */
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
+.indivItem {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
 
-.discussionsBackground{
-    background-color: rgb(243,243,243);
+.discussionsBackground {
+  background-color: rgb(243, 243, 243);
+  min-height: 100vh;
 }
 
-.discussionsPage{
-    /* border: 1px solid gray; */
-    margin: auto;
-    width: 80%;
+.discussionsPage {
+  margin: auto;
+  width: 80%;
 }
 
-.indivItem > img{
-    width: 3%;
-    height: 10%;
-    border-radius: 50%;
-    margin-top: 10px;
-    margin-left: 10px;
+.indivItem > img {
+  width: 3%;
+  height: 10%;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
-.indivItem > .itemNumber{
-    /* border: 1px solid black; */
-    padding: 10px;
-    margin-left: 10px;
-    margin-top: 0px;
-    padding-top: 0px;
+.indivItem > .itemNumber {
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
 }
-.indivItem > .itemNumber > i{
-    padding-left: 5px;
-}
-
-.indivItem > .itemTitle{
-    margin-left: 30px;
-    margin-top: 5px;
-    border: 0px;
-    outline: none;
-    background-color: white;
-    cursor: pointer;
+.indivItem > .itemNumber > i {
+  padding-left: 5px;
 }
 
-.indivItem > .itemTitle > h3{
-    font-weight: 300;
-    font-size: 15px;
+.indivItem > .itemTitle {
+  margin-left: 30px;
+  margin-top: 5px;
+  border: 0px;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
 }
 
-.indivItem > .itemTitle > h5{
-    font-weight: 100;
-    font-size: 12px;
-    color: gray;
+.indivItem > .itemTitle > h3 {
+  font-weight: 300;
+  font-size: 15px;
 }
 
-
-.discussionsList{
-    /* border: 1px solid black; */
-    width: 70%;
-    margin-right: 20px;
-    border-radius: 5px;
-    background-color: white;
-    margin-top: 20px;
-    padding-left: 15px;
+.indivItem > .itemTitle > h5 {
+  font-weight: 100;
+  font-size: 12px;
+  color: gray;
 }
 
-.discussionsRightBar{
-    /* border: 1px solid rgb(255, 196, 0); */
-    width: 40%;
-    margin-left: 0px;
-    margin-top: 20px;
+.discussionsList {
+  /* border: 1px solid black; */
+  width: 70%;
+  margin-right: 20px;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 20px;
+  padding-left: 15px;
 }
 
-.discussionsParent{
-    display: flex;
-    flex-direction: row;
+.discussionsRightBar {
+  /* border: 1px solid rgb(255, 196, 0); */
+  width: 40%;
+  margin-left: 0px;
+  margin-top: 20px;
 }
 
-.discussionsRightBar_1{
-    /* border: 1px solid saddlebrown; */
-    width: 80%;
-    padding: 4%;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: white;
-    font-weight: 100;
-    color: rgb(94, 91, 91);
-    font-size: 14px;
-    line-height: 22px;
-}
-.discussionsRightBar_1 > button{
-    background-color: rgb(204,77,41);
-    color: aliceblue;
-    padding: 10px 20px;
-    width: 100%;
-    height: 40px;
-    outline: none;
-    border: 0px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 600;
+.discussionsParent {
+  display: flex;
+  flex-direction: row;
 }
 
-.discussionsRightBar_2{
-    /* border: 1px solid saddlebrown; */
-    width: 80%;
-    padding: 4%;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: white;
-    font-weight: 100;
-    color: rgb(94, 91, 91);
-    font-size: 14px;
+.discussionsRightBar_1 {
+  /* border: 1px solid saddlebrown; */
+  width: 80%;
+  padding: 4%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: white;
+  font-weight: 100;
+  color: rgb(94, 91, 91);
+  font-size: 14px;
+  line-height: 22px;
 }
-.discussionsRightBar_2 > form > input{
-    margin-right: 10px;
-    margin-bottom: 15px;
-}
-
-.discussionsRightBar_3{
-    /* border: 1px solid saddlebrown; */
-    width: 80%;
-    padding: 4%;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: white;
-}
-.discussionsRightBar_3 > img{
-    border-radius: 50%;
-    margin-top: 15px;
-}
-.discussionsRightBar_3 > h3{
-    font-size: 13px;
-    color: rgb(37, 36, 36);
+.discussionsRightBar_1 > button {
+  background-color: rgb(204, 77, 41);
+  color: aliceblue;
+  padding: 10px 20px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 0px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.itemNum:active{
-    color: rgb(204,77,41);
-    font-weight: 600;
+.discussionsRightBar_2 {
+  /* border: 1px solid saddlebrown; */
+  width: 80%;
+  padding: 4%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: white;
+  font-weight: 100;
+  color: rgb(94, 91, 91);
+  font-size: 14px;
 }
-.itemNum:hover{
-    cursor: pointer;
-}
-
-.discussionsRightBar_4{
-    /* border: 1px solid red; */
-    width: 80%;
-    padding: 4%;
-    margin-bottom: 20px;
-    border-top: 1px solid rgba(187, 184, 184, 0.637);
-    font-size: 12px;
-    color: gray;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    line-height: 20px;
-}
-.discussionsRightBar_4 > p{
-    margin-right: 10px;
-    cursor: pointer;
+.discussionsRightBar_2 > form > input {
+  margin-right: 10px;
+  margin-bottom: 15px;
 }
 
-.discussionsPage_buttonsDIv{
-    /* border: 1px solid black; */
-    width: 64%;
-    display: flex;
-    flex-direction: row;
-    padding-top: 20px;
+.discussionsRightBar_3 {
+  /* border: 1px solid saddlebrown; */
+  width: 80%;
+  padding: 4%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+.discussionsRightBar_3 > img {
+  border-radius: 50%;
+  margin-top: 15px;
+}
+.discussionsRightBar_3 > h3 {
+  font-size: 13px;
+  color: rgb(37, 36, 36);
 }
 
-.discussionsPage_buttonsDIv_1 > button{
-    outline: none;
-    border: 0px;
-    margin-right: 20px;
-    background-color: rgb(243,243,243);
-    cursor: pointer;
+.itemNum:active {
+  color: rgb(204, 77, 41);
+  font-weight: 600;
+}
+.itemNum:hover {
+  cursor: pointer;
 }
 
-.discussionsPage_buttonsDIv_2{
-    /* border: 1px solid brown; */
-    margin-left: 360px;
+.discussionsRightBar_4 {
+  /* border: 1px solid red; */
+  width: 80%;
+  padding: 4%;
+  margin-bottom: 20px;
+  border-top: 1px solid rgba(187, 184, 184, 0.637);
+  font-size: 12px;
+  color: gray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  line-height: 20px;
 }
-.discussionsPage_buttonsDIv_2 > button{
-    outline: none;
-    border: 0px;
-    margin-right: 20px;
-    background-color: rgb(243,243,243);
-    cursor: pointer;
+.discussionsRightBar_4 > p {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.discussionsPage_buttonsDIv {
+  /* border: 1px solid black; */
+  width: 64%;
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+
+.discussionsPage_buttonsDIv_1 > button {
+  outline: none;
+  border: 0px;
+  margin-right: 20px;
+  background-color: rgb(243, 243, 243);
+  cursor: pointer;
+}
+
+.discussionsPage_buttonsDIv_2 {
+  /* border: 1px solid brown; */
+  margin-left: 360px;
+}
+.discussionsPage_buttonsDIv_2 > button {
+  outline: none;
+  border: 0px;
+  margin-right: 20px;
+  background-color: rgb(243, 243, 243);
+  cursor: pointer;
 }
 
 /****** popup css ******/
 
-.popupCloseButton{
-    position: relative;
-    top: -10px;
-    left: -10px;
-    background-color: rgb(249,249,249);
-    outline: none;
-    border: 0px;
-    font-size: 20px;
-    color: gray;
-    padding: 5px;
-    cursor: pointer;
+.popupCloseButton {
+  position: relative;
+  top: -10px;
+  left: -10px;
+  background-color: rgb(249, 249, 249);
+  outline: none;
+  border: 0px;
+  font-size: 20px;
+  color: gray;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.popupTitleDiv{
-    /* border: 1px solid rgba(129, 126, 126, 0.486); */
-    border-radius: 5px;
-    width: 65%;
-    padding: 20px;
-    margin: 10px 0px 10px 0px;
-    background-color: white;
-    box-shadow: 1px 1px 8px rgba(187, 185, 185, 0.466);
+.popupTitleDiv {
+  /* border: 1px solid rgba(129, 126, 126, 0.486); */
+  border-radius: 5px;
+  width: 65%;
+  padding: 20px;
+  margin: 10px 0px 10px 0px;
+  background-color: white;
+  box-shadow: 1px 1px 8px rgba(187, 185, 185, 0.466);
 }
 
-.popupTitleDiv > p{
-    color: rgb(83, 82, 82);
-    margin-bottom: 10px;
-    font-size: 15px;
+.popupTitleDiv > p {
+  color: rgb(83, 82, 82);
+  margin-bottom: 10px;
+  font-size: 15px;
 }
 
-.popupTitleDiv > h1{
-    font-size: 22px;
-    font-weight: 500;
-    margin: 2px 2px 10px 2px;
+.popupTitleDiv > h1 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 2px 2px 10px 2px;
 }
 
-.popupTitleDiv > h4{
-    font-size: 16px;
-    font-weight: 300;
-    margin: 2px 2px 10px 2px;
-    color: rgb(83, 82, 82);
-    line-height: 25px;
+.popupTitleDiv > h4 {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 2px 2px 10px 2px;
+  color: rgb(83, 82, 82);
+  line-height: 25px;
 }
 
-.popupUpvotes{
-    border: 1px solid rgba(128, 128, 128, 0.288);
-    width: 40px;
-    height: 30px;
-    display: flex;
-    justify-content: space-around;
-    padding: 5px;
-    color: rgb(54, 53, 53);
-    border-radius: 2px;
+.popupUpvotes {
+  border: 1px solid rgba(128, 128, 128, 0.288);
+  width: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  color: rgb(54, 53, 53);
+  border-radius: 2px;
 }
 
-.commentsDiv{
-    width: 65%;
-    padding: 20px;
-    margin: 10px 0px 10px 0px;
-    background-color: white;
-    box-shadow: 1px 1px 8px rgba(187, 185, 185, 0.466);
-    border-radius: 5px;
+.commentsDiv {
+  width: 65%;
+  padding: 20px;
+  margin: 10px 0px 10px 0px;
+  background-color: white;
+  box-shadow: 1px 1px 8px rgba(187, 185, 185, 0.466);
+  border-radius: 5px;
 }
 
-.indivComment >div> h4{
-    font-size: 16px;
-    font-weight: 600;
+.indivComment > div > h4 {
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.indivComment>div>p{
-    /* border: 1px solid black; */
-    width: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 5px;
-    border-radius: 50%;
-    background-color: teal;
-    color: white;
+.indivComment > div > p {
+  /* border: 1px solid black; */
+  width: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: teal;
+  color: white;
 }
-.indivComment{
-    border: 1px solid rgba(190, 187, 187, 0.274);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.indivComment > p{
-    padding-left: 25px;
+.indivComment {
+  border: 1px solid rgba(190, 187, 187, 0.274);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.popupTitleAndUserDivs{
-    /* border: 1px solid black; */
-    display: flex;
+.indivComment > p {
+  padding-left: 25px;
 }
 
-.popupUserDetais{
-    /* border: 1px solid red; */
-    width: 30%;
-    margin-left: 10px;
-    border-radius: 5px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 1px 1px 8px rgba(187, 185, 185, 0.466);
-    margin-top: 10px;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.popupTitleAndUserDivs {
+  /* border: 1px solid black; */
+  display: flex;
 }
 
-.popupUser > img{
-    border-radius: 50%;
-    margin: 5px 5px 5px 75px;
-    width: 40%;
+.popupUserDetais {
+  /* border: 1px solid red; */
+  width: 30%;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 1px 1px 8px rgba(187, 185, 185, 0.466);
+  margin-top: 10px;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.popupUser > h2{
-    color: rgb(39, 38, 38);
-    text-align: center;
-    font-weight: 600;
+.popupUser > img {
+  border-radius: 50%;
+  margin: 5px 5px 5px 75px;
+  width: 40%;
 }
 
-.popupUser > h5{
-    color: rgb(39, 38, 38);
-    text-align: center;
-    font-weight: 300;
-    font-size: 16px;
+.popupUser > h2 {
+  color: rgb(39, 38, 38);
+  text-align: center;
+  font-weight: 600;
 }
 
-.popupUserWarning{
-    color: rgb(59, 58, 58);
-    text-align: center;
-    font-size: 25px;
+.popupUser > h5 {
+  color: rgb(39, 38, 38);
+  text-align: center;
+  font-weight: 300;
+  font-size: 16px;
 }
 
-.postPopUp > p{
-    font-size: 15px;
-    font-weight: 600;
-    color: rgb(56, 55, 55);
-    margin: 0px;
+.popupUserWarning {
+  color: rgb(59, 58, 58);
+  text-align: center;
+  font-size: 25px;
 }
 
-.postPopUp > input{
-    width: 85%;
-    outline: none;
-    border: 1px solid gray;
-    padding: 5px;
-    border-radius: 3px;
+.postPopUp > p {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(56, 55, 55);
+  margin: 0px;
 }
 
-.postPopUp > textarea{
-    width: 85%;
-    padding: 5px;
-    outline: none;
-    border: 1px solid gray;
-    border-radius: 3px;
+.postPopUp > input {
+  width: 85%;
+  outline: none;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 3px;
 }
 
-.postPopUp > button{
-    background-color: white;
-    border: 0px;
-    outline: none;
-    color: white;
-    background-color: rgb(185, 68, 36);
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 5px;
+.postPopUp > textarea {
+  width: 85%;
+  padding: 5px;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 3px;
 }
 
-.postPopupCLoseBtn{
-    background-color: rgb(249,249,249);
-    border: 0px;
-    outline: none;
-    color: gray;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    font-size: 20px;
-    cursor: pointer;
+.postPopUp > button {
+  background-color: white;
+  border: 0px;
+  outline: none;
+  color: white;
+  background-color: rgb(185, 68, 36);
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.postPopupCLoseBtn {
+  background-color: rgb(249, 249, 249);
+  border: 0px;
+  outline: none;
+  color: gray;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
