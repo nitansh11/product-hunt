@@ -104,7 +104,6 @@ const Navbar = () => {
               Deals
             </Link>
           </li>
-          <i className="fas fa-ellipsis-h"></i>
         </ul>
 
         {!isLoggedIn ? (
@@ -123,14 +122,12 @@ const Navbar = () => {
                   onClick={renderProps.onClick}
                   style={{ width: "100px" }}
                 >
-                   SIGN UP
+                  SIGN UP
                 </button>
               )}
               onFailure={(response) => dispatch(loginFailure(response))}
               cookiePolicy={"single_host_origin"}
-            >
-             
-            </GoogleLogin>
+            ></GoogleLogin>
             {/* <button>SIGN UP</button> */}
           </div>
         ) : (

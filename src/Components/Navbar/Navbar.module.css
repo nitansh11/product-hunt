@@ -5,13 +5,15 @@
 .Navbar > div {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   padding: 10px 0;
 }
-.Navbar__GoogleButton{
-  width:300px;
+
+.Navbar__GoogleButton {
+  width: 300px;
   border: 1px solid red;
 }
 .Navbar__searchBar {
@@ -38,8 +40,8 @@
   margin-right: 20px;
 }
 .Navbar__logo div {
-  width: 50px;
-  height: 50px;
+  width: 47px;
+  height: 45px;
   border-radius: 50%;
   background-color: rgb(218, 85, 47);
 }
@@ -50,15 +52,13 @@
 .Navbar ul {
   list-style: none;
   margin-left: 20px;
-
-margin-top: 10px;
+  margin-top: 10px;
 }
 .Navbar ul i {
   color: rgba(122, 120, 120, 0.836);
 }
 .Navbar li {
   display: inline-block;
-
   margin-right: 20px;
 }
 .Navbar li a {
@@ -136,10 +136,9 @@ margin-top: 10px;
   color: gray;
   font-size: 12px;
 }
-.Navbar__buttons{
+.Navbar__buttons {
   margin-left: 350px;
 }
-
 
 .Navbar__buttons .Navbar__logoutbtn {
   width: 150px;
@@ -153,6 +152,5 @@ margin-top: 10px;
   cursor: pointer;
   background-color: rgb(218, 85, 47) !important;
 }
-.Navbar__buttons button:nth-child(2){
- 
+.Navbar__buttons button:nth-child(2) {
 }

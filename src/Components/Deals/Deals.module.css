@@ -1,6 +1,6 @@
 .Deals {
   background-color: #16161d;
-  height: 2000px;
+  min-height: 100vh;
 }
 .Deals * {
   color: white;
@@ -49,7 +49,6 @@
 }
 
 .Deals__bannerSort {
-
   display: flex;
   width: 80%;
   margin: 0 auto;
@@ -68,9 +67,9 @@
   padding: 0 10px;
   border-radius: 2px;
 }
-.Deals__bannerSort__Search i{
-    font-size: 16px;
-    color:rgba(172, 167, 167, 0.685);
+.Deals__bannerSort__Search i {
+  font-size: 16px;
+  color: rgba(172, 167, 167, 0.685);
 }
 .Deals__bannerSort__Search input {
   background-color: #16161d;
